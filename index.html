@@ -1,24 +1,23 @@
 <!doctype html>
+
 <html class="light" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>The Editorial Academy</title>
-
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-
-    <!-- Google Fonts -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;700;800&family=Inter:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
       rel="stylesheet"
     />
-
-    <!-- Tailwind Config -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
     <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
@@ -88,944 +87,667 @@
         },
       };
     </script>
-
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
-
   <body
     class="bg-background text-on-background font-body selection:bg-tertiary-fixed selection:text-on-tertiary-fixed"
   >
-
-    <!-- ============================================================ -->
-    <!-- TOP NAVIGATION BAR                                           -->
-    <!-- ============================================================ -->
-    <nav class="fixed top-0 w-full z-50 bg-[#fcf8fa]/80 backdrop-blur-md shadow-sm">
-      <div class="flex justify-between items-center w-full px-8 py-4 max-w-[1920px] mx-auto">
+    <!-- Top Navigation Bar -->
+    <!-- Top Navigation Bar -->
+    <nav
+      class="fixed top-0 w-full z-50 bg-[#fcf8fa]/80 backdrop-blur-md shadow-sm"
+    >
+      <div
+        class="flex justify-between items-center w-full px-8 py-4 max-w-[1920px] mx-auto"
+      >
         <div class="flex items-center gap-12">
-          <button onclick="showPage('home')"
-            class="text-2xl font-black text-black tracking-tighter font-headline cursor-pointer hover:opacity-70">
-            The Editorial Academy
-          </button>
+          <a
+            href="index.html"
+            class="text-2xl font-black text-black tracking-tighter font-headline"
+            >The Editorial Academy</a
+          >
           <div class="hidden md:flex items-center gap-8">
-            <button onclick="showPage('curricula')"
-              class="text-[#545f73] font-medium hover:text-black transition-colors duration-300 font-headline tracking-tight">
-              Curricula
-            </button>
-            <button onclick="showPage('home')"
-              class="text-[#545f73] font-medium hover:text-black transition-colors duration-300 font-headline tracking-tight">
-              Library
-            </button>
-            <a class="text-[#545f73] font-medium hover:text-black transition-colors duration-300 font-headline tracking-tight" href="#">
-              Instructors
-            </a>
-            <a class="text-[#545f73] font-medium hover:text-black transition-colors duration-300 font-headline tracking-tight" href="#">
-              Certifications
-            </a>
+            <a
+              class="text-[#545f73] font-medium hover:text-black transition-colors duration-300 font-headline tracking-tight"
+              href="curricula.html"
+              >Curricula</a
+            >
+            <a
+              class="text-[#545f73] font-medium hover:text-black transition-colors duration-300 font-headline tracking-tight"
+              href="#"
+              >Library</a
+            >
+            <a
+              class="text-[#545f73] font-medium hover:text-black transition-colors duration-300 font-headline tracking-tight"
+              href="#"
+              >Instructors</a
+            >
+            <a
+              class="text-[#545f73] font-medium hover:text-black transition-colors duration-300 font-headline tracking-tight"
+              href="#"
+              >Certifications</a
+            >
           </div>
         </div>
         <div class="flex items-center gap-6">
           <div class="hidden lg:flex items-center gap-4 mr-4">
-            <span class="material-symbols-outlined text-secondary cursor-pointer hover:text-primary transition-colors">shopping_cart</span>
-            <span class="material-symbols-outlined text-secondary cursor-pointer hover:text-primary transition-colors">notifications</span>
+            <span
+              class="material-symbols-outlined text-secondary cursor-pointer hover:text-primary transition-colors"
+              >shopping_cart</span
+            >
+            <span
+              class="material-symbols-outlined text-secondary cursor-pointer hover:text-primary transition-colors"
+              >notifications</span
+            >
           </div>
-          <button class="px-6 py-2 text-primary font-medium hover:opacity-70 transition-opacity">Sign In</button>
-          <button class="px-6 py-2 bg-primary text-on-primary font-bold rounded-lg scale-95 hover:scale-100 transition-transform duration-200">Join Elite</button>
+          <button
+            class="px-6 py-2 text-primary font-medium hover:opacity-70 transition-opacity"
+          >
+            Sign In
+          </button>
+          <button
+            class="px-6 py-2 bg-primary text-on-primary font-bold rounded-lg scale-95 hover:scale-100 transition-transform duration-200"
+          >
+            Join Elite
+          </button>
         </div>
       </div>
     </nav>
-
-
-    <!-- ============================================================ -->
-    <!-- HOME PAGE                                                    -->
-    <!-- ============================================================ -->
-    <div id="home" class="page-section active">
-      <main class="pt-24">
-
-        <!-- Hero Section -->
-        <section class="relative px-8 py-24 md:py-32 max-w-7xl mx-auto overflow-hidden">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            <div class="lg:col-span-7">
-              <span class="inline-block px-3 py-1 mb-6 text-[0.65rem] font-bold tracking-[0.2em] uppercase bg-secondary-container text-on-secondary-container rounded-full">
-                Evolution of Learning
-              </span>
-              <h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter leading-[1.1] mb-8">
-                The Masterclass for
-                <span class="text-tertiary">Digital Curators</span>.
-              </h1>
-              <p class="text-secondary text-lg md:text-xl leading-relaxed mb-10 max-w-xl">
-                Escape the noise of standard education. Access curated curricula
-                from global visionaries designed to transform your perspective
-                into professional mastery.
-              </p>
-              <div class="flex flex-col sm:flex-row gap-4">
-                <button onclick="showPage('curricula')"
-                  class="px-10 py-5 bg-primary text-on-primary font-bold rounded shadow-lg flex items-center justify-center gap-2 hover:bg-opacity-90 transition-all">
-                  Explore Library
-                  <span class="material-symbols-outlined">arrow_forward</span>
-                </button>
-                <button class="px-10 py-5 bg-surface-container-low border border-outline-variant/15 text-primary font-bold rounded flex items-center justify-center gap-2 hover:bg-surface-container transition-all">
-                  Watch Intro
-                  <span class="material-symbols-outlined" data-weight="fill">play_circle</span>
-                </button>
-              </div>
-            </div>
-            <div class="lg:col-span-5 relative">
-              <div class="aspect-[4/5] rounded-xl overflow-hidden bg-surface-container-highest shadow-2xl relative">
-                <img
-                  alt="Student working"
-                  class="w-full h-full object-cover"
-                  src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg"
-                />
-                <div class="absolute bottom-8 left-8 right-8 p-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl">
-                  <p class="text-white text-sm italic font-light mb-2">
-                    "This isn't just a course, it's a mentorship program that redefined my career path."
-                  </p>
-                  <span class="text-white font-bold text-xs uppercase tracking-widest">— Elena Vance, Senior Curator</span>
-                </div>
-              </div>
-              <div class="absolute -top-12 -right-12 w-48 h-48 bg-tertiary/10 rounded-full blur-3xl -z-10"></div>
-              <div class="absolute -bottom-12 -left-12 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10"></div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Promo / Special Offer Section -->
-        <section class="bg-primary-container py-12 px-8 overflow-hidden relative">
-          <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
-            <div class="flex items-center gap-6">
-              <div class="h-16 w-16 bg-tertiary rounded-full flex items-center justify-center shrink-0">
-                <span class="material-symbols-outlined text-white text-3xl">workspace_premium</span>
-              </div>
-              <div>
-                <h3 class="text-white font-headline font-bold text-xl">The Winter Elite Pass</h3>
-                <p class="text-on-primary-container text-sm">Access every certification for a single annual fee. Limited time.</p>
-              </div>
-            </div>
-            <div class="flex items-center gap-4">
-              <div class="flex gap-2">
-                <div class="bg-white/10 px-4 py-2 rounded border border-white/10 text-center">
-                  <span class="block text-white font-bold text-lg">08</span>
-                  <span class="text-[0.6rem] text-on-primary-container uppercase tracking-tighter">Hours</span>
-                </div>
-                <div class="bg-white/10 px-4 py-2 rounded border border-white/10 text-center">
-                  <span class="block text-white font-bold text-lg">42</span>
-                  <span class="text-[0.6rem] text-on-primary-container uppercase tracking-tighter">Mins</span>
-                </div>
-                <div class="bg-white/10 px-4 py-2 rounded border border-white/10 text-center">
-                  <span class="block text-white font-bold text-lg">15</span>
-                  <span class="text-[0.6rem] text-on-primary-container uppercase tracking-tighter">Secs</span>
-                </div>
-              </div>
-              <button class="bg-tertiary text-white px-8 py-3 font-bold rounded-lg hover:bg-tertiary/90 transition-all ml-4">
-                Claim Access
+    <main class="pt-24">
+      <!-- Hero Section -->
+      <section
+        class="relative px-8 py-24 md:py-32 max-w-7xl mx-auto overflow-hidden"
+      >
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+          <div class="lg:col-span-7">
+            <span
+              class="inline-block px-3 py-1 mb-6 text-[0.65rem] font-bold tracking-[0.2em] uppercase bg-secondary-container text-on-secondary-container rounded-full"
+              >Evolution of Learning</span
+            >
+            <h1
+              class="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter leading-[1.1] mb-8"
+            >
+              The Masterclass for
+              <span class="text-tertiary">Digital Curators</span>.
+            </h1>
+            <p
+              class="text-secondary text-lg md:text-xl leading-relaxed mb-10 max-w-xl"
+            >
+              Escape the noise of standard education. Access curated curricula
+              from global visionaries designed to transform your perspective
+              into professional mastery.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <button
+                class="px-10 py-5 bg-primary text-on-primary font-bold rounded shadow-lg flex items-center justify-center gap-2 hover:bg-opacity-90 transition-all"
+              >
+                Explore Library
+                <span class="material-symbols-outlined">arrow_forward</span>
+              </button>
+              <button
+                class="px-10 py-5 bg-surface-container-low border border-outline-variant/15 text-primary font-bold rounded flex items-center justify-center gap-2 hover:bg-surface-container transition-all"
+              >
+                Watch Intro
+                <span class="material-symbols-outlined" data-weight="fill"
+                  >play_circle</span
+                >
               </button>
             </div>
           </div>
-        </section>
-
-        <!-- Trending Courses Section -->
-        <section class="py-24 px-8 max-w-7xl mx-auto">
-          <div class="flex justify-between items-end mb-16">
-            <div>
-              <span class="text-tertiary font-bold tracking-widest text-xs uppercase mb-4 block">Curated Excellence</span>
-              <h2 class="font-headline text-4xl font-extrabold tracking-tight">Trending Disciplines</h2>
+          <div class="lg:col-span-5 relative">
+            <div
+              class="aspect-[4/5] rounded-xl overflow-hidden bg-surface-container-highest shadow-2xl relative"
+            >
+              <img
+                alt="Student working"
+                class="w-full h-full object-cover"
+                data-alt="Premium close-up of a focused designer working on a high-end monitor in a minimalist sunlit architectural studio space"
+                src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg"
+              />
+              <div
+                class="absolute bottom-8 left-8 right-8 p-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl"
+              >
+                <p class="text-white text-sm italic font-light mb-2">
+                  "This isn't just a course, it's a mentorship program that
+                  redefined my career path."
+                </p>
+                <span
+                  class="text-white font-bold text-xs uppercase tracking-widest"
+                  >— Elena Vance, Senior Curator</span
+                >
+              </div>
             </div>
-            <button onclick="showPage('curricula')"
-              class="text-primary font-bold border-b border-primary/20 pb-1 hover:border-primary transition-all">
-              View All Curricula
+            <!-- Abstract Tonal Elements -->
+            <div
+              class="absolute -top-12 -right-12 w-48 h-48 bg-tertiary/10 rounded-full blur-3xl -z-10"
+            ></div>
+            <div
+              class="absolute -bottom-12 -left-12 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10"
+            ></div>
+          </div>
+        </div>
+      </section>
+      <!-- Promo / Special Offer Section -->
+      <section class="bg-primary-container py-12 px-8 overflow-hidden relative">
+        <div
+          class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8"
+        >
+          <div class="flex items-center gap-6">
+            <div
+              class="h-16 w-16 bg-tertiary rounded-full flex items-center justify-center shrink-0"
+            >
+              <span class="material-symbols-outlined text-white text-3xl"
+                >workspace_premium</span
+              >
+            </div>
+            <div>
+              <h3 class="text-white font-headline font-bold text-xl">
+                The Winter Elite Pass
+              </h3>
+              <p class="text-on-primary-container text-sm">
+                Access every certification for a single annual fee. Limited
+                time.
+              </p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="flex gap-2">
+              <div
+                class="bg-white/10 px-4 py-2 rounded border border-white/10 text-center"
+              >
+                <span class="block text-white font-bold text-lg">08</span>
+                <span
+                  class="text-[0.6rem] text-on-primary-container uppercase tracking-tighter"
+                  >Hours</span
+                >
+              </div>
+              <div
+                class="bg-white/10 px-4 py-2 rounded border border-white/10 text-center"
+              >
+                <span class="block text-white font-bold text-lg">42</span>
+                <span
+                  class="text-[0.6rem] text-on-primary-container uppercase tracking-tighter"
+                  >Mins</span
+                >
+              </div>
+              <div
+                class="bg-white/10 px-4 py-2 rounded border border-white/10 text-center"
+              >
+                <span class="block text-white font-bold text-lg">15</span>
+                <span
+                  class="text-[0.6rem] text-on-primary-container uppercase tracking-tighter"
+                  >Secs</span
+                >
+              </div>
+            </div>
+            <button
+              class="bg-tertiary text-white px-8 py-3 font-bold rounded-lg hover:bg-tertiary/90 transition-all ml-4"
+            >
+              Claim Access
             </button>
           </div>
-          <!-- Asymmetric Bento Grid -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Course Card 1 - Large -->
-            <div class="md:col-span-2 group cursor-pointer">
-              <div class="relative aspect-video rounded-lg overflow-hidden mb-6 bg-surface-container-low transition-all group-hover:shadow-2xl">
-                <img
-                  alt="Design Course"
-                  class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqF95ayjhjnw7xbVefyPMBVHlHpFPgOzfPcNW351sBmHegoLFnjK6R8DsRCXlt13tKEYluW8Qp9TgMNwRdR1vOe-wAhsR586bmzO_igUzq4a3tKQU2b0bR6FLJv1uW6RXMx2Exxbw22W73K1irUbm6uWXptralQSbZiC-UwLewewMfCEbsOyydGgCXsth_TTttBo8RpubeQPIT5RG67e4W0ACQi55QqN57lRrMgGgaOjwJ-awPks17_qw8owCPY8IiWyKMgWzQj6s"
-                />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div class="absolute bottom-6 left-6 flex items-center gap-3">
-                  <div class="bg-tertiary px-3 py-1 rounded-full flex items-center gap-1">
-                    <span class="material-symbols-outlined text-white text-xs" data-weight="fill">star</span>
-                    <span class="text-white text-[0.7rem] font-bold">4.9</span>
-                  </div>
-                  <span class="bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-white text-[0.7rem] font-bold uppercase tracking-widest">Bestseller</span>
-                </div>
-              </div>
-              <div class="flex justify-between items-start">
-                <div>
-                  <span class="text-secondary text-xs font-bold uppercase tracking-widest mb-2 block">Architecture &amp; Spatial Logic</span>
-                  <h3 class="text-2xl font-headline font-bold mb-2 group-hover:text-tertiary transition-colors">The Minimalist Manifesto: Crafting Presence</h3>
-                  <p class="text-secondary text-sm max-w-md">Master the philosophy of negative space and material integrity with world-renowned architect Marcus Theron.</p>
-                </div>
-                <div class="text-right">
-                  <span class="text-xl font-bold block">$149</span>
-                  <span class="text-secondary text-[0.65rem] uppercase tracking-tighter">Lifetime Enrollment</span>
-                </div>
-              </div>
-            </div>
-            <!-- Course Card 2 -->
-            <div class="group cursor-pointer">
-              <div class="relative aspect-square rounded-lg overflow-hidden mb-6 bg-surface-container-low transition-all group-hover:shadow-2xl">
-                <img
-                  alt="Business Strategy"
-                  class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgQPu7cwh7hVJVfr9GCIQVHuuWdpiTZqTTgzZvkf63uM5VJT1Watrliz3lkvdru3K-kMyOGWxqkBD9QpSVcrAz4_D_9CqVYpsQgQ7WZl_3_aO57dficpXeVFEORMyXZxURuA_DsPcHsYtRlWlA_k4i-WdApNL_kSVcviZvpRkLz_ivDhXsZ3WywBcGz8UfcFO3avRz2R6AZndhPiGY_P0cdEkfjJ4Y-1AZ324kZcvozfn-6Gw4HeQ5F3SBShY_anu1-AOlpOUv2Bk"
-                />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div class="absolute top-4 right-4">
-                  <span class="material-symbols-outlined text-white bg-white/20 p-2 rounded-full backdrop-blur-sm">bookmark</span>
-                </div>
-              </div>
-              <span class="text-secondary text-xs font-bold uppercase tracking-widest mb-2 block">Executive Strategy</span>
-              <h3 class="text-xl font-headline font-bold mb-2 group-hover:text-tertiary transition-colors">High-Stakes Curation</h3>
-              <div class="flex items-center gap-2 mb-4">
-                <div class="h-6 w-6 rounded-full bg-surface-container-highest"></div>
-                <span class="text-xs text-secondary font-medium italic">by Sarah Jenkins</span>
-              </div>
-              <span class="text-lg font-bold">$120</span>
-            </div>
-            <!-- Course Card 3 -->
-            <div class="group cursor-pointer">
-              <div class="relative aspect-square rounded-lg overflow-hidden mb-6 bg-surface-container-low transition-all group-hover:shadow-2xl">
-                <img
-                  alt="Technology"
-                  class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                  src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600"
-                />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-              </div>
-              <span class="text-secondary text-xs font-bold uppercase tracking-widest mb-2 block">Future Tech</span>
-              <h3 class="text-xl font-headline font-bold mb-2 group-hover:text-tertiary transition-colors">Ethical AI Integration</h3>
-              <div class="flex items-center gap-2 mb-4">
-                <div class="h-6 w-6 rounded-full bg-surface-container-highest"></div>
-                <span class="text-xs text-secondary font-medium italic">by David Chen</span>
-              </div>
-              <span class="text-lg font-bold">$189</span>
-            </div>
-          </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section class="py-24 bg-surface-container-low">
-          <div class="max-w-7xl mx-auto px-8">
-            <div class="text-center mb-20">
-              <span class="text-secondary text-xs font-bold uppercase tracking-[0.4em] mb-4 block">Proven Trajectories</span>
-              <h2 class="text-4xl font-headline font-extrabold tracking-tight">Our Alumni Lead the Industry</h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-              <!-- Testimonial 1 -->
-              <div class="relative bg-surface p-10 rounded-lg shadow-sm border-b-2 border-transparent hover:border-tertiary transition-all">
-                <span class="material-symbols-outlined text-tertiary text-4xl mb-6" data-weight="fill">format_quote</span>
-                <p class="text-on-surface-variant italic mb-8 leading-relaxed">
-                  "The Editorial Academy doesn't just teach skills; it refines your taste. I went from being a functional designer to a strategic creative director in months."
-                </p>
-                <div class="flex items-center gap-4">
-                  <div class="h-12 w-12 rounded-full bg-surface-container-highest overflow-hidden">
-                    <img alt="Profile" class="w-full h-full object-cover"
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTHHUSxxueINgFbN_91TEOYek8bF5mL6loCd4ZI_9crtRJKzKajJgRee6pPB0_mh0QmtyCXNwgPZSxo_IbmgnPVQFGD8Y_tLPkACV7Jk9gr8NvjXkoUnMjy5G6T6dTKcekKgONpN8Hc0nUjI2GjPONC3di2FaEmnjaDqFlfAmqJ7JExKcJickpEGxGStM-ODILV-2L0PflKgGqx9cMDR_k2zRNMWJPyxmgqLUaGY6x-6x04UP40V5Q1EzvMwd3us85A07GkjkZKQI"
-                    />
-                  </div>
-                  <div>
-                    <h4 class="font-bold text-sm">Julian Voss</h4>
-                    <p class="text-xs text-secondary">Creative Lead @ FRAME</p>
-                  </div>
-                </div>
-              </div>
-              <!-- Testimonial 2 -->
-              <div class="relative bg-surface p-10 rounded-lg shadow-sm border-b-2 border-transparent hover:border-tertiary transition-all">
-                <span class="material-symbols-outlined text-tertiary text-4xl mb-6" data-weight="fill">format_quote</span>
-                <p class="text-on-surface-variant italic mb-8 leading-relaxed">
-                  "Rigorous, beautiful, and deeply insightful. The focus on high-end execution is exactly what was missing from the landscape of online education."
-                </p>
-                <div class="flex items-center gap-4">
-                  <div class="h-12 w-12 rounded-full bg-surface-container-highest overflow-hidden">
-                    <img alt="Profile" class="w-full h-full object-cover"
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeWuw9cf87cNKi71NhtWTrnfmHJyFypJ1PMbhruhL8hdAqSxhFzPVapV7vQ975vDAFxm1TyKtVYJ3igP6udciu4srzm7_ntp14H2Yk2CiFGSCtYI2TQVIxX5wc4ftQIK6isEa0d8U1albANUdLaJNy9kzpL785gVt-6WipziENpJWZuCFvrA19IInWuLqzJi5ZGghar_zIt5BJDVuNghPylBOfy5D-CzdzVjkp1RCKA5QzY4fQ17MZX-MtYyYrvbdrJIrjO6XYRaI"
-                    />
-                  </div>
-                  <div>
-                    <h4 class="font-bold text-sm">Aria Thorne</h4>
-                    <p class="text-xs text-secondary">Senior Strategist @ VOGUE</p>
-                  </div>
-                </div>
-              </div>
-              <!-- Testimonial 3 -->
-              <div class="relative bg-surface p-10 rounded-lg shadow-sm border-b-2 border-transparent hover:border-tertiary transition-all">
-                <span class="material-symbols-outlined text-tertiary text-4xl mb-6" data-weight="fill">format_quote</span>
-                <p class="text-on-surface-variant italic mb-8 leading-relaxed">
-                  "The instructors are the primary draw. Learning from active professionals at the top of their game provides insights you can't find in textbooks."
-                </p>
-                <div class="flex items-center gap-4">
-                  <div class="h-12 w-12 rounded-full bg-surface-container-highest overflow-hidden">
-                    <img alt="Profile" class="w-full h-full object-cover"
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuCa0GTEm4A3q_Z_GcCwtyxgQ-k4MZgKwZ9tQzCANBClbigcZgUHCzw6jBlCY5AkeEzzwn53Ao8GkfP6ewwdqArxdfQliubD4QUwdNYcYaoC7kBcGiVpglo1zVHOLBUH3jO3X-U3rvESZNoxgT7cqS6zQgKhxsH_P30cntcKch19XbKtrrMB-kIddU-Ecw0qnVuxTDPcHVgxyU2UtyNX-ePFWk7cFtBh-ITs5wHqw4bxFTbVUsPoMGnkh-jPrZ5BIT5W9bPV9cqtmiA"
-                    />
-                  </div>
-                  <div>
-                    <h4 class="font-bold text-sm">Marcus Reed</h4>
-                    <p class="text-xs text-secondary">Product Design @ STRIPE</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Final CTA Section -->
-        <section class="py-32 px-8">
-          <div class="max-w-5xl mx-auto bg-primary-container rounded-lg p-12 md:p-24 relative overflow-hidden text-center">
-            <div class="absolute -top-32 -left-32 w-96 h-96 bg-tertiary/20 rounded-full blur-[100px]"></div>
-            <h2 class="text-white font-headline text-4xl md:text-6xl font-extrabold mb-8 relative z-10 leading-tight">
-              Elevate Your Practice to an
-              <span class="text-gold-gradient">Art Form</span>.
+        </div>
+      </section>
+      <!-- Trending Courses Section -->
+      <section class="py-24 px-8 max-w-7xl mx-auto">
+        <div class="flex justify-between items-end mb-16">
+          <div>
+            <span
+              class="text-tertiary font-bold tracking-widest text-xs uppercase mb-4 block"
+              >Curated Excellence</span
+            >
+            <h2 class="font-headline text-4xl font-extrabold tracking-tight">
+              Trending Disciplines
             </h2>
-            <p class="text-on-primary-container text-lg md:text-xl mb-12 max-w-2xl mx-auto relative z-10">
-              Join 15,000+ elite learners redefining the boundaries of their industries.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-6 relative z-10">
-              <button class="px-12 py-5 bg-tertiary text-white font-bold rounded hover:bg-tertiary/80 transition-all">Apply for Membership</button>
-              <button class="px-12 py-5 border border-white/20 text-white font-bold rounded hover:bg-white/5 transition-all">Schedule a Consult</button>
-            </div>
           </div>
-        </section>
-
-      </main>
-    </div>
-
-
-    <!-- ============================================================ -->
-    <!-- COURSE DETAIL PAGE                                           -->
-    <!-- ============================================================ -->
-    <div id="detail" class="page-section">
-      <main class="pt-24">
-
-        <!-- Hero & Purchase Sidebar -->
-        <section class="max-w-[1920px] mx-auto px-8 lg:px-20 py-12">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            <div class="lg:col-span-7">
-              <div class="flex gap-3 mb-6">
-                <span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase">Advanced Mastery</span>
-                <span class="flex items-center gap-1 text-tertiary font-bold text-xs uppercase tracking-widest">
-                  <span class="material-symbols-outlined text-sm" style="font-variation-settings: &quot;FILL&quot; 1">verified</span>
-                  Platinum Certified
-                </span>
-              </div>
-              <h1 class="text-6xl font-extrabold tracking-tighter mb-6 leading-[1.1]">Advanced UI/UX Design Mastery</h1>
-              <p class="text-xl text-secondary font-light max-w-2xl mb-10 leading-relaxed">
-                Master the high-end editorial aesthetic. Transition from standard digital product design to creating luxury-grade user experiences through tonal architecture, intentional asymmetry, and sophisticated motion.
-              </p>
-              <div class="flex items-center gap-12 mb-12">
-                <div class="flex flex-col">
-                  <span class="text-[10px] uppercase tracking-[0.2em] text-outline font-bold mb-1">Duration</span>
-                  <span class="text-lg font-medium">12 Weeks</span>
+          <a
+            class="text-primary font-bold border-b border-primary/20 pb-1 hover:border-primary transition-all"
+            href="#"
+            >View All Curricula</a
+          >
+        </div>
+        <!-- Asymmetric Bento-ish Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Course Card 1 - Large -->
+          <div class="md:col-span-2 group">
+            <div
+              class="relative aspect-video rounded-lg overflow-hidden mb-6 bg-surface-container-low transition-all group-hover:shadow-2xl"
+            >
+              <img
+                alt="Design Course"
+                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                data-alt="Interior of a modern architectural museum with sweeping concrete stairs and dramatic natural lighting from a skylight"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqF95ayjhjnw7xbVefyPMBVHlHpFPgOzfPcNW351sBmHegoLFnjK6R8DsRCXlt13tKEYluW8Qp9TgMNwRdR1vOe-wAhsR586bmzO_igUzq4a3tKQU2b0bR6FLJv1uW6RXMx2Exxbw22W73K1irUbm6uWXptralQSbZiC-UwLewewMfCEbsOyydGgCXsth_TTttBo8RpubeQPIT5RG67e4W0ACQi55QqN57lRrMgGgaOjwJ-awPks17_qw8owCPY8IiWyKMgWzQj6s"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
+              ></div>
+              <div class="absolute bottom-6 left-6 flex items-center gap-3">
+                <div
+                  class="bg-tertiary px-3 py-1 rounded-full flex items-center gap-1"
+                >
+                  <span
+                    class="material-symbols-outlined text-white text-xs"
+                    data-weight="fill"
+                    >star</span
+                  >
+                  <span class="text-white text-[0.7rem] font-bold">4.9</span>
                 </div>
-                <div class="flex flex-col">
-                  <span class="text-[10px] uppercase tracking-[0.2em] text-outline font-bold mb-1">Students</span>
-                  <span class="text-lg font-medium">4.8k Enrolled</span>
-                </div>
-                <div class="flex flex-col">
-                  <span class="text-[10px] uppercase tracking-[0.2em] text-outline font-bold mb-1">Rating</span>
-                  <div class="flex items-center gap-1">
-                    <span class="text-lg font-medium">4.9</span>
-                    <span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: &quot;FILL&quot; 1">star</span>
-                  </div>
-                </div>
-              </div>
-              <!-- Video Preview -->
-              <div class="relative group aspect-video bg-surface-container-low rounded-lg overflow-hidden cursor-pointer shadow-2xl">
-                <img
-                  alt="Course Preview"
-                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkimB-Z50eaFaNkkdYdemlj2NNzoXNzH1Pt-pDCxUfUrhVyFo9GGqjKqZEWlwnYRs3_YSR-K_SIKmDq6KFyKmDq6KFyKfyzlQc5wrcGn-_MxogjBRr5brnxfCWNN4C7QnGKDto6qtkkZVNXMBnIqEPnytHNCVgRwzr1_sveGaOFaOtLz-Wtrte4wA4fY15YQ7g7AkLOCMGAhSt9-pkplTHllVRb7-xfBq3zy_BZRxzcu15PWl5_L7myPwRlysGQe2an1lXQ8x5DNI9FJsph5w"
-                />
-                <div class="absolute inset-0 bg-primary/20 backdrop-blur-[2px] flex items-center justify-center">
-                  <div class="w-20 h-20 bg-surface-container-lowest rounded-full flex items-center justify-center shadow-2xl transition-transform group-hover:scale-110">
-                    <span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: &quot;FILL&quot; 1">play_arrow</span>
-                  </div>
-                </div>
-                <div class="absolute bottom-6 left-6 flex items-center gap-3">
-                  <span class="bg-surface-container-lowest/90 backdrop-blur-md px-3 py-1.5 rounded-sm text-[10px] font-bold tracking-widest uppercase">Preview Lesson: Tonal Depth</span>
-                </div>
+                <span
+                  class="bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-white text-[0.7rem] font-bold uppercase tracking-widest"
+                  >Bestseller</span
+                >
               </div>
             </div>
-            <!-- Sticky Buy Sidebar -->
-            <aside class="lg:col-span-5 sticky top-32">
-              <div class="bg-surface-container-lowest p-10 rounded-sm shadow-[20px_40px_60px_rgba(0,0,0,0.04)] border border-outline-variant/10">
-                <div class="flex justify-between items-end mb-8">
-                  <div>
-                    <span class="block text-outline line-through text-lg font-light">$899.00</span>
-                    <span class="text-5xl font-black tracking-tighter text-primary">$299.00</span>
-                  </div>
-                  <div class="bg-tertiary-container/20 text-tertiary px-3 py-1 rounded-sm text-xs font-bold">65% OFF FOR 24H</div>
-                </div>
-                <div class="space-y-4 mb-8">
-                  <button class="w-full bg-primary text-on-primary py-5 rounded-sm font-bold text-lg hover:bg-black/90 transition-all active:scale-95">Enroll in Mastery Now</button>
-                  <button class="w-full bg-transparent border border-outline-variant/30 text-primary py-5 rounded-sm font-bold text-lg hover:bg-surface-container-low transition-all">Add to Cart</button>
-                </div>
-                <div class="space-y-5">
-                  <div class="flex items-start gap-4">
-                    <span class="material-symbols-outlined text-tertiary">workspace_premium</span>
-                    <div>
-                      <h4 class="font-bold text-sm">Industry-Recognized Certification</h4>
-                      <p class="text-xs text-secondary leading-relaxed">Verified certificate of excellence upon completion to showcase on professional portfolios.</p>
-                    </div>
-                  </div>
-                  <div class="flex items-start gap-4">
-                    <span class="material-symbols-outlined text-tertiary">all_inclusive</span>
-                    <div>
-                      <h4 class="font-bold text-sm">Lifetime Private Access</h4>
-                      <p class="text-xs text-secondary leading-relaxed">All future updates, luxury assets, and framework templates included forever.</p>
-                    </div>
-                  </div>
-                  <div class="flex items-start gap-4">
-                    <span class="material-symbols-outlined text-tertiary">groups</span>
-                    <div>
-                      <h4 class="font-bold text-sm">Elite Alumni Community</h4>
-                      <p class="text-xs text-secondary leading-relaxed">Direct networking with senior designers from world-class digital agencies.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="mt-10 pt-8 border-t border-outline-variant/15 text-center">
-                  <p class="text-[10px] text-outline font-bold uppercase tracking-widest mb-2">Secure Checkout Provided By</p>
-                  <div class="flex justify-center gap-4 opacity-40 grayscale">
-                    <span class="font-black italic text-xl">VISA</span>
-                    <span class="font-black italic text-xl">STRIPE</span>
-                    <span class="font-black italic text-xl">PAYPAL</span>
-                  </div>
-                </div>
-              </div>
-            </aside>
-          </div>
-        </section>
-
-        <!-- Course Curriculum Section -->
-        <section class="max-w-[1920px] mx-auto px-8 lg:px-20 py-24 bg-surface-container-low">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
-            <div class="lg:col-span-4">
-              <h2 class="text-4xl font-extrabold tracking-tighter mb-6 leading-none">The Curriculum</h2>
-              <p class="text-secondary font-light leading-relaxed mb-8">A structured progression from foundational principles to advanced execution. No filler, only transformative design knowledge.</p>
-              <div class="flex flex-col gap-4">
-                <div class="p-6 bg-surface-container-lowest rounded-sm">
-                  <span class="block text-3xl font-black text-outline/20 mb-2">12</span>
-                  <span class="text-sm font-bold">Comprehensive Modules</span>
-                </div>
-                <div class="p-6 bg-surface-container-lowest rounded-sm">
-                  <span class="block text-3xl font-black text-outline/20 mb-2">48</span>
-                  <span class="text-sm font-bold">High-Definition Lessons</span>
-                </div>
-              </div>
-            </div>
-            <div class="lg:col-span-8 space-y-4">
-              <div class="bg-surface-container-lowest p-8 rounded-sm group hover:shadow-lg transition-all duration-300 border-l-4 border-transparent hover:border-tertiary cursor-pointer">
-                <div class="flex justify-between items-center">
-                  <div class="flex gap-6 items-center">
-                    <span class="text-sm font-black text-tertiary">01</span>
-                    <h3 class="text-xl font-bold">The Tonal Philosophy</h3>
-                  </div>
-                  <span class="material-symbols-outlined">expand_more</span>
-                </div>
-                <div class="mt-6 pl-10 text-secondary text-sm space-y-3 hidden group-hover:block">
-                  <div class="flex justify-between items-center border-b border-outline-variant/10 pb-2">
-                    <span>Understanding Surface vs Layering</span>
-                    <span class="text-[10px] font-bold">12:40</span>
-                  </div>
-                  <div class="flex justify-between items-center border-b border-outline-variant/10 pb-2">
-                    <span>The No-Line Boundary Rule</span>
-                    <span class="text-[10px] font-bold">08:15</span>
-                  </div>
-                </div>
-              </div>
-              <div class="bg-surface-container-lowest p-8 rounded-sm group hover:shadow-lg transition-all duration-300 border-l-4 border-transparent hover:border-tertiary cursor-pointer">
-                <div class="flex justify-between items-center">
-                  <div class="flex gap-6 items-center">
-                    <span class="text-sm font-black text-tertiary">02</span>
-                    <h3 class="text-xl font-bold">Advanced Typography Systems</h3>
-                  </div>
-                  <span class="material-symbols-outlined">expand_more</span>
-                </div>
-              </div>
-              <div class="bg-surface-container-lowest p-8 rounded-sm group hover:shadow-lg transition-all duration-300 border-l-4 border-transparent hover:border-tertiary cursor-pointer">
-                <div class="flex justify-between items-center">
-                  <div class="flex gap-6 items-center">
-                    <span class="text-sm font-black text-tertiary">03</span>
-                    <h3 class="text-xl font-bold">Asymmetry &amp; Grid Breakers</h3>
-                  </div>
-                  <span class="material-symbols-outlined">expand_more</span>
-                </div>
-              </div>
-              <div class="bg-surface-container-lowest p-8 rounded-sm group hover:shadow-lg transition-all duration-300 border-l-4 border-transparent hover:border-tertiary cursor-pointer">
-                <div class="flex justify-between items-center">
-                  <div class="flex gap-6 items-center">
-                    <span class="text-sm font-black text-tertiary">04</span>
-                    <h3 class="text-xl font-bold">Motion for Editorial Flow</h3>
-                  </div>
-                  <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1">lock</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Instructor Bio Section -->
-        <section class="max-w-7xl mx-auto px-8 py-24">
-          <div class="flex flex-col md:flex-row items-center gap-16">
-            <div class="w-full md:w-1/3 relative">
-              <div class="aspect-[4/5] bg-surface-container-highest rounded-sm overflow-hidden">
-                <img
-                  alt="Instructor"
-                  class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3lFow3-nNTMCZYnrXGAJPgAOgwNVwlcnF1KGSLIy1S2saPyx8lebGpz8WZq6JneiaBIt_3SPuV8ZHZKKZTFj9VQbJm47dmoUnRMEEuqJRBTj8mz3qrb_THX4xZwZ_weNS0U8Axl3bJ737N3TOupg1IEeV8MsE25ge0YVnRjJ0XeK155s_coC4fPXK7iXw_QL9X2FKOLUZVJRAIcSaAqlDsAmUWHWp4ZMeLupZCtlQQ9IJhC5-RxEIbOsJsRx1ogc4bXNO_tRdxhI"
-                />
-              </div>
-              <div class="absolute -bottom-6 -right-6 bg-tertiary p-6 text-on-tertiary rounded-sm">
-                <span class="block text-xs font-bold uppercase tracking-widest mb-1">Experience</span>
-                <span class="text-3xl font-black">15+ Yrs</span>
-              </div>
-            </div>
-            <div class="w-full md:w-2/3">
-              <span class="text-xs font-bold uppercase tracking-widest text-tertiary mb-4 block">Meet Your Instructor</span>
-              <h2 class="text-5xl font-extrabold tracking-tighter mb-6">Julian Vane</h2>
-              <p class="text-xl font-light text-secondary mb-8 leading-relaxed">
-                Former Creative Director at <span class="font-bold text-primary">Vogue Digital</span> and Lead
-                Product Designer for <span class="font-bold text-primary">Luxury Portfolios</span>.
-                Julian has spent over a decade defining the visual language of high-end digital editorial platforms.
-              </p>
-              <div class="grid grid-cols-2 gap-8 mb-10">
-                <div>
-                  <h4 class="font-bold mb-2">Previous Experience</h4>
-                  <p class="text-sm text-secondary">Apple, Nike, Moët Hennessy</p>
-                </div>
-                <div>
-                  <h4 class="font-bold mb-2">Education</h4>
-                  <p class="text-sm text-secondary">Royal College of Art, London</p>
-                </div>
-              </div>
-              <div class="flex gap-6">
-                <a class="text-primary font-bold border-b-2 border-primary pb-1 flex items-center gap-2" href="#">
-                  View Portfolio
-                  <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                </a>
-                <a class="text-secondary font-bold hover:text-primary transition-all" href="#">Instagram</a>
-                <a class="text-secondary font-bold hover:text-primary transition-all" href="#">Twitter</a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Student Reviews Section -->
-        <section class="bg-primary text-on-primary py-24 overflow-hidden">
-          <div class="max-w-[1920px] mx-auto px-8 lg:px-20">
-            <div class="flex justify-between items-end mb-16">
+            <div class="flex justify-between items-start">
               <div>
-                <h2 class="text-5xl font-extrabold tracking-tighter mb-4">Student Voices</h2>
-                <p class="text-on-primary-container max-w-md font-light">Join the ranks of designers now working at the world's most prestigious creative agencies.</p>
+                <span
+                  class="text-secondary text-xs font-bold uppercase tracking-widest mb-2 block"
+                  >Architecture &amp; Spatial Logic</span
+                >
+                <h3
+                  class="text-2xl font-headline font-bold mb-2 group-hover:text-tertiary transition-colors"
+                >
+                  The Minimalist Manifesto: Crafting Presence
+                </h3>
+                <p class="text-secondary text-sm max-w-md">
+                  Master the philosophy of negative space and material integrity
+                  with world-renowned architect Marcus Theron.
+                </p>
               </div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <!-- Review 1 -->
-              <div class="bg-primary-container/50 p-10 rounded-sm border border-on-primary-container/10">
-                <div class="flex gap-1 mb-6 text-tertiary">
-                  <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1">star</span>
-                  <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1">star</span>
-                  <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1">star</span>
-                  <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1">star</span>
-                  <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1">star</span>
-                </div>
-                <p class="text-lg font-light leading-relaxed mb-10 italic">"The lessons on tonal architecture completely changed how I approach UI. My portfolio went from 'average' to 'agency-ready' in 3 months."</p>
-                <div class="flex items-center gap-4">
-                  <div class="w-12 h-12 rounded-full bg-surface-container-highest overflow-hidden">
-                    <img alt="Sarah L." class="w-full h-full object-cover"
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKP8ZexA6wuqS9tRNIOIy_ct1GKk2cJPF5T8GoEqPG8deF62kqoClvhZ9yhIM7wZqZp4WGrLdRV-zaCdwrhc4eghkY4B4qhtUJw_TK8H1jJw5-imD2M6ydmZN5z2NOnKfIp3a4DI5Ji37VjDlfUEyfXd3kQHuNrg5M1UIuGyFZqTTvhq6UzgoDfRpYoQ5XzCxo3SsuKu6R1fB9oF8-hUU_JeB0oyJ20XiY9m9tnM5n8hEX8DsLCT1-FXdL7wizDgkS6YjQrN9wOgY"
-                    />
-                  </div>
-                  <div>
-                    <h4 class="font-bold text-sm">Sarah Jenkins</h4>
-                    <span class="text-[10px] uppercase tracking-widest text-on-primary-container">Senior Designer, AKQA</span>
-                  </div>
-                </div>
-              </div>
-              <!-- Review 2 -->
-              <div class="bg-primary-container/50 p-10 rounded-sm border border-on-primary-container/10">
-                <div class="flex gap-1 mb-6 text-tertiary">
-                  <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1">star</span>
-                  <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1">star</span>
-                  <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1">star</span>
-                  <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1">star</span>
-                  <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1">star</span>
-                </div>
-                <p class="text-lg font-light leading-relaxed mb-10 italic">"I've taken dozens of design courses, but nothing matches Julian's focus on editorial prestige. It's the secret sauce for high-ticket clients."</p>
-                <div class="flex items-center gap-4">
-                  <div class="w-12 h-12 rounded-full bg-surface-container-highest overflow-hidden">
-                    <img alt="Marcus R." class="w-full h-full object-cover"
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaF0VWbHtKzByVeYUNXs9hoLfCjgXBXzQHix8AsD7gQltnOAwmNtbNL8P4SRY3_pKwyY6vRBPCm5SxXsAVZjf-q28qQxcZvD-ZBVmYEiYwVq5dj7zws3Ry8wTbpe-NNTWCS-6IO2Iq1PhUopTG0mXKDPlOHUFa7_h3ExsNvfg9gm2dvyRy0JaE8MWKqIOxdjYuZHA1o1B2TYXYIkB-fyW6k0CAPwnJXGVcfu4JsjIgxIJRxEbvbNg9dNcgYpcvKHhTnxRiTa7g9g0"
-                    />
-                  </div>
-                  <div>
-                    <h4 class="font-bold text-sm">Marcus Reed</h4>
-                    <span class="text-[10px] uppercase tracking-widest text-on-primary-container">Freelance Art Director</span>
-                  </div>
-                </div>
-              </div>
-              <!-- Review 3 -->
-              <div class="bg-primary-container/50 p-10 rounded-sm border border-on-primary-container/10">
-                <div class="flex gap-1 mb-6 text-tertiary">
-                  <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1">star</span>
-                  <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1">star</span>
-                  <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1">star</span>
-                  <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1">star</span>
-                  <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1">star</span>
-                </div>
-                <p class="text-lg font-light leading-relaxed mb-10 italic">"The certification from The Editorial Academy is a mark of quality. Employers actually recognize the rigour behind this curriculum."</p>
-                <div class="flex items-center gap-4">
-                  <div class="w-12 h-12 rounded-full bg-surface-container-highest overflow-hidden">
-                    <img alt="Elena V." class="w-full h-full object-cover"
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdw1KUFTqAGc11_-bFPFDaFnxWJooUxJCXuFUtVF4jPkdK0h2VUiNbGDbbWxO9kPjuLkJt0tsy1X9A0kzyQ77QR3aqCM4cX4TjmYaf9j_uq4Q6vygfeNwxb9ZHQu2sNUyfbWKWPMaVlmHmGk48zythaPrB3KgfW0Nv0i3joJQn7dt7HmPQqcFEC2mr6xDgCcYl_BMoYKj3j0PETbOk7EaxFofCClsknKKLj6wfhoXOsFazzjV45UlkPis5N7fw0MQwer-ogxid5Bw"
-                    />
-                  </div>
-                  <div>
-                    <h4 class="font-bold text-sm">Elena Voss</h4>
-                    <span class="text-[10px] uppercase tracking-widest text-on-primary-container">Product Lead, Spotify</span>
-                  </div>
-                </div>
+              <div class="text-right">
+                <span class="text-xl font-bold block">$149</span>
+                <span
+                  class="text-secondary text-[0.65rem] uppercase tracking-tighter"
+                  >Lifetime Enrollment</span
+                >
               </div>
             </div>
           </div>
-        </section>
-
-      </main>
-    </div>
-
-
-    <!-- ============================================================ -->
-    <!-- CURRICULA PAGE                                               -->
-    <!-- ============================================================ -->
-    <div id="curricula" class="page-section">
-      <main class="pt-32 pb-20 px-8 max-w-[1920px] mx-auto">
-        <header class="mb-16">
-          <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
-            <div class="max-w-2xl">
-              <span class="text-xs font-bold tracking-[0.2em] text-tertiary uppercase mb-4 block">EXECUTIVE EDUCATION</span>
-              <h1 class="text-5xl md:text-7xl font-extrabold font-headline tracking-tighter text-black leading-tight">Curricula</h1>
-              <p class="mt-6 text-xl text-secondary leading-relaxed font-light">
-                Precision-engineered learning paths for the modern digital curator. Master the art of narrative, design, and distribution.
+          <!-- Course Card 2 -->
+          <div class="group">
+            <div
+              class="relative aspect-square rounded-lg overflow-hidden mb-6 bg-surface-container-low transition-all group-hover:shadow-2xl"
+            >
+              <img
+                alt="Business Strategy"
+                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                data-alt="Minimalist workspace with a clean laptop, a high-end notebook, and a single black pen on a neutral grey surface"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgQPu7cwh7hVJVfr9GCIQVHuuWdpiTZqTTgzZvkf63uM5VJT1Watrliz3lkvdru3K-kMyOGWxqkBD9QpSVcrAz4_D_9CqVYpsQgQ7WZl_3_aO57dficpXeVFEORMyXZxURuA_DsPcHsYtRlWlA_k4i-WdApNL_kSVcviZvpRkLz_ivDhXsZ3WywBcGz8UfcFO3avRz2R6AZndhPiGY_P0cdEkfjJ4Y-1AZ324kZcvozfn-6Gw4HeQ5F3SBShY_anu1-AOlpOUv2Bk"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
+              ></div>
+              <div class="absolute top-4 right-4">
+                <span
+                  class="material-symbols-outlined text-white bg-white/20 p-2 rounded-full backdrop-blur-sm"
+                  >bookmark</span
+                >
+              </div>
+            </div>
+            <span
+              class="text-secondary text-xs font-bold uppercase tracking-widest mb-2 block"
+              >Executive Strategy</span
+            >
+            <h3
+              class="text-xl font-headline font-bold mb-2 group-hover:text-tertiary transition-colors"
+            >
+              High-Stakes Curation
+            </h3>
+            <div class="flex items-center gap-2 mb-4">
+              <div
+                class="h-6 w-6 rounded-full bg-surface-container-highest"
+              ></div>
+              <span class="text-xs text-secondary font-medium italic"
+                >by Sarah Jenkins</span
+              >
+            </div>
+            <span class="text-lg font-bold">$120</span>
+          </div>
+          <!-- Course Card 3 -->
+          <div class="group">
+            <div
+              class="relative aspect-square rounded-lg overflow-hidden mb-6 bg-surface-container-low transition-all group-hover:shadow-2xl"
+            >
+              <img
+                alt="Technology"
+                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                data-alt="Macro shot of a high-tech circuit board with glowing blue neon accents and intricate copper tracing"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEcW173klMPXHXE_S5ZL2M6zi5AjXZD81IzUqSrOl-1GmCu3vqP4B8rn2mPjLyr-nwLiI-6OTAMYvBpbYjtK1smm0erU7yjV7tvkMlt2t_SLR01G5pzxb7uDNCfQWBEMU-YwBpDtyrSpDc3PZc_nCVCC_Hy4dPb6i-FYBNomtg-kZ_VC1a_c_DiK7a-vP8QqCW-ahBWSvW2QGdCeDj7hymBG6da78Tq0LrPPn4dE-AWqYeqgRMG-ZWBchD78nktxEMIJjOogYzANc"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
+              ></div>
+            </div>
+            <span
+              class="text-secondary text-xs font-bold uppercase tracking-widest mb-2 block"
+              >Future Tech</span
+            >
+            <h3
+              class="text-xl font-headline font-bold mb-2 group-hover:text-tertiary transition-colors"
+            >
+              Ethical AI Integration
+            </h3>
+            <div class="flex items-center gap-2 mb-4">
+              <div
+                class="h-6 w-6 rounded-full bg-surface-container-highest"
+              ></div>
+              <span class="text-xs text-secondary font-medium italic"
+                >by David Chen</span
+              >
+            </div>
+            <span class="text-lg font-bold">$189</span>
+          </div>
+          <!-- Course Card 4 -->
+          <div
+            class="md:col-span-2 group flex flex-col md:flex-row gap-8 items-center bg-surface-container-low p-8 rounded-lg"
+          >
+            <div
+              class="w-full md:w-1/2 aspect-video rounded-lg overflow-hidden shadow-lg"
+            >
+              <img
+                alt="Communication"
+                class="w-full h-full object-cover"
+                data-alt="Wide shot of an empty, ultra-modern luxury boardroom with large glass windows overlooking a city skyline at dusk"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_SKSSoJ_o4XPUcMjdKUiRWEEvwfQkZhRDaOCpPns2tDIN-lV5xXSa5La3EmhqiV6Wjkird11BDstoVgOZYV7F4lRr6I_U4G_fmCe0VX3yz426QSOFs5xo0TQDmFTimK2ivPnWhw5r5SaX4190wI8n_SUxGuIniMM6nZBvpdVMsNmyuaQFEHsdjZNJUQ1G5fZCBzhukIoauxWDCd4vA56dT1uBMUf7nzsEXR6OZ-7M0gWho-q_gNwkyFhgKsUSEzUWiATvvZnnIQ4"
+              />
+            </div>
+            <div class="w-full md:w-1/2">
+              <span
+                class="text-tertiary text-[0.6rem] font-bold uppercase tracking-[0.3em] mb-3 block"
+                >Specialization</span
+              >
+              <h3 class="text-2xl font-headline font-bold mb-4">
+                Persuasive Leadership &amp; Editorial Tone
+              </h3>
+              <p class="text-secondary text-sm mb-6">
+                Learn the hidden mechanics of influence and how to develop an
+                authoritative voice that commands industry respect.
               </p>
-            </div>
-            <div class="w-full md:w-96">
-              <div class="relative group">
-                <span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">search</span>
-                <input
-                  class="w-full pl-12 pr-4 py-4 bg-surface-container-low border-b border-outline-variant/40 focus:border-primary focus:ring-0 transition-all text-sm outline-none"
-                  placeholder="Search Masterclasses..."
-                  type="text"
-                  id="searchInput"
-                  oninput="filterCourses()"
-                />
-              </div>
-            </div>
-          </div>
-        </header>
-
-        <div class="flex flex-col lg:flex-row gap-16">
-          <!-- Sidebar Filters -->
-          <aside class="w-full lg:w-64 flex-shrink-0 space-y-10">
-            <div>
-              <h3 class="text-sm font-bold tracking-widest uppercase mb-6 text-black">Categories</h3>
-              <div class="space-y-3">
-                <label class="flex items-center gap-3 cursor-pointer group">
-                  <input class="w-4 h-4 border-outline-variant text-primary focus:ring-0 rounded-sm category-filter" type="checkbox" value="Visual Narrative" />
-                  <span class="text-sm text-secondary group-hover:text-black transition-colors">Visual Narrative</span>
-                </label>
-                <label class="flex items-center gap-3 cursor-pointer group">
-                  <input class="w-4 h-4 border-outline-variant text-primary focus:ring-0 rounded-sm category-filter" type="checkbox" value="Digital Strategy" />
-                  <span class="text-sm text-secondary group-hover:text-black transition-colors">Digital Strategy</span>
-                </label>
-                <label class="flex items-center gap-3 cursor-pointer group">
-                  <input class="w-4 h-4 border-outline-variant text-primary focus:ring-0 rounded-sm category-filter" type="checkbox" value="Editorial Design" checked />
-                  <span class="text-sm text-black font-semibold">Editorial Design</span>
-                </label>
-                <label class="flex items-center gap-3 cursor-pointer group">
-                  <input class="w-4 h-4 border-outline-variant text-primary focus:ring-0 rounded-sm category-filter" type="checkbox" value="Typography" />
-                  <span class="text-sm text-secondary group-hover:text-black transition-colors">Typography</span>
-                </label>
-              </div>
-            </div>
-            <div>
-              <h3 class="text-sm font-bold tracking-widest uppercase mb-6 text-black">Experience Level</h3>
-              <div class="space-y-3">
-                <label class="flex items-center gap-3 cursor-pointer group">
-                  <input class="w-4 h-4 border-outline-variant text-primary focus:ring-0" name="level" type="radio" />
-                  <span class="text-sm text-secondary group-hover:text-black">Foundation</span>
-                </label>
-                <label class="flex items-center gap-3 cursor-pointer group">
-                  <input class="w-4 h-4 border-outline-variant text-primary focus:ring-0" name="level" type="radio" />
-                  <span class="text-sm text-secondary group-hover:text-black">Intermediate</span>
-                </label>
-                <label class="flex items-center gap-3 cursor-pointer group">
-                  <input class="w-4 h-4 border-outline-variant text-primary focus:ring-0" name="level" type="radio" checked />
-                  <span class="text-sm text-black font-semibold">Executive Masterclass</span>
-                </label>
-              </div>
-            </div>
-            <div>
-              <h3 class="text-sm font-bold tracking-widest uppercase mb-6 text-black">Rating</h3>
-              <div class="space-y-3">
-                <button class="flex items-center gap-2 text-sm text-secondary hover:text-black">
-                  <div class="flex text-tertiary">
-                    <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: &quot;FILL&quot; 1">star</span>
-                    <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: &quot;FILL&quot; 1">star</span>
-                    <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: &quot;FILL&quot; 1">star</span>
-                    <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: &quot;FILL&quot; 1">star</span>
-                    <span class="material-symbols-outlined text-[18px]">star</span>
-                  </div>
-                  <span>&amp; Up</span>
-                </button>
-              </div>
-            </div>
-            <div class="pt-10 border-t border-outline-variant/20">
               <button
-                class="w-full py-4 text-xs font-bold tracking-widest uppercase bg-surface-container-low text-secondary hover:bg-primary hover:text-on-primary transition-all duration-300"
-                onclick="clearFilters()">
-                Clear All Filters
+                class="text-primary font-bold flex items-center gap-2 group-hover:gap-4 transition-all"
+              >
+                Review Curriculum
+                <span class="material-symbols-outlined">arrow_forward</span>
               </button>
             </div>
-          </aside>
-
-          <!-- Course Grid -->
-          <div class="flex-grow">
-            <div class="flex items-center justify-between mb-8">
-              <p class="text-sm text-secondary">
-                <span class="font-bold text-black">6</span> Executive Programs available
+          </div>
+        </div>
+      </section>
+      <!-- Testimonials / Social Proof Section -->
+      <section class="py-24 bg-surface-container-low">
+        <div class="max-w-7xl mx-auto px-8">
+          <div class="text-center mb-20">
+            <span
+              class="text-secondary text-xs font-bold uppercase tracking-[0.4em] mb-4 block"
+              >Proven Trajectories</span
+            >
+            <h2 class="text-4xl font-headline font-extrabold tracking-tight">
+              Our Alumni Lead the Industry
+            </h2>
+          </div>
+          <!-- Logo Cloud (Subtle) -->
+          <div
+            class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-30 mb-20"
+          >
+            <span class="text-xl font-black tracking-tighter">STRIPE</span>
+            <span class="text-xl font-black tracking-tighter italic"
+              >VOGUE</span
+            >
+            <span class="text-xl font-black tracking-tighter uppercase"
+              >SpaceX</span
+            >
+            <span class="text-xl font-black tracking-tighter">Pantone</span>
+            <span class="text-xl font-black tracking-tighter">FRAME</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <!-- Testimonial 1 -->
+            <div
+              class="relative bg-surface p-10 rounded-lg shadow-sm border-b-2 border-transparent hover:border-tertiary transition-all"
+            >
+              <span
+                class="material-symbols-outlined text-tertiary text-4xl mb-6"
+                data-weight="fill"
+                >format_quote</span
+              >
+              <p class="text-on-surface-variant italic mb-8 leading-relaxed">
+                "The Editorial Academy doesn't just teach skills; it refines
+                your taste. I went from being a functional designer to a
+                strategic creative director in months."
               </p>
-              <div class="flex items-center gap-2 text-sm">
-                <span class="text-secondary">Sort by:</span>
-                <select class="bg-transparent border-none focus:ring-0 font-bold text-black cursor-pointer py-0">
-                  <option>Most Prestigious</option>
-                  <option>Latest Release</option>
-                  <option>Price: High to Low</option>
-                </select>
+              <div class="flex items-center gap-4">
+                <div
+                  class="h-12 w-12 rounded-full bg-surface-container-highest overflow-hidden"
+                >
+                  <img
+                    alt="Profile"
+                    class="w-full h-full object-cover"
+                    data-alt="Portrait of a young professional man with short hair and clean-cut appearance wearing a charcoal turtleneck"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTHHUSxxueINgFbN_91TEOYek8bF5mL6loCd4ZI_9crtRJKzKajJgRee6pPB0_mh0QmtyCXNwgPZSxo_IbmgnPVQFGD8Y_tLPkACV7Jk9gr8NvjXkoUnMjy5G6T6dTKcekKgONpN8Hc0nUjI2GjPONC3di2FaEmnjaDqFlfAmqJ7JExKcJickpEGxGStM-ODILV-2L0PflKgGqx9cMDR_k2zRNMWJPyxmgqLUaGY6x-6x04UP40V5Q1EzvMwd3us85A07GkjkZKQI"
+                  />
+                </div>
+                <div>
+                  <h4 class="font-bold text-sm">Julian Voss</h4>
+                  <p class="text-xs text-secondary">Creative Lead @ FRAME</p>
+                </div>
               </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-16 gap-x-8 course-grid">
-
-              <!-- Course Card 1 -->
-              <div class="group cursor-pointer course-card" data-category="Digital Strategy">
-                <div class="relative overflow-hidden aspect-[4/5] mb-6 bg-surface-container-low">
-                  <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFc2amcUaCo-qDX-FrXZF7E1nDgif-xA9NEvpWwebHXhEyEgi8K8Qod9htdWb4pAMKPONrk6HEkShdCkhEDSihxvBOJkJECiXJYE1naA-mf0kJSG5AV00Z6r5nxi2uSR7cGk2viRzdFBV3IRviLk0hn4d9HI_PVQFnUbwo1Jnm1SMyxZCoESWi69efprliW5m786oGL2R4y2PvZVxXZOCWywinIMN9n4JMmnLwt8r9wpe6Z1ng9xVoJMHi6tz2b_03cPmGGHEJNxM"
-                  />
-                  <div class="absolute top-4 left-4">
-                    <span class="px-3 py-1 bg-primary text-on-primary text-[10px] font-bold tracking-widest uppercase rounded-sm">Bestseller</span>
-                  </div>
-                </div>
-                <div class="space-y-4">
-                  <div class="flex items-center gap-2">
-                    <span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container text-[10px] font-bold tracking-tighter uppercase rounded-full">Digital Strategy</span>
-                    <div class="flex items-center gap-1 text-tertiary">
-                      <span class="material-symbols-outlined text-xs" style="font-variation-settings: &quot;FILL&quot; 1">star</span>
-                      <span class="text-xs font-bold">4.9</span>
-                    </div>
-                  </div>
-                  <h3 class="text-2xl font-headline font-bold text-black leading-snug group-hover:underline underline-offset-8">The Architecture of Digital Narrative</h3>
-                  <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest"></div>
-                    <span class="text-sm font-medium text-secondary">Julian Vane, <span class="italic">Senior Editor</span></span>
-                  </div>
-                  <div class="flex items-center gap-3 pt-2">
-                    <span class="text-xl font-bold text-black">$850</span>
-                    <span class="text-sm text-outline line-through">$1,200</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Course Card 2 -->
-              <div class="group cursor-pointer course-card" data-category="Typography">
-                <div class="relative overflow-hidden aspect-[4/5] mb-6 bg-surface-container-low">
-                  <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPoZCpRc20NNFWWcYBrWBp6sGRf4SVJGYKwA0W8O6Pou_N5k1ZIaNCvroLzxW-9eX3rPGt3QCHEC-Aaj3790K5wVKz8FqplMAmM4_ifzFc7WSjXxzJfnu9LVsHL5wULR-66Bs9jjIMX7WnNsPZoGFF7LZ0u0g0gSv8W2AYYYOaplI0JcuS10LSE1UkCKplAGYAc1iGqd9UhsML__neUeSdbq41isnCWbukc-lR_DFBv1ArX5qfM6gEEnr1IJU2SH-JXOmVsp_epFdM"
-                  />
-                  <div class="absolute top-4 left-4">
-                    <span class="px-3 py-1 bg-tertiary text-on-primary text-[10px] font-bold tracking-widest uppercase rounded-sm">Pro</span>
-                  </div>
-                </div>
-                <div class="space-y-4">
-                  <div class="flex items-center gap-2">
-                    <span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container text-[10px] font-bold tracking-tighter uppercase rounded-full">Typography</span>
-                    <div class="flex items-center gap-1 text-tertiary">
-                      <span class="material-symbols-outlined text-xs" style="font-variation-settings: &quot;FILL&quot; 1">star</span>
-                      <span class="text-xs font-bold">5.0</span>
-                    </div>
-                  </div>
-                  <h3 class="text-2xl font-headline font-bold text-black leading-snug group-hover:underline underline-offset-8">Advanced Glyphs &amp; Visual Systems</h3>
-                  <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest"></div>
-                    <span class="text-sm font-medium text-secondary">Dr. Elena Rossi, <span class="italic">Type Designer</span></span>
-                  </div>
-                  <div class="flex items-center gap-3 pt-2">
-                    <span class="text-xl font-bold text-black">$1,100</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Course Card 3 -->
-              <div class="group cursor-pointer course-card" data-category="Editorial Design">
-                <div class="relative overflow-hidden aspect-[4/5] mb-6 bg-surface-container-low">
-                  <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAkFWFclxWnPx_quCcURPmxlbQ9-XOHUI6FX9iZc5qisEraEG0oDutux0q8CNz1DK9Hck5LpUlTsggrMB1Nww6AK42hTpcATBRX1XJD4kgHuNDiFNovxoH9AK_mVNKYpz6YQwafgCL39wZxa7oLDBHpL0diGbQ191Mp8Ugui2nVyQqXS1QeOAFKnlG8r7JbRYKTSkMhJioHVwRhMzp5EQnmoeCxK9OlvVajc6P8wdTH6dOBKeHaMfvce4G4rbvxcQngD4XgxW8wMU"
+            <!-- Testimonial 2 -->
+            <div
+              class="relative bg-surface p-10 rounded-lg shadow-sm border-b-2 border-transparent hover:border-tertiary transition-all"
+            >
+              <span
+                class="material-symbols-outlined text-tertiary text-4xl mb-6"
+                data-weight="fill"
+                >format_quote</span
+              >
+              <p class="text-on-surface-variant italic mb-8 leading-relaxed">
+                "Rigorous, beautiful, and deeply insightful. The focus on
+                high-end execution is exactly what was missing from the
+                landscape of online education."
+              </p>
+              <div class="flex items-center gap-4">
+                <div
+                  class="h-12 w-12 rounded-full bg-surface-container-highest overflow-hidden"
+                >
+                  <img
+                    alt="Profile"
+                    class="w-full h-full object-cover"
+                    data-alt="Portrait of a professional woman with a confident smile wearing a tailored black blazer in an office setting"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeWuw9cf87cNKi71NhtWTrnfmHJyFypJ1PMbhruhL8hdAqSxhFzPVapV7vQ975vDAFxm1TyKtVYJ3igP6udciu4srzm7_ntp14H2Yk2CiFGSCtYI2TQVIxX5wc4ftQIK6isEa0d8U1albANUdLaJNy9kzpL785gVt-6WipziENpJWZuCFvrA19IInWuLqzJi5ZGghar_zIt5BJDVuNghPylBOfy5D-CzdzVjkp1RCKA5QzY4fQ17MZX-MtYyYrvbdrJIrjO6XYRaI"
                   />
                 </div>
-                <div class="space-y-4">
-                  <div class="flex items-center gap-2">
-                    <span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container text-[10px] font-bold tracking-tighter uppercase rounded-full">Editorial Design</span>
-                    <div class="flex items-center gap-1 text-tertiary">
-                      <span class="material-symbols-outlined text-xs" style="font-variation-settings: &quot;FILL&quot; 1">star</span>
-                      <span class="text-xs font-bold">4.8</span>
-                    </div>
-                  </div>
-                  <h3 class="text-2xl font-headline font-bold text-black leading-snug group-hover:underline underline-offset-8">Modern Magazine Layouts</h3>
-                  <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest"></div>
-                    <span class="text-sm font-medium text-secondary">Marcus Thorne, <span class="italic">CD</span></span>
-                  </div>
-                  <div class="flex items-center gap-3 pt-2">
-                    <span class="text-xl font-bold text-black">$650</span>
-                    <span class="text-sm text-outline line-through">$890</span>
-                  </div>
+                <div>
+                  <h4 class="font-bold text-sm">Aria Thorne</h4>
+                  <p class="text-xs text-secondary">
+                    Senior Strategist @ VOGUE
+                  </p>
                 </div>
               </div>
-
-              <!-- Course Card 4 -->
-              <div class="group cursor-pointer course-card" data-category="Digital Strategy">
-                <div class="relative overflow-hidden aspect-[4/5] mb-6 bg-surface-container-low">
-                  <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVxRRiK7mkXgBLpRe1QFW-lcwOcF2uaj5mC6m9qtAGdRI4S0WJ3w_6Q2ist6KmWu7i2v3a4uophPr6xY5gI3_TyRlm3Ebst8Y1ZfFQvEfsNMw-En29R5NSk_JuvN4zpwiezEAfEBmyGGGjiGSENcyGaFez2TeJ5ZScweaa675Qq7IjL8Vh5-nQWvOmGBvmBStG-TjxPFZGYAmq3wjlt2F-FlGoiLyruenU9-ByV9Wd25lE0tYtVBz2jvhFH_Ov2RJoK6Siqj98jco"
+            </div>
+            <!-- Testimonial 3 -->
+            <div
+              class="relative bg-surface p-10 rounded-lg shadow-sm border-b-2 border-transparent hover:border-tertiary transition-all"
+            >
+              <span
+                class="material-symbols-outlined text-tertiary text-4xl mb-6"
+                data-weight="fill"
+                >format_quote</span
+              >
+              <p class="text-on-surface-variant italic mb-8 leading-relaxed">
+                "The instructors are the primary draw. Learning from active
+                professionals at the top of their game provides insights you
+                can't find in textbooks."
+              </p>
+              <div class="flex items-center gap-4">
+                <div
+                  class="h-12 w-12 rounded-full bg-surface-container-highest overflow-hidden"
+                >
+                  <img
+                    alt="Profile"
+                    class="w-full h-full object-cover"
+                    data-alt="Portrait of a creative man with stylish glasses and a professional demeanor looking directly into the camera"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCa0GTEm4A3q_Z_GcCwtyxgQ-k4MZgKwZ9tQzCANBClbigcZgUHCzw6jBlCY5AkeEzzwn53Ao8GkfP6ewwdqArxdfQliubD4QUwdNYcYaoC7kBcGiVpglo1zVHOLBUH3jO3X-U3rvESZNoxgT7cqS6zQgKhxsH_P30cntcKch19XbKtrrMB-kIddU-Ecw0qnVuxTDPcHVgxyU2UtyNX-ePFWk7cFtBh-ITs5wHqw4bxFTbVUsPoMGnkh-jPrZ5BIT5W9bPV9cqtmiA"
                   />
                 </div>
-                <div class="space-y-4">
-                  <div class="flex items-center gap-2">
-                    <span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container text-[10px] font-bold tracking-tighter uppercase rounded-full">Digital Strategy</span>
-                    <div class="flex items-center gap-1 text-tertiary">
-                      <span class="material-symbols-outlined text-xs" style="font-variation-settings: &quot;FILL&quot; 1">star</span>
-                      <span class="text-xs font-bold">4.7</span>
-                    </div>
-                  </div>
-                  <h3 class="text-2xl font-headline font-bold text-black leading-snug group-hover:underline underline-offset-8">Algorithmic Content Curation</h3>
-                  <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest"></div>
-                    <span class="text-sm font-medium text-secondary">Sofia Chen, <span class="italic">Tech Analyst</span></span>
-                  </div>
-                  <div class="flex items-center gap-3 pt-2">
-                    <span class="text-xl font-bold text-black">$920</span>
-                  </div>
+                <div>
+                  <h4 class="font-bold text-sm">Marcus Reed</h4>
+                  <p class="text-xs text-secondary">Product Design @ STRIPE</p>
                 </div>
               </div>
-
-              <!-- Course Card 5 -->
-              <div class="group cursor-pointer course-card" data-category="Visual Narrative">
-                <div class="relative overflow-hidden aspect-[4/5] mb-6 bg-surface-container-low">
-                  <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuC328zEPMuxx6FQEZC04AwhrAmv-wjLw25So06ZeGiRwJ_d0kh9kpbh154Yjtn-Sjm8QcrEMwzUPIro8097NuT2JEYAWlT72Mn6vHUlLQhD2ceFCmnvtkoPO6uqyWr9RXN4bLM9DKDABr-FSiMt9t2_Xvx8gl6CDmP3pnrAlcoaHU5kHPlJjgrMEYJj9o8I0zL3BG_Exx6dv4OsZTl1eD_rQQvkJb18w3xV2jCMcJOScYrLruAgHJWtnBjFVpsxr6o-LDjIHuA89Vc"
-                  />
-                  <div class="absolute top-4 left-4">
-                    <span class="px-3 py-1 bg-primary text-on-primary text-[10px] font-bold tracking-widest uppercase rounded-sm">Bestseller</span>
-                  </div>
-                </div>
-                <div class="space-y-4">
-                  <div class="flex items-center gap-2">
-                    <span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container text-[10px] font-bold tracking-tighter uppercase rounded-full">Visual Narrative</span>
-                    <div class="flex items-center gap-1 text-tertiary">
-                      <span class="material-symbols-outlined text-xs" style="font-variation-settings: &quot;FILL&quot; 1">star</span>
-                      <span class="text-xs font-bold">4.9</span>
-                    </div>
-                  </div>
-                  <h3 class="text-2xl font-headline font-bold text-black leading-snug group-hover:underline underline-offset-8">Minimalist Brand Identity</h3>
-                  <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest"></div>
-                    <span class="text-sm font-medium text-secondary">Anders Holm, <span class="italic">Identity Specialist</span></span>
-                  </div>
-                  <div class="flex items-center gap-3 pt-2">
-                    <span class="text-xl font-bold text-black">$780</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Course Card 6 -->
-              <div class="group cursor-pointer course-card" data-category="Visual Narrative">
-                <div class="relative overflow-hidden aspect-[4/5] mb-6 bg-surface-container-low">
-                  <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                    src="https://images.pexels.com/photos/3962286/pexels-photo-3962286.jpeg?auto=compress&cs=tinysrgb&w=600"
-                  />
-                </div>
-                <div class="space-y-4">
-                  <div class="flex items-center gap-2">
-                    <span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container text-[10px] font-bold tracking-tighter uppercase rounded-full">Visual Narrative</span>
-                    <div class="flex items-center gap-1 text-tertiary">
-                      <span class="material-symbols-outlined text-xs" style="font-variation-settings: &quot;FILL&quot; 1">star</span>
-                      <span class="text-xs font-bold">4.6</span>
-                    </div>
-                  </div>
-                  <h3 class="text-2xl font-headline font-bold text-black leading-snug group-hover:underline underline-offset-8">Editorial Photography Mastery</h3>
-                  <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest"></div>
-                    <span class="text-sm font-medium text-secondary">Lydia Grant, <span class="italic">Lead Photographer</span></span>
-                  </div>
-                  <div class="flex items-center gap-3 pt-2">
-                    <span class="text-xl font-bold text-black">$550</span>
-                    <span class="text-sm text-outline line-through">$750</span>
-                  </div>
-                </div>
-              </div>
-
             </div>
           </div>
         </div>
-      </main>
-    </div>
-
-
-    <!-- ============================================================ -->
-    <!-- FOOTER                                                       -->
-    <!-- ============================================================ -->
+      </section>
+      <!-- Final CTA Shroud Section -->
+      <section class="py-32 px-8">
+        <div
+          class="max-w-5xl mx-auto bg-primary-container rounded-lg p-12 md:p-24 relative overflow-hidden text-center"
+        >
+          <!-- Abstract light glow -->
+          <div
+            class="absolute -top-32 -left-32 w-96 h-96 bg-tertiary/20 rounded-full blur-[100px]"
+          ></div>
+          <h2
+            class="text-white font-headline text-4xl md:text-6xl font-extrabold mb-8 relative z-10 leading-tight"
+          >
+            Elevate Your Practice to an
+            <span class="text-gold-gradient">Art Form</span>.
+          </h2>
+          <p
+            class="text-on-primary-container text-lg md:text-xl mb-12 max-w-2xl mx-auto relative z-10"
+          >
+            Join 15,000+ elite learners redefining the boundaries of their
+            industries.
+          </p>
+          <div
+            class="flex flex-col sm:flex-row justify-center gap-6 relative z-10"
+          >
+            <button
+              class="px-12 py-5 bg-tertiary text-white font-bold rounded hover:bg-tertiary/80 transition-all"
+            >
+              Apply for Membership
+            </button>
+            <button
+              class="px-12 py-5 border border-white/20 text-white font-bold rounded hover:bg-white/5 transition-all"
+            >
+              Schedule a Consult
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
     <footer class="w-full border-t border-[#e4e2e4]/40 bg-[#fcf8fa]">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-12 px-12 py-20 max-w-7xl mx-auto">
+      <div
+        class="grid grid-cols-2 md:grid-cols-4 gap-12 px-12 py-20 max-w-7xl mx-auto"
+      >
         <div class="col-span-2 md:col-span-1">
-          <span class="text-lg font-bold text-black font-headline mb-6 block">The Editorial Academy</span>
-          <p class="text-secondary text-sm font-['Inter'] leading-relaxed">The premier institution for professional growth and editorial mastery in the digital age.</p>
+          <span class="text-lg font-bold text-black font-headline mb-6 block"
+            >The Editorial Academy</span
+          >
+          <p class="text-secondary text-sm font-['Inter'] leading-relaxed">
+            The premier institution for professional growth and editorial
+            mastery in the digital age.
+          </p>
         </div>
         <div>
-          <h5 class="text-primary font-bold text-xs uppercase tracking-widest mb-6">Learning</h5>
+          <h5
+            class="text-primary font-bold text-xs uppercase tracking-widest mb-6"
+          >
+            Learning
+          </h5>
           <ul class="space-y-4">
-            <li><button onclick="showPage('curricula')" class="text-[#545f73] text-sm hover:text-black transition-opacity underline underline-offset-4">Curricula</button></li>
-            <li><a class="text-[#545f73] text-sm hover:text-black transition-opacity underline underline-offset-4" href="#">Instructors</a></li>
-            <li><a class="text-[#545f73] text-sm hover:text-black transition-opacity underline underline-offset-4" href="#">Certifications</a></li>
+            <li>
+              <a
+                class="text-[#545f73] text-sm hover:text-black transition-opacity underline underline-offset-4"
+                href="curricula.html"
+                >Curricula</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-[#545f73] text-sm hover:text-black transition-opacity underline underline-offset-4"
+                href="#"
+                >Instructors</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-[#545f73] text-sm hover:text-black transition-opacity underline underline-offset-4"
+                href="#"
+                >Certifications</a
+              >
+            </li>
           </ul>
         </div>
         <div>
-          <h5 class="text-primary font-bold text-xs uppercase tracking-widest mb-6">Institution</h5>
+          <h5
+            class="text-primary font-bold text-xs uppercase tracking-widest mb-6"
+          >
+            Institution
+          </h5>
           <ul class="space-y-4">
-            <li><a class="text-[#545f73] text-sm hover:text-black transition-opacity underline underline-offset-4" href="#">About Us</a></li>
-            <li><a class="text-[#545f73] text-sm hover:text-black transition-opacity underline underline-offset-4" href="#">Careers</a></li>
-            <li><a class="text-[#545f73] text-sm hover:text-black transition-opacity underline underline-offset-4" href="#">Press</a></li>
+            <li>
+              <a
+                class="text-[#545f73] text-sm hover:text-black transition-opacity underline underline-offset-4"
+                href="#"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-[#545f73] text-sm hover:text-black transition-opacity underline underline-offset-4"
+                href="#"
+                >Careers</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-[#545f73] text-sm hover:text-black transition-opacity underline underline-offset-4"
+                href="#"
+                >Press</a
+              >
+            </li>
           </ul>
         </div>
         <div>
-          <h5 class="text-primary font-bold text-xs uppercase tracking-widest mb-6">Support</h5>
+          <h5
+            class="text-primary font-bold text-xs uppercase tracking-widest mb-6"
+          >
+            Support
+          </h5>
           <ul class="space-y-4">
-            <li><a class="text-[#545f73] text-sm hover:text-black transition-opacity underline underline-offset-4" href="#">Help Center</a></li>
-            <li><a class="text-[#545f73] text-sm hover:text-black transition-opacity underline underline-offset-4" href="#">Privacy Policy</a></li>
-            <li><a class="text-[#545f73] text-sm hover:text-black transition-opacity underline underline-offset-4" href="#">Terms of Service</a></li>
+            <li>
+              <a
+                class="text-[#545f73] text-sm hover:text-black transition-opacity underline underline-offset-4"
+                href="#"
+                >Help Center</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-[#545f73] text-sm hover:text-black transition-opacity underline underline-offset-4"
+                href="#"
+                >Privacy Policy</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-[#545f73] text-sm hover:text-black transition-opacity underline underline-offset-4"
+                href="#"
+                >Terms of Service</a
+              >
+            </li>
           </ul>
         </div>
       </div>
       <div class="px-12 py-8 border-t border-[#e4e2e4]/40 text-center">
-        <p class="text-[#545f73] text-sm font-['Inter']">© 2024 The Editorial Academy. All rights reserved.</p>
+        <p class="text-[#545f73] text-sm font-['Inter']">
+          © 2024 The Editorial Academy. All rights reserved.
+        </p>
       </div>
     </footer>
-
-    <!-- External JavaScript -->
-    <script src="scripts.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>

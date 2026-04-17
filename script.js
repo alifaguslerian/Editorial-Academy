@@ -1,75 +1,73 @@
-// ============================================================
-// PAGE NAVIGATION
-// ============================================================
+/* ============================================
+   The Editorial Academy — Global Scripts
+   script.js
+   ============================================ */
 
-/**
- * Switches the visible page section.
- * @param {string} pageId - The ID of the page section to show ('home', 'curricula', 'detail')
- */
-function showPage(pageId) {
-  // Hide all pages
-  document.querySelectorAll('.page-section').forEach(page => {
-    page.classList.remove('active');
+(function () {
+
+  /* ── 1. Auto-highlight active navbar link ── */
+  function setActiveNavLink() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
+    document.querySelectorAll('nav a').forEach(link => {
+      const linkPage = link.getAttribute('href')?.split('/').pop();
+
+      if (linkPage === currentPage) {
+        // Hapus Tailwind inline color classes dulu biar tidak bentrok
+        link.classList.remove('text-[#545f73]', 'font-medium');
+        // Tambah class CSS aktif dari style.css
+        link.classList.add('nav-active');
+      }
+    });
+  }
+
+  /* ── 2. Navbar shadow on scroll ── */
+  function handleNavbarScroll() {
+    const navbar = document.querySelector('nav');
+    if (!navbar) return;
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        navbar.classList.add('shadow-md');
+        navbar.classList.remove('shadow-sm');
+      } else {
+        navbar.classList.add('shadow-sm');
+        navbar.classList.remove('shadow-md');
+      }
+    });
+  }
+
+  /* ── 3. Mobile hamburger menu (siap pakai jika nanti ditambah) ── */
+  function initMobileMenu() {
+    const hamburger = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (!hamburger || !mobileMenu) return;
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden', !isOpen);
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+    });
+  }
+
+  /* ── 4. Smooth scroll untuk anchor link ── */
+  function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  }
+
+  /* ── Init semua fungsi saat DOM siap ── */
+  document.addEventListener('DOMContentLoaded', () => {
+    setActiveNavLink();
+    handleNavbarScroll();
+    initMobileMenu();
+    initSmoothScroll();
   });
-  // Show selected page
-  document.getElementById(pageId).classList.add('active');
-  // Scroll to top
-  window.scrollTo(0, 0);
-}
 
-
-// ============================================================
-// CURRICULA FILTER & SEARCH
-// ============================================================
-
-/**
- * Filters course cards based on search input and active category checkboxes.
- * Reads #searchInput value and all checked .category-filter inputs.
- */
-function filterCourses() {
-  const searchInput = document.getElementById('searchInput').value.toLowerCase();
-  const categoryFilters = document.querySelectorAll('.category-filter:checked');
-  const categories = Array.from(categoryFilters).map(f => f.value);
-
-  document.querySelectorAll('.course-card').forEach(card => {
-    const title = card.querySelector('h3').textContent.toLowerCase();
-    const category = card.dataset.category;
-
-    const matchesSearch = title.includes(searchInput);
-    const matchesCategory = categories.length === 0 || categories.includes(category);
-
-    if (matchesSearch && matchesCategory) {
-      card.style.display = 'block';
-    } else {
-      card.style.display = 'none';
-    }
-  });
-}
-
-/**
- * Resets all filters to their default state:
- * - Clears the search input
- * - Unchecks all category filters
- * - Re-checks 'Editorial Design' as the default category
- */
-function clearFilters() {
-  document.getElementById('searchInput').value = '';
-  document.querySelectorAll('.category-filter').forEach(f => f.checked = false);
-
-  const defaultFilter = document.querySelector('[value="Editorial Design"]');
-  if (defaultFilter) defaultFilter.checked = true;
-
-  filterCourses();
-}
-
-
-// ============================================================
-// INIT — Attach event listeners after DOM is ready
-// ============================================================
-
-document.addEventListener('DOMContentLoaded', () => {
-  // Attach change listeners to all category filter checkboxes
-  document.querySelectorAll('.category-filter').forEach(filter => {
-    filter.addEventListener('change', filterCourses);
-  });
-});
+})();

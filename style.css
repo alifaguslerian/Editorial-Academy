@@ -1,3 +1,9 @@
+/* ============================================
+   The Editorial Academy — Global Stylesheet
+   style.css
+   ============================================ */
+
+/* ── Material Symbols Icon Config ── */
 .material-symbols-outlined {
   font-variation-settings:
     "FILL" 0,
@@ -7,29 +13,50 @@
   vertical-align: middle;
 }
 
+/* ── Gold Gradient Text (dipakai di index.html hero) ── */
 .text-gold-gradient {
   background: linear-gradient(to bottom right, #735c00, #cba72f);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
+/* ── Dark shroud overlay (dipakai di index.html) ── */
 .shroud-overlay {
   background: rgba(19, 27, 46, 0.95);
 }
 
-.page-section {
-  display: none;
+/* ── Glass nav blur (dipakai di curricula.html) ── */
+.glass-nav {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
-.page-section.active {
-  display: block;
+/* ── Navbar active link state ── */
+nav a.nav-active {
+  color: #000000;
+  font-weight: 700;
+  border-bottom: 2px solid #000000;
+  padding-bottom: 4px;
 }
 
+/* ── Navbar link base transition ── */
+nav a {
+  transition: color 0.3s ease;
+}
+
+/* ── Smooth page transition on load ── */
 body {
-  font-family: "Inter", sans-serif;
+  animation: pageFadeIn 0.3s ease forwards;
 }
 
-h1, h2, h3 {
-  font-family: "Manrope", sans-serif;
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
