@@ -83,6 +83,7 @@
      Pagination: 6 card per halaman = 4 halaman.
   ───────────────────────────────────────── */
   function initCurriculaPage() {
+    
     if (!document.getElementById('course-grid')) return;
 
     /* ── Data 24 Executive Programs ── */
@@ -640,6 +641,207 @@
     initMobileMenu();
     initSmoothScroll();
     initCurriculaPage(); // hanya aktif di curricula.html
+    initLibraryPage();   // hanya aktif di library.html
   });
+  /* ─────────────────────────────────────────
+       7. Library Page — Resources & Instructor Masterworks
+       Hanya aktif kalau #resource-grid ada di halaman.
+    ───────────────────────────────────────── */
+  function initLibraryPage() {
+    if (!document.getElementById('resource-grid')) return;
+
+    const resources = [
+      { id: 1, type: 'Article', discipline: 'Editorial Design', access: 'Free', featured: true, title: 'The Death of the Homepage: Rethinking Editorial Entry Points', excerpt: 'As algorithmic feeds replace direct navigation, the traditional homepage loses its authority. A deep investigation into what replaces it and what that means for editorial identity.', author: 'Julian Vane', authorRole: 'Senior Editor', readTime: '14 min read', date: 'Nov 2024', img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80', avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCIuX_z51JF6VxwalJYJTLanaJ59HRYv787VmKPQzeUJFVNeZ8iUit5wb3LTFAV-KdtJW8HaeeZ2WiduL_0b7KMcig5_wrL2g4mvOloQaCxFryAmIvtr9HmG6o6hldnqKSMF6hvVz6Fhon-w48lWj3xI8nHuUWLebD4e0vMT0bVLdKnwRRMsJbkMpEoNURlB8cT6BIXE5C5m_OKYftsGHlLOuu_hb5Tw8MihKcwSr7PZRG14VX-Sg5VxgX8vT3ZtQDZCyfuoTc2DX0' },
+      { id: 2, type: 'Article', discipline: 'Digital Strategy', access: 'Free', featured: false, title: 'Attention as Currency: The Economics of the Editorial Gaze', excerpt: 'How premium publishers are reclaiming reader attention in an era of infinite content supply — and why scarcity is the most powerful editorial tool left.', author: 'Thomas Whitfield', authorRole: 'CMO, Financial Times', readTime: '11 min read', date: 'Oct 2024', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80' },
+      { id: 3, type: 'Article', discipline: 'Typography', access: 'Free', featured: false, title: 'Why Variable Fonts Are the Most Important Design Innovation of the Decade', excerpt: 'A practitioner\'s argument for why the industry has barely scratched the surface of what variable font technology makes possible for editorial expression.', author: 'Dr. Elena Rossi', authorRole: 'Type Designer', readTime: '9 min read', date: 'Oct 2024', img: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=80', avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDSPz8_78Edzn5b-e_DxzPMTrtkfWfNvSU7UMDjp0VQof-tje2OSPJMakAOG-1WRPz-F0xHLb4Wr4x_bP6DJVfmBBlrGS2oXQdcP9XNpy6jXsKR9zPoFmCJVBK-b7mGwxOlhnQISuROkDsTGCuQEWr7L4cwJ0OUQB5V73UL8Se_OiLSzC3AUggVJL5DcET-744u5fF64ZPMiSgamFBCIw7uSJLDYoZfVpmUf9jBTjnrUubw6BTnqanlhU5vswiZUocjzdaK4f2FFPQ' },
+      { id: 4, type: 'Article', discipline: 'Artificial Intelligence', access: 'Elite Member', featured: false, title: 'The Editor and the Algorithm: Negotiating Creative Authority', excerpt: 'When AI can generate publishable copy in seconds, what remains of the editor\'s irreplaceable value? A frank conversation about creative authority in the age of generative models.', author: 'Dr. Amara Okafor', authorRole: 'Head of AI, The Atlantic', readTime: '16 min read', date: 'Nov 2024', img: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80', avatar: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=80&q=80' },
+      { id: 5, type: 'Article', discipline: 'Visual Narrative', access: 'Free', featured: false, title: 'Grayscale as a Design Decision: The Power of Withheld Color', excerpt: 'Why some of the most sophisticated editorial photography is choosing to stay monochrome — and what that restraint communicates about the brand behind the lens.', author: 'Lydia Grant', authorRole: 'Lead Photographer', readTime: '8 min read', date: 'Sep 2024', img: 'https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=600&q=80', avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAagtMGjriXzIo3hvNtjVaXc2KMZWHhJih8LN3bfgZu-d2qd8WePWHrwHJ3o3k5PQqh5HV41j8E0bt3Bm7aGEC2O6lGJQQEYVKpi-JVYWxayn-JNE4z8qc4gymDRCkEKPafyTODsB1WP5oObFcSOe6qlERzWKAzgnZlK4t95cgX4zx_ir_UYJ7UBoHXjkjSoKUkUi5YgTukuxfwYd8QDgvL_30S-Ia4HugYRcuOhf6D_La__JQE64anHdx29Ysf0vZt7tv1-nZ10c0' },
+      { id: 6, type: 'Article', discipline: 'Digital Strategy', access: 'Elite Member', featured: false, title: 'Subscription Fatigue and the Return of the Single Purchase', excerpt: 'After a decade of recurring revenue worship, a countermovement is forming among digital publishers — and the implications for editorial business models are significant.', author: 'Priya Nair', authorRole: 'Head of Insights, Reuters', readTime: '12 min read', date: 'Sep 2024', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80', avatar: 'https://images.unsplash.com/photo-1494790108755-2616b332c3cd?w=80&q=80' },
+      { id: 7, type: 'E-Book', discipline: 'Editorial Design', access: 'Elite Member', featured: false, title: 'The Grid: A Complete Field Manual for Editorial Layout', excerpt: 'An exhaustive, 180-page practitioner\'s guide to grid systems — from classical Swiss typography through responsive digital layouts. Diagrams, case studies, and annotated examples throughout.', author: 'Ingrid Larsen', authorRole: 'Design Director, Vogue Scandinavia', readTime: '180 pages', date: 'Aug 2024', img: 'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&q=80', avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80' },
+      { id: 8, type: 'E-Book', discipline: 'Digital Strategy', access: 'Elite Member', featured: false, title: 'Owning the Reader: Executive Strategies for Audience Loyalty', excerpt: 'A strategic playbook for senior editors and media executives on converting casual readers into deeply invested members. Covers community design, editorial voice, and retention mechanics.', author: 'Marcus Elliot', authorRole: 'VP Strategy, Bloomberg Media', readTime: '220 pages', date: 'Jul 2024', img: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&q=80', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80' },
+      { id: 9, type: 'E-Book', discipline: 'Visual Narrative', access: 'Free', featured: false, title: 'Light, Shadow, and the Luxury Frame', excerpt: 'Celeste Aurore\'s visual methodology distilled into 90 pages — how to use natural and studio lighting to construct images that carry the weight of a full editorial story.', author: 'Celeste Aurore', authorRole: 'Creative Director, Condé Nast', readTime: '90 pages', date: 'Jun 2024', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80', avatar: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=80&q=80' },
+      { id: 10, type: 'E-Book', discipline: 'Artificial Intelligence', access: 'Elite Member', featured: false, title: 'Prompting for Precision: The Executive\'s AI Writing Companion', excerpt: 'Not a beginner\'s guide. A sophisticated framework for using large language models as a creative collaborator — with discipline-specific prompt libraries for editorial, brand, and long-form work.', author: 'Nathan Cole', authorRole: 'Director of AI Products, Adobe', readTime: '140 pages', date: 'Nov 2024', img: 'https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=600&q=80', avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=80&q=80' },
+      { id: 11, type: 'Research Paper', discipline: 'Artificial Intelligence', access: 'Free', featured: false, title: 'Algorithmic Curation and the Erosion of Editorial Judgment', excerpt: 'A three-year study across 14 major digital publications examining how increased reliance on algorithmic recommendation systems correlates with measurable decline in editorial distinctiveness.', author: 'Prof. Isabelle Laurent', authorRole: 'AI Ethics Chair, Sciences Po', readTime: '48 pages', date: 'Oct 2024', img: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&q=80', avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&q=80' },
+      { id: 12, type: 'Research Paper', discipline: 'Typography', access: 'Free', featured: false, title: 'Reading Velocity and Typeface Selection: Eye-Tracking Evidence from Long-Form Editorial', excerpt: 'Eye-tracking data from 2,400 participants across six typeface categories reveals surprising relationships between font weight, line length, and deep reading engagement.', author: 'Prof. Beatrice Wren', authorRole: 'Typography Historian, Oxford', readTime: '32 pages', date: 'Sep 2024', img: 'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=600&q=80', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&q=80' },
+      { id: 13, type: 'Research Paper', discipline: 'Digital Strategy', access: 'Elite Member', featured: false, title: 'The Prestige Premium: Willingness-to-Pay Among High-Income Digital Media Consumers', excerpt: 'Quantitative analysis of pricing elasticity and perceived value in premium editorial subscriptions — with implications for positioning, packaging, and price architecture.', author: 'Thomas Whitfield', authorRole: 'CMO, Financial Times', readTime: '26 pages', date: 'Aug 2024', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80' },
+      { id: 14, type: 'Research Paper', discipline: 'Visual Narrative', access: 'Free', featured: false, title: 'Color Memory and Brand Recall in Luxury Editorial Photography', excerpt: 'How color palette consistency across editorial touchpoints affects long-term brand recall — with case studies from Vogue, Wallpaper*, and Monocle across a five-year period.', author: 'Naomi Sato', authorRole: 'Art Director', readTime: '22 pages', date: 'Jul 2024', img: 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600&q=80', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&q=80' },
+      { id: 15, type: 'Research Paper', discipline: 'Artificial Intelligence', access: 'Elite Member', featured: false, title: 'Human–AI Co-Authorship in Journalism: Attribution, Ethics, and Disclosure Norms', excerpt: 'An interdisciplinary paper examining emerging norms around transparency, byline attribution, and editorial accountability when generative AI is involved in content production.', author: 'Dr. Yuki Tanaka', authorRole: 'Research Scientist, DeepMind', readTime: '38 pages', date: 'Nov 2024', img: 'https://images.unsplash.com/photo-1507146153580-69a1fe6d8aa1?w=600&q=80', avatar: 'https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?w=80&q=80' },
+      { id: 16, type: 'PDF Guide', discipline: 'Editorial Design', access: 'Free', featured: false, title: 'The White Space Index: A Practical Guide to Editorial Breathing Room', excerpt: 'A concise, highly visual guide to white space principles across print and digital contexts — with annotated before/after comparisons from real editorial redesigns.', author: 'Kwame Osei', authorRole: 'Digital Design Lead, The Guardian', readTime: '24 pages', date: 'Aug 2024', img: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&q=80', avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&q=80' },
+      { id: 17, type: 'PDF Guide', discipline: 'Typography', access: 'Elite Member', featured: false, title: 'Type Pairing for Editorial Systems: 40 Curated Combinations', excerpt: '40 rigorously curated typeface pairings for editorial use — each with specimen pages, use-case notes, and licensing guidance. A reference document for professional designers.', author: 'Hana Yamamoto', authorRole: 'Type Director, Monocle', readTime: '80 pages', date: 'Jul 2024', img: 'https://images.unsplash.com/photo-1583591186010-9d27f50a9c4a?w=600&q=80', avatar: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=80&q=80' },
+      { id: 18, type: 'PDF Guide', discipline: 'Visual Narrative', access: 'Free', featured: false, title: 'Shot List Architecture: Structuring a Visual Essay Before the Shoot', excerpt: 'A pre-production framework for photographers and creative directors — how to reverse-engineer the final layout from the shot list, not the other way around.', author: 'Rafael Moreno', authorRole: 'Film Director', readTime: '18 pages', date: 'Jun 2024', img: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&q=80', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&q=80' },
+      { id: 19, type: 'PDF Guide', discipline: 'Digital Strategy', access: 'Elite Member', featured: false, title: 'The Editorial Pitch Deck: Securing Buy-In for Long-Form Projects', excerpt: 'A template and annotated walkthrough for pitching ambitious editorial projects internally — structured for senior stakeholders who think in ROI, not narrative.', author: 'Sofia Chen', authorRole: 'Tech Analyst', readTime: '16 pages', date: 'May 2024', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80', avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBVzt_JDg1K9vbRbEsfMWpI4oCgF6e4CEqcKk4RYAVVGFJvhdQgu1Aqwp2UHdxqCFehpCNKhFg4FUKKjzIAF4iipsyLBCjHkZAiS9k-ga-12JRt1FjO4qR7gUMlWrB48_4F3kDYnNxu0btbgNuBhdSKprQjvEU3PSDZwJQ1MbZ4sgU7OPdIlxt1pDbLru_Pnnoozz_ZnQ2qNA-LB6WjBy5ZiDxXntahItzFjxWrMnEJ1p3ot-B2Zl6TS8kitTDRsTIkVt8ES9IeevE' },
+      { id: 20, type: 'PDF Guide', discipline: 'Artificial Intelligence', access: 'Free', featured: false, title: 'AI Disclosure Standards for Editorial Teams: A Working Framework', excerpt: 'A practical policy template for editorial organizations navigating AI transparency — covering disclosure language, workflow documentation, and reader communication standards.', author: 'Leon Hartmann', authorRole: 'Chief AI Officer, Axel Springer', readTime: '12 pages', date: 'Oct 2024', img: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80', avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&q=80' },
+      { id: 21, type: 'Reading List', discipline: 'Editorial Design', access: 'Free', featured: false, title: 'The Canon: 25 Books Every Editorial Designer Should Have Read', excerpt: 'A carefully argued list — not a greatest hits compilation. Each selection is annotated with the specific insight it offers to practising editorial designers.', author: 'Olivier Dumont', authorRole: 'Senior Designer, Le Monde', readTime: '8 min read', date: 'Aug 2024', img: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&q=80', avatar: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=80&q=80' },
+      { id: 22, type: 'Reading List', discipline: 'Digital Strategy', access: 'Free', featured: false, title: 'Media Business Foundations: The 20 Texts That Define the Field', excerpt: 'From Clay Shirky to Ben Thompson — a curated reading list for editors who need to understand the business structures that shape their creative decisions.', author: 'Marcus Elliot', authorRole: 'VP Strategy, Bloomberg Media', readTime: '6 min read', date: 'Jul 2024', img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80' },
+      { id: 23, type: 'Reading List', discipline: 'Artificial Intelligence', access: 'Elite Member', featured: false, title: 'AI Literacy for Editors: The Essential Non-Technical Reading List', excerpt: 'You don\'t need to understand transformers. You need to understand what AI changes about your work. This list — 18 essays, papers, and books — builds exactly that literacy.', author: 'Dr. Amara Okafor', authorRole: 'Head of AI, The Atlantic', readTime: '7 min read', date: 'Nov 2024', img: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80', avatar: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=80&q=80' },
+      { id: 24, type: 'Reading List', discipline: 'Visual Narrative', access: 'Free', featured: false, title: 'Seeing Like a Photographer: 15 Books on the Visual Language of Editorial', excerpt: 'From Cartier-Bresson\'s decisive moment to Wolfgang Tillmans\' disruption of editorial convention — a reading list that teaches the history and theory behind great editorial image-making.', author: 'Lydia Grant', authorRole: 'Lead Photographer', readTime: '9 min read', date: 'Jun 2024', img: 'https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=600&q=80', avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAagtMGjriXzIo3hvNtjVaXc2KMZWHhJih8LN3bfgZu-d2qd8WePWHrwHJ3o3k5PQqh5HV41j8E0bt3Bm7aGEC2O6lGJQQEYVKpi-JVYWxayn-JNE4z8qc4gymDRCkEKPafyTODsB1WP5oObFcSOe6qlERzWKAzgnZlK4t95cgX4zx_ir_UYJ7UBoHXjkjSoKUkUi5YgTukuxfwYd8QDgvL_30S-Ia4HugYRcuOhf6D_La__JQE64anHdx29Ysf0vZt7tv1-nZ10c0' },
+    ];
+
+    const masterworks = [
+      { id: 1, instructor: 'Julian Vane', role: 'Senior Editor', discipline: 'Digital Strategy', workTitle: 'The Collapse Issue', workDesc: 'A landmark redesign of a 40-year-old financial publication — transforming it from a data-dense broadsheet into a visually led digital-first editorial brand without losing institutional trust.', img: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=700&q=80', avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCIuX_z51JF6VxwalJYJTLanaJ59HRYv787VmKPQzeUJFVNeZ8iUit5wb3LTFAV-KdtJW8HaeeZ2WiduL_0b7KMcig5_wrL2g4mvOloQaCxFryAmIvtr9HmG6o6hldnqKSMF6hvVz6Fhon-w48lWj3xI8nHuUWLebD4e0vMT0bVLdKnwRRMsJbkMpEoNURlB8cT6BIXE5C5m_OKYftsGHlLOuu_hb5Tw8MihKcwSr7PZRG14VX-Sg5VxgX8vT3ZtQDZCyfuoTc2DX0' },
+      { id: 2, instructor: 'Dr. Elena Rossi', role: 'Type Designer', discipline: 'Typography', workTitle: 'Forma Serif', workDesc: 'A custom typeface family commissioned by a Milan luxury house — 14 weights optimised for both 6pt print captions and 96pt digital headline display, balancing restraint with personality.', img: 'https://images.unsplash.com/photo-1583591186010-9d27f50a9c4a?w=700&q=80', avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDSPz8_78Edzn5b-e_DxzPMTrtkfWfNvSU7UMDjp0VQof-tje2OSPJMakAOG-1WRPz-F0xHLb4Wr4x_bP6DJVfmBBlrGS2oXQdcP9XNpy6jXsKR9zPoFmCJVBK-b7mGwxOlhnQISuROkDsTGCuQEWr7L4cwJ0OUQB5V73UL8Se_OiLSzC3AUggVJL5DcET-744u5fF64ZPMiSgamFBCIw7uSJLDYoZfVpmUf9jBTjnrUubw6BTnqanlhU5vswiZUocjzdaK4f2FFPQ' },
+      { id: 3, instructor: 'Celeste Aurore', role: 'Creative Director, Condé Nast', discipline: 'Visual Narrative', workTitle: 'Quietude — Paris Fashion Week 2023', workDesc: 'A 32-image editorial series shot entirely in natural window light across four Haussmann apartments — later acquired by the Centre Pompidou permanent collection.', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80', avatar: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=80&q=80' },
+      { id: 4, instructor: 'Thomas Whitfield', role: 'CMO, Financial Times', discipline: 'Digital Strategy', workTitle: 'FT Weekend Brand Evolution', workDesc: 'The strategic repositioning of FT Weekend from supplement to standalone cultural authority — a three-year programme that grew weekend readership by 34% and opened new luxury advertising verticals.', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=80', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80' },
+      { id: 5, instructor: 'Ingrid Larsen', role: 'Design Director, Vogue Scandinavia', discipline: 'Editorial Design', workTitle: 'Vogue Scandinavia — Launch Identity', workDesc: 'The complete visual identity and grid system for Vogue Scandinavia\'s inaugural issue — establishing a Nordic minimalist editorial voice within the global Vogue system.', img: 'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=700&q=80', avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80' },
+      { id: 6, instructor: 'Rafael Moreno', role: 'Film Director', discipline: 'Visual Narrative', workTitle: 'Nocturne — Long-Form Documentary Series', workDesc: 'A six-part documentary on nocturnal urban culture, co-produced with Arte France — winner of the International Documentary Festival Amsterdam Award for Cinematography.', img: 'https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=700&q=80', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&q=80' },
+      { id: 7, instructor: 'Prof. Isabelle Laurent', role: 'AI Ethics Chair, Sciences Po', discipline: 'Artificial Intelligence', workTitle: 'The Curation Paradox — EU Policy White Paper', workDesc: 'A landmark policy document submitted to the European Commission on algorithmic transparency in media — cited in the drafting of the EU AI Act\'s journalism provisions.', img: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=700&q=80', avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&q=80' },
+      { id: 8, instructor: 'Hana Yamamoto', role: 'Type Director, Monocle', discipline: 'Typography', workTitle: 'Monocle Typographic System — 2022 Refresh', workDesc: 'A comprehensive typographic refresh of Monocle\'s entire print and digital system — new custom display face, revised body text hierarchy, and a global caption system across 11 international editions.', img: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=700&q=80', avatar: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=80&q=80' },
+      { id: 9, instructor: 'Marcus Elliot', role: 'VP Strategy, Bloomberg Media', discipline: 'Digital Strategy', workTitle: 'Bloomberg Connects — Museum Media Partnership', workDesc: 'The architecture of Bloomberg\'s cultural media strategy — a portfolio of institutional partnerships with 600+ museums globally, creating a new content vertical generating $40M in annual editorial revenue.', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=80', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80' },
+      { id: 10, instructor: 'Kwame Osei', role: 'Digital Design Lead, The Guardian', discipline: 'Editorial Design', workTitle: 'The Guardian — Long-Read Visual System', workDesc: 'A purpose-built visual system for The Guardian\'s long-form journalism — custom illustration frameworks, data visualisation standards, and a responsive layout architecture optimised for deep reading sessions.', img: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=700&q=80', avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&q=80' },
+    ];
+
+    const typeIcon = { 'Article': 'article', 'E-Book': 'menu_book', 'Research Paper': 'science', 'PDF Guide': 'picture_as_pdf', 'Reading List': 'format_list_bulleted' };
+    const accessBadge = { 'Free': { style: 'bg-secondary-container text-on-secondary-container', label: 'Free' }, 'Elite Member': { style: 'bg-primary-container text-on-primary-container', label: 'Elite' } };
+
+    const RESOURCES_PER_PAGE = 6;
+    let currentPage = 1;
+    let filteredResources = resources.filter(r => !r.featured);
+
+    function renderFeatured() {
+      const featured = resources.find(r => r.featured);
+      const el = document.getElementById('featured-resource');
+      if (!featured || !el) return;
+      el.innerHTML = `
+        <img class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" src="${featured.img}" alt="${featured.title}" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+        <div class="relative z-10 p-10 md:p-16 max-w-3xl">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="material-symbols-outlined text-tertiary text-sm">${typeIcon[featured.type]}</span>
+            <span class="text-tertiary text-xs font-bold tracking-widest uppercase">${featured.type}</span>
+            <span class="text-white/40">·</span>
+            <span class="text-white/60 text-xs">${featured.discipline}</span>
+            <span class="text-white/40">·</span>
+            <span class="px-2 py-0.5 ${accessBadge[featured.access].style} text-[10px] font-bold tracking-widest uppercase rounded-full">${accessBadge[featured.access].label}</span>
+          </div>
+          <h2 class="text-3xl md:text-5xl font-extrabold font-headline text-white tracking-tighter leading-tight mb-6">${featured.title}</h2>
+          <p class="text-white/70 text-base md:text-lg leading-relaxed mb-8 max-w-2xl">${featured.excerpt}</p>
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full overflow-hidden bg-white/20 flex-shrink-0">
+              <img class="w-full h-full object-cover" src="${featured.avatar}" alt="${featured.author}" onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80'" />
+            </div>
+            <div>
+              <span class="text-white font-bold text-sm">${featured.author}</span>
+              <span class="text-white/50 text-xs block">${featured.authorRole} · ${featured.readTime} · ${featured.date}</span>
+            </div>
+            <button class="ml-auto flex items-center gap-2 px-6 py-3 bg-tertiary text-white font-bold text-sm rounded hover:bg-tertiary/80 transition-all">Read Now <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+          </div>
+        </div>`;
+    }
+
+    function renderResourceCard(r) {
+      const badge = accessBadge[r.access];
+      return `
+        <div class="group cursor-pointer flex flex-col bg-surface border border-outline-variant/20 rounded-lg overflow-hidden hover:shadow-lg hover:border-outline-variant/60 transition-all duration-300">
+          <div class="relative overflow-hidden aspect-video bg-surface-container-low">
+            <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" src="${r.img}" alt="${r.title}" onerror="this.src='https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80'" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+            <div class="absolute top-4 left-4 flex items-center gap-1.5 bg-black/60 backdrop-blur-sm px-3 py-1 rounded-full">
+              <span class="material-symbols-outlined text-white text-xs">${typeIcon[r.type]}</span>
+              <span class="text-white text-[10px] font-bold tracking-wider uppercase">${r.type}</span>
+            </div>
+            <div class="absolute top-4 right-4">
+              <span class="px-2 py-0.5 ${badge.style} text-[10px] font-bold tracking-widest uppercase rounded-full">${badge.label}</span>
+            </div>
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <span class="text-xs font-bold text-tertiary tracking-widest uppercase mb-3">${r.discipline}</span>
+            <h3 class="font-headline font-bold text-black text-lg leading-snug mb-3 group-hover:underline underline-offset-4 flex-grow">${r.title}</h3>
+            <p class="text-secondary text-sm leading-relaxed mb-5 line-clamp-2">${r.excerpt}</p>
+            <div class="flex items-center gap-3 pt-4 border-t border-outline-variant/20">
+              <div class="w-7 h-7 rounded-full overflow-hidden bg-surface-container-highest flex-shrink-0">
+                <img class="w-full h-full object-cover" src="${r.avatar}" alt="${r.author}" onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80'" />
+              </div>
+              <span class="text-xs text-secondary flex-grow">${r.author} <span class="text-outline">·</span> ${r.readTime}</span>
+              <span class="text-xs text-outline">${r.date}</span>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    function renderResources() {
+      const grid = document.getElementById('resource-grid');
+      const pgEl = document.getElementById('resource-pagination');
+      const count = document.getElementById('resource-count');
+      const nonFeatured = filteredResources.filter(r => !r.featured);
+      const total = Math.ceil(nonFeatured.length / RESOURCES_PER_PAGE);
+      const pageItems = nonFeatured.slice((currentPage - 1) * RESOURCES_PER_PAGE, currentPage * RESOURCES_PER_PAGE);
+
+      if (count) count.textContent = nonFeatured.length;
+      grid.innerHTML = pageItems.length > 0 ? pageItems.map(renderResourceCard).join('') : '<p class="text-secondary col-span-3 py-24 text-center">No resources match your filters.</p>';
+
+      if (total <= 1) { pgEl.innerHTML = ''; return; }
+      let pagesHTML = '';
+      for (let i = 1; i <= total; i++) {
+        if (i === 1 || i === total || (i >= currentPage - 1 && i <= currentPage + 1)) pagesHTML += `<button data-page="${i}" class="w-12 h-12 flex items-center justify-center rounded-full text-sm font-bold transition-all ${i === currentPage ? 'bg-primary text-on-primary' : 'text-secondary hover:bg-surface-container'}">${i}</button>`;
+        else if (i === currentPage - 2 || i === currentPage + 2) pagesHTML += `<span class="px-2 text-outline">...</span>`;
+      }
+      pgEl.innerHTML = `
+        <button id="res-prev" class="w-12 h-12 flex items-center justify-center rounded-full border border-outline-variant/30 text-secondary hover:border-black hover:text-black transition-all ${currentPage === 1 ? 'opacity-30 pointer-events-none' : ''}"><span class="material-symbols-outlined">chevron_left</span></button>
+        <div class="flex items-center gap-2">${pagesHTML}</div>
+        <button id="res-next" class="w-12 h-12 flex items-center justify-center rounded-full border border-outline-variant/30 text-secondary hover:border-black hover:text-black transition-all ${currentPage === total ? 'opacity-30 pointer-events-none' : ''}"><span class="material-symbols-outlined">chevron_right</span></button>`;
+      pgEl.querySelectorAll('[data-page]').forEach(btn => btn.addEventListener('click', () => { currentPage = parseInt(btn.dataset.page); renderResources(); window.scrollTo({ top: 0, behavior: 'smooth' }); }));
+      document.getElementById('res-prev')?.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderResources(); window.scrollTo({ top: 0, behavior: 'smooth' }); } });
+      document.getElementById('res-next')?.addEventListener('click', () => { if (currentPage < total) { currentPage++; renderResources(); window.scrollTo({ top: 0, behavior: 'smooth' }); } });
+    }
+
+    function renderMasterworks() {
+      const grid = document.getElementById('masterworks-grid');
+      if (!grid) return;
+      grid.innerHTML = masterworks.map((m, i) => `
+        <div class="group relative cursor-pointer overflow-hidden ${i % 3 !== 2 ? 'border-r' : ''} border-b border-outline-variant/20" style="aspect-ratio:4/3;">
+          <img class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" src="${m.img}" alt="${m.workTitle}" onerror="this.src='https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80'" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <div class="absolute inset-0 bg-primary-container/95 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out flex flex-col justify-end p-8">
+            <span class="text-tertiary text-xs font-bold tracking-widest uppercase mb-2">${m.discipline}</span>
+            <h3 class="font-headline font-bold text-white text-xl leading-snug mb-3">${m.workTitle}</h3>
+            <p class="text-on-primary-container text-sm leading-relaxed mb-6">${m.workDesc}</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full overflow-hidden bg-white/20 flex-shrink-0"><img class="w-full h-full object-cover" src="${m.avatar}" alt="${m.instructor}" onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80'" /></div>
+              <div><span class="text-white font-bold text-sm block">${m.instructor}</span><span class="text-on-primary-container text-xs">${m.role}</span></div>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 z-10 group-hover:opacity-0 transition-opacity duration-300">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full overflow-hidden bg-white/20 flex-shrink-0"><img class="w-full h-full object-cover" src="${m.avatar}" alt="${m.instructor}" onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80'" /></div>
+              <div><span class="text-white font-bold text-sm block">${m.instructor}</span><span class="text-white/60 text-xs">${m.workTitle}</span></div>
+            </div>
+          </div>
+        </div>`).join('');
+    }
+
+    function applyLibraryFilters() {
+      const checkedTypes = [...document.querySelectorAll('#type-filters input:checked')].map(cb => cb.value);
+      const checkedDisc = [...document.querySelectorAll('#discipline-filters input:checked')].map(cb => cb.value);
+      const query = document.getElementById('library-search')?.value.toLowerCase().trim() || '';
+      filteredResources = resources.filter(r => {
+        if (r.featured) return false;
+        const matchType = checkedTypes.length === 0 || checkedTypes.includes(r.type);
+        const matchDisc = checkedDisc.length === 0 || checkedDisc.includes(r.discipline);
+        const matchSearch = query === '' || r.title.toLowerCase().includes(query) || r.author.toLowerCase().includes(query);
+        return matchType && matchDisc && matchSearch;
+      });
+      currentPage = 1;
+      renderResources();
+    }
+
+    document.querySelectorAll('#type-filters input, #discipline-filters input').forEach(cb => cb.addEventListener('change', applyLibraryFilters));
+    let libSearchTimeout;
+    document.getElementById('library-search')?.addEventListener('input', () => { clearTimeout(libSearchTimeout); libSearchTimeout = setTimeout(applyLibraryFilters, 300); });
+    document.getElementById('resource-sort')?.addEventListener('change', function () {
+      if (this.value === 'A – Z') filteredResources.sort((a, b) => a.title.localeCompare(b.title));
+      else if (this.value === 'Most Popular') filteredResources.sort((a, b) => a.id - b.id);
+      else filteredResources.sort((a, b) => b.id - a.id);
+      currentPage = 1; renderResources();
+    });
+    document.getElementById('clear-library-filters')?.addEventListener('click', () => {
+      document.querySelectorAll('#type-filters input, #discipline-filters input').forEach(cb => cb.checked = false);
+      const s = document.getElementById('library-search'); if (s) s.value = '';
+      applyLibraryFilters();
+    });
+
+    renderFeatured();
+    renderResources();
+    renderMasterworks();
+  }
 
 })();
