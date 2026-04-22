@@ -642,6 +642,7 @@
     initSmoothScroll();
     initCurriculaPage(); // hanya aktif di curricula.html
     initLibraryPage();   // hanya aktif di library.html
+    initInstructorsPage(); // hanya aktif di instructors.html
   });
   /* ─────────────────────────────────────────
        7. Library Page — Resources & Instructor Masterworks
@@ -842,6 +843,134 @@
     renderFeatured();
     renderResources();
     renderMasterworks();
+  }
+
+/* ─────────────────────────────────────────
+     8. Instructors Page
+     Hanya aktif kalau #instructor-grid ada.
+     24 instructors, filter by discipline + search.
+  ───────────────────────────────────────── */
+  function initInstructorsPage() {
+    if (!document.getElementById('instructor-grid')) return;
+
+    const instructors = [
+      { name:'Julian Vane', role:'Senior Editor', discipline:'Digital Strategy', courses:2, bio:'Former Editor-in-Chief at three major European publications. Architect of digital narrative strategy for the post-algorithm era.', avatar:'https://lh3.googleusercontent.com/aida-public/AB6AXuCIuX_z51JF6VxwalJYJTLanaJ59HRYv787VmKPQzeUJFVNeZ8iUit5wb3LTFAV-KdtJW8HaeeZ2WiduL_0b7KMcig5_wrL2g4mvOloQaCxFryAmIvtr9HmG6o6hldnqKSMF6hvVz6Fhon-w48lWj3xI8nHuUWLebD4e0vMT0bVLdKnwRRMsJbkMpEoNURlB8cT6BIXE5C5m_OKYftsGHlLOuu_hb5Tw8MihKcwSr7PZRG14VX-Sg5VxgX8vT3ZtQDZCyfuoTc2DX0', cover:'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80' },
+      { name:'Lydia Grant', role:'Lead Photographer', discipline:'Visual Narrative', courses:2, bio:'Contributor to Vogue, i-D, and Dazed. Her work redefines editorial restraint — recognised by the World Press Photo Foundation.', avatar:'https://lh3.googleusercontent.com/aida-public/AB6AXuAagtMGjriXzIo3hvNtjVaXc2KMZWHhJih8LN3bfgZu-d2qd8WePWHrwHJ3o3k5PQqh5HV41j8E0bt3Bm7aGEC2O6lGJQQEYVKpi-JVYWxayn-JNE4z8qc4gymDRCkEKPafyTODsB1WP5oObFcSOe6qlERzWKAzgnZlK4t95cgX4zx_ir_UYJ7UBoHXjkjSoKUkUi5YgTukuxfwYd8QDgvL_30S-Ia4HugYRcuOhf6D_La__JQE64anHdx29Ysf0vZt7tv1-nZ10c0', cover:'https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=600&q=80' },
+      { name:'Celeste Aurore', role:'Creative Director, Condé Nast', discipline:'Visual Narrative', courses:1, bio:'Twenty years shaping visual identity across Condé Nast\'s flagship titles. Her 2023 Paris series entered the Centre Pompidou permanent collection.', avatar:'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=80&q=80', cover:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80' },
+      { name:'Naomi Sato', role:'Art Director', discipline:'Visual Narrative', courses:1, bio:'Art Director across Tokyo, London, and New York. Color theorist and author of The Chromatic Brief — required reading in 14 design schools globally.', avatar:'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&q=80', cover:'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600&q=80' },
+      { name:'Rafael Moreno', role:'Film Director', discipline:'Visual Narrative', courses:1, bio:'Award-winning documentary filmmaker and visual essayist. His six-part Nocturne series won the IDFA Award for Cinematography in 2023.', avatar:'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&q=80', cover:'https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=600&q=80' },
+      { name:'Sofia Chen', role:'Tech Analyst', discipline:'Digital Strategy', courses:2, bio:'Former Head of Data at Condé Nast International. Pioneered audience intelligence frameworks now adopted by 40+ global media organisations.', avatar:'https://lh3.googleusercontent.com/aida-public/AB6AXuBVzt_JDg1K9vbRbEsfMWpI4oCgF6e4CEqcKk4RYAVVGFJvhdQgu1Aqwp2UHdxqCFehpCNKhFg4FUKKjzIAF4iipsyLBCjHkZAiS9k-ga-12JRt1FjO4qR7gUMlWrB48_4F3kDYnNxu0btbgNuBhdSKprQjvEU3PSDZwJQ1MbZ4sgU7OPdIlxt1pDbLru_Pnnoozz_ZnQ2qNA-LB6WjBy5ZiDxXntahItzFjxWrMnEJ1p3ot-B2Zl6TS8kitTDRsTIkVt8ES9IeevE', cover:'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80' },
+      { name:'Marcus Elliot', role:'VP Strategy, Bloomberg Media', discipline:'Digital Strategy', courses:2, bio:'Architect of Bloomberg\'s cultural media portfolio. Oversees editorial partnerships across 600+ global institutions generating $40M in annual content revenue.', avatar:'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80', cover:'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80' },
+      { name:'Priya Nair', role:'Head of Insights, Reuters', discipline:'Digital Strategy', courses:1, bio:'Leads audience intelligence at Reuters. Researcher and strategist in editorial analytics, with published work in the Reuters Institute Digital News Report.', avatar:'https://images.unsplash.com/photo-1494790108755-2616b332c3cd?w=80&q=80', cover:'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80' },
+      { name:'Thomas Whitfield', role:'CMO, Financial Times', discipline:'Digital Strategy', courses:2, bio:'Drove the FT Weekend repositioning that grew weekend readership 34%. Considered one of the most influential editorial strategists in British media.', avatar:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80', cover:'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80' },
+      { name:'Marcus Thorne', role:'Creative Director', discipline:'Editorial Design', courses:1, bio:'CD at three consecutive award-winning magazine redesigns. Recipient of the D&AD Black Pencil for editorial design excellence.', avatar:'https://lh3.googleusercontent.com/aida-public/AB6AXuA_7bxPu8GRTNyVqxvYPZYM0VxVMbpk7FY2ZGmiJhwbOsPKOQPpFGvavP6TcVkjjxaVn0_RYOJZGYO5o0LqV_Rb8GcSBf49-4pis_sVrCf4Qqbv2wd0IR32C1OmUqgr0aq5_wWqbfxVRzbPMXM7bZOgFolF28LWNrqc6B1sIfTWGOEXC77clM4QKHrTi-GpeK8WQm2HneNQcS7K0Vo_B4z5CYOy3b_mCzIHxcsMfoP11AeCngObF9YT6b9Ln7NkSn9GI70Z59SUqII', cover:'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&q=80' },
+      { name:'Ingrid Larsen', role:'Design Director, Vogue Scandinavia', discipline:'Editorial Design', courses:2, bio:'Established Vogue Scandinavia\'s complete visual identity from inception. The launch issue sold out in 72 hours across all Nordic markets.', avatar:'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80', cover:'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&q=80' },
+      { name:'Olivier Dumont', role:'Senior Designer, Le Monde', discipline:'Editorial Design', courses:2, bio:'Led Le Monde\'s print-to-digital transition — one of the most studied editorial redesigns in European media history. Teaches at Sciences Po Paris.', avatar:'https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=80&q=80', cover:'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&q=80' },
+      { name:'Alicia Monroe', role:'Art Director, TIME Magazine', discipline:'Editorial Design', courses:1, bio:'Art Director responsible for three of TIME\'s most recognisable covers of the decade. Merges photojournalism and graphic design with surgical precision.', avatar:'https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=80&q=80', cover:'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&q=80' },
+      { name:'Kwame Osei', role:'Digital Design Lead, The Guardian', discipline:'Editorial Design', courses:2, bio:'Built The Guardian\'s long-read visual system from scratch. His responsive layout architecture is referenced in every major digital editorial design program.', avatar:'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&q=80', cover:'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&q=80' },
+      { name:'Dr. Elena Rossi', role:'Type Designer', discipline:'Typography', courses:2, bio:'Creator of three retail typefaces used by over 200 global brands. Her doctoral research on optical sizing remains the definitive academic reference in the field.', avatar:'https://lh3.googleusercontent.com/aida-public/AB6AXuDSPz8_78Edzn5b-e_DxzPMTrtkfWfNvSU7UMDjp0VQof-tje2OSPJMakAOG-1WRPz-F0xHLb4Wr4x_bP6DJVfmBBlrGS2oXQdcP9XNpy6jXsKR9zPoFmCJVBK-b7mGwxOlhnQISuROkDsTGCuQEWr7L4cwJ0OUQB5V73UL8Se_OiLSzC3AUggVJL5DcET-744u5fF64ZPMiSgamFBCIw7uSJLDYoZfVpmUf9jBTjnrUubw6BTnqanlhU5vswiZUocjzdaK4f2FFPQ', cover:'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=80' },
+      { name:'Hana Yamamoto', role:'Type Director, Monocle', discipline:'Typography', courses:2, bio:'Oversaw Monocle\'s typographic system across 11 international editions. Designed custom display faces for four luxury brands in the past three years.', avatar:'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=80&q=80', cover:'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=80' },
+      { name:'Sven Albers', role:'Lead Typeface Engineer', discipline:'Typography', courses:1, bio:'Typeface engineer with credits on variable font systems for Google Fonts, Adobe, and three major European foundries. Keynote speaker at ATypI 2023.', avatar:'https://images.unsplash.com/photo-1463453091185-61582044d556?w=80&q=80', cover:'https://images.unsplash.com/photo-1583591186010-9d27f50a9c4a?w=600&q=80' },
+      { name:'Prof. Beatrice Wren', role:'Typography Historian, Oxford', discipline:'Typography', courses:2, bio:'Professor of Typography at the University of Oxford. Her eye-tracking research on long-form editorial reading has been cited in over 300 academic papers.', avatar:'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&q=80', cover:'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=600&q=80' },
+      { name:'Dr. Amara Okafor', role:'Head of AI, The Atlantic', discipline:'Artificial Intelligence', courses:2, bio:'Leads AI product and editorial strategy at The Atlantic. Pioneer of the human-AI co-authorship framework adopted by seven major US publications.', avatar:'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=80&q=80', cover:'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80' },
+      { name:'Leon Hartmann', role:'Chief AI Officer, Axel Springer', discipline:'Artificial Intelligence', courses:2, bio:'Responsible for AI integration across Axel Springer\'s 40+ editorial brands. Authored the industry\'s most widely adopted AI disclosure framework for newsrooms.', avatar:'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&q=80', cover:'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80' },
+      { name:'Dr. Yuki Tanaka', role:'Research Scientist, DeepMind', discipline:'Artificial Intelligence', courses:1, bio:'Research scientist specialising in machine perception and visual AI systems. Her work on generative image quality evaluation is deployed in production at three major media platforms.', avatar:'https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?w=80&q=80', cover:'https://images.unsplash.com/photo-1507146153580-69a1fe6d8aa1?w=600&q=80' },
+      { name:'Prof. Isabelle Laurent', role:'AI Ethics Chair, Sciences Po', discipline:'Artificial Intelligence', courses:2, bio:'Chair of AI Ethics at Sciences Po Paris. Her white paper on algorithmic curation was cited in the drafting of the EU AI Act\'s journalism provisions.', avatar:'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&q=80', cover:'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&q=80' },
+      { name:'Nathan Cole', role:'Director of AI Products, Adobe', discipline:'Artificial Intelligence', courses:2, bio:'Leads AI product development for Adobe\'s creative suite. Formerly at OpenAI, where he led the editorial applications research team.', avatar:'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=80&q=80', cover:'https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=600&q=80' },
+      { name:'Anders Holm', role:'Identity Specialist', discipline:'Visual Narrative', courses:1, bio:'Brand identity architect for 30+ luxury and cultural institutions across Scandinavia and Central Europe. Minimalism as methodology, not aesthetic.', avatar:'https://lh3.googleusercontent.com/aida-public/AB6AXuAcqEOj23gISs_pTetyZyTuXSbt6twyCOVwHpJsZRTAFO55qVluXWsWuZiLGPUJNMGf-3pBr5zADgrSYgFoH4iyLC8j3H_Uc_MuHU2_7iEIqLDmS_Hl3qMm6G-r64yal6k-6wX4wXIJPX0G6DGW-EHAEEFTnayukEiMTfL6a_0SyDnuLtJsA5-u09ikkmigSpF_wdoAJ5ZcUXBdcdWyVXSb1e2r5m8qtHLoLvdysX4bSomP0QzshO5iuXjbCX13K3CPF0g15Fpxy6M', cover:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80' },
+    ];
+
+    let filtered = [...instructors];
+    let activeFilter = 'All';
+
+    function renderCard(ins) {
+      return `
+        <div class="group cursor-pointer flex flex-col bg-surface border border-outline-variant/20 rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300">
+          <!-- Cover image -->
+          <div class="relative overflow-hidden h-40 bg-surface-container-low">
+            <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+              src="${ins.cover}" alt="${ins.name}"
+              onerror="this.src='https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80'" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+            <!-- Discipline pill -->
+            <div class="absolute top-4 left-4">
+              <span class="px-2 py-0.5 bg-black/60 backdrop-blur-sm text-white text-[10px] font-bold tracking-widest uppercase rounded-full">${ins.discipline}</span>
+            </div>
+            <!-- Course count -->
+            <div class="absolute top-4 right-4">
+              <span class="px-2 py-0.5 bg-tertiary text-white text-[10px] font-bold tracking-widest uppercase rounded-full">${ins.courses} Course${ins.courses > 1 ? 's' : ''}</span>
+            </div>
+          </div>
+          <!-- Avatar + info -->
+          <div class="p-6 flex flex-col flex-grow">
+            <div class="flex items-start gap-4 mb-4">
+              <div class="w-14 h-14 rounded-full overflow-hidden bg-surface-container-highest flex-shrink-0 border-2 border-surface -mt-10 relative z-10 shadow-md">
+                <img class="w-full h-full object-cover" src="${ins.avatar}" alt="${ins.name}"
+                  onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80'" />
+              </div>
+              <div class="pt-1">
+                <h3 class="font-headline font-bold text-black text-lg leading-tight">${ins.name}</h3>
+                <span class="text-secondary text-sm">${ins.role}</span>
+              </div>
+            </div>
+            <p class="text-secondary text-sm leading-relaxed flex-grow">${ins.bio}</p>
+            <div class="mt-6 pt-4 border-t border-outline-variant/20 flex items-center justify-between">
+              <a href="curricula.html" class="text-xs font-bold text-primary tracking-widest uppercase flex items-center gap-1 hover:gap-2 transition-all">
+                View Courses <span class="material-symbols-outlined text-sm">arrow_forward</span>
+              </a>
+              <span class="text-xs text-outline">${ins.discipline}</span>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    function render() {
+      const grid  = document.getElementById('instructor-grid');
+      const empty = document.getElementById('instructor-empty');
+      const count = document.getElementById('instructor-count');
+      if (count) count.textContent = filtered.length;
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        empty.classList.remove('hidden');
+      } else {
+        empty.classList.add('hidden');
+        grid.innerHTML = filtered.map(renderCard).join('');
+      }
+    }
+
+    function applyFilter() {
+      const query = document.getElementById('instructor-search')?.value.toLowerCase().trim() || '';
+      filtered = instructors.filter(ins => {
+        const matchDisc  = activeFilter === 'All' || ins.discipline === activeFilter;
+        const matchQuery = query === '' || ins.name.toLowerCase().includes(query) || ins.role.toLowerCase().includes(query) || ins.discipline.toLowerCase().includes(query);
+        return matchDisc && matchQuery;
+      });
+      render();
+    }
+
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeFilter = btn.dataset.filter;
+        // Update active style
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.remove('bg-primary', 'text-on-primary');
+          b.classList.add('bg-surface-container-low', 'text-secondary');
+        });
+        btn.classList.remove('bg-surface-container-low', 'text-secondary');
+        btn.classList.add('bg-primary', 'text-on-primary');
+        applyFilter();
+      });
+    });
+
+    // Search
+    let searchTimeout;
+    document.getElementById('instructor-search')?.addEventListener('input', () => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(applyFilter, 300);
+    });
+
+    render();
   }
 
 })();
