@@ -1,0 +1,426 @@
+<!doctype html>
+<html class="light" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>About Us | The Editorial Academy</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            secondary: "#545f73", "on-secondary-fixed": "#111c2d", "on-surface": "#1b1b1d",
+            "error-container": "#ffdad6", "outline-variant": "#c6c6cd", "on-primary-fixed-variant": "#3f465c",
+            "on-secondary": "#ffffff", "on-background": "#1b1b1d", "inverse-primary": "#bec6e0",
+            "surface-container-low": "#f6f3f5", "tertiary-container": "#cba72f", "on-error-container": "#93000a",
+            "primary-container": "#131b2e", "surface-container": "#f0edef", "on-primary-container": "#7c839b",
+            "tertiary-fixed-dim": "#e9c349", "on-secondary-fixed-variant": "#3c475a", "inverse-on-surface": "#f3f0f2",
+            "on-surface-variant": "#45464d", "surface-bright": "#fcf8fa", primary: "#000000", "on-primary": "#ffffff",
+            surface: "#fcf8fa", "tertiary-fixed": "#ffe088", "secondary-fixed-dim": "#bcc7de", background: "#fcf8fa",
+            "surface-container-highest": "#e4e2e4", "surface-container-high": "#eae7e9", "on-tertiary": "#ffffff",
+            "surface-dim": "#dcd9db", "secondary-fixed": "#d8e3fb", "inverse-surface": "#303032",
+            "surface-container-lowest": "#ffffff", error: "#ba1a1a", "on-error": "#ffffff",
+            "surface-variant": "#e4e2e4", "primary-fixed": "#dae2fd", "on-primary-fixed": "#131b2e",
+            "on-tertiary-fixed": "#241a00", "secondary-container": "#d5e0f8", tertiary: "#735c00",
+            "primary-fixed-dim": "#bec6e0", "on-secondary-container": "#586377", "surface-tint": "#565e74",
+            outline: "#76777d", "on-tertiary-fixed-variant": "#574500", "on-tertiary-container": "#4e3d00",
+          },
+          borderRadius: { DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem" },
+          fontFamily: { headline: ["Manrope"], body: ["Inter"], label: ["Inter"] },
+        },
+      },
+    };
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 0, "opsz" 24;
+      vertical-align: middle;
+    }
+    body { animation: pageFadeIn 0.4s ease forwards; }
+    @keyframes pageFadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .stat-card { transition: transform 0.2s ease; }
+    .stat-card:hover { transform: translateY(-4px); }
+
+    /* Hero image float */
+    .hero-img-wrap { position: relative; }
+    .hero-img-wrap::before {
+      content: '';
+      position: absolute;
+      top: -16px; right: -16px;
+      width: 120px; height: 120px;
+      background: #735c00;
+      border-radius: 4px;
+      z-index: 0;
+    }
+    .hero-img-wrap img { position: relative; z-index: 1; }
+
+    /* Ticker tape */
+    .ticker-wrap { overflow: hidden; }
+    .ticker-track {
+      display: flex;
+      gap: 80px;
+      animation: ticker 22s linear infinite;
+      width: max-content;
+    }
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Testimonial card */
+    .testimonial-card {
+      border-left: 3px solid #735c00;
+    }
+
+    /* Video play button */
+    .play-btn {
+      width: 60px; height: 60px;
+      background: rgba(255,255,255,0.92);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+    }
+    .play-btn:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(0,0,0,0.35); }
+
+    .news-ticker-bar {
+      background: #000;
+      color: #fff;
+      padding: 12px 0;
+    }
+  </style>
+</head>
+
+<body class="bg-surface font-body text-on-surface antialiased">
+
+  <!-- ── Navbar ── -->
+  <nav class="fixed top-0 w-full z-50 bg-[#fcf8fa]/80 backdrop-blur-md shadow-sm">
+    <div class="flex justify-between items-center w-full px-8 py-4 max-w-[1920px] mx-auto">
+      <div class="flex items-center gap-12">
+        <a class="text-2xl font-black text-black tracking-tighter font-headline" href="index.html">The Editorial Academy</a>
+        <div class="hidden lg:flex items-center gap-8">
+          <a class="text-[#545f73] font-medium font-headline tracking-tight hover:text-black transition-colors duration-300" href="curricula.html">Curricula</a>
+          <a class="text-[#545f73] font-medium font-headline tracking-tight hover:text-black transition-colors duration-300" href="library.html">Library</a>
+          <a class="text-[#545f73] font-medium font-headline tracking-tight hover:text-black transition-colors duration-300" href="instructors.html">Instructors</a>
+          <a class="text-[#545f73] font-medium font-headline tracking-tight hover:text-black transition-colors duration-300" href="certifications.html">Certifications</a>
+        </div>
+      </div>
+      <div class="flex items-center gap-6">
+        <div class="hidden md:flex items-center gap-4 text-on-surface-variant">
+          <button class="p-2 hover:bg-surface-container rounded-full transition-colors"><span class="material-symbols-outlined">shopping_cart</span></button>
+          <button class="p-2 hover:bg-surface-container rounded-full transition-colors"><span class="material-symbols-outlined">notifications</span></button>
+        </div>
+        <div class="flex items-center gap-4">
+          <button class="px-5 py-2 text-sm font-semibold text-black hover:opacity-70 transition-opacity">Sign In</button>
+          <button class="px-5 py-2 text-sm font-bold bg-primary text-on-primary rounded-sm hover:scale-95 transition-transform duration-200">Join Elite</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-24">
+
+    <!-- ── HERO ── -->
+    <section class="px-8 py-20 max-w-[1400px] mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <!-- Left: text -->
+        <div>
+          <span class="text-xs font-bold tracking-[0.2em] text-tertiary uppercase mb-4 block">About The Editorial Academy</span>
+          <h1 class="text-5xl md:text-6xl font-extrabold font-headline tracking-tighter text-black leading-tight mb-6">
+            Welcome to where<br/><span class="text-secondary font-light">possibilities begin.</span>
+          </h1>
+          <p class="text-lg text-secondary leading-relaxed mb-8 font-light max-w-lg">
+            Whether you want to master a new discipline, develop your team, or share what you know with the world — you're in the right place. As the premier editorial education platform, we're here to help you achieve your goals and transform your practice.
+          </p>
+          <div class="flex gap-4">
+            <a href="curricula.html" class="px-7 py-3.5 bg-primary text-on-primary font-bold text-sm rounded-sm hover:scale-95 transition-transform duration-200">Explore Curricula</a>
+            <a href="instructors.html" class="px-7 py-3.5 border border-outline-variant text-black font-semibold text-sm rounded-sm hover:bg-surface-container transition-colors">Meet Faculty</a>
+          </div>
+        </div>
+
+        <!-- Right: image with gold accent -->
+        <div class="hero-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=700&q=80"
+            alt="Editorial professional"
+            class="w-full h-[460px] object-cover rounded-sm shadow-2xl"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ── NEWS TICKER BAR ── -->
+    <div class="news-ticker-bar">
+      <div class="ticker-wrap">
+        <div class="ticker-track text-xs font-bold tracking-[0.15em] uppercase text-white/80">
+          <!-- duplicated for infinite loop -->
+          <span>Check out our latest company news</span>
+          <span>·</span>
+          <span>24 executive programs now available</span>
+          <span>·</span>
+          <span>5 new discipline tracks launching soon</span>
+          <span>·</span>
+          <span>Join 12,000+ elite practitioners worldwide</span>
+          <span>·</span>
+          <span>Check out our latest company news</span>
+          <span>·</span>
+          <span>24 executive programs now available</span>
+          <span>·</span>
+          <span>5 new discipline tracks launching soon</span>
+          <span>·</span>
+          <span>Join 12,000+ elite practitioners worldwide</span>
+          <span>·</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── MISSION STATEMENT ── -->
+    <section class="bg-surface-container-low px-8 py-24">
+      <div class="max-w-[1400px] mx-auto text-center">
+        <span class="text-xs font-bold tracking-[0.2em] text-tertiary uppercase mb-6 block">Our Mission</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold font-headline tracking-tighter text-black max-w-4xl mx-auto leading-tight mb-6">
+          Skills are the key to unlocking editorial excellence.
+        </h2>
+        <p class="text-lg text-secondary max-w-3xl mx-auto leading-relaxed font-light">
+          Whether you want to learn a new editorial skill, develop your teams, or share what you know with the world, you're in the right place. As a leader in premium online editorial education, we're here to help you achieve your goals and transform your practice.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── VIDEO FEATURE ── -->
+    <section class="px-8 py-20 max-w-[1400px] mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <!-- Video thumbnail -->
+        <div class="relative group cursor-pointer">
+          <img
+            src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=800&q=80"
+            alt="Learning and leading through change"
+            class="w-full h-[380px] object-cover rounded-sm shadow-xl"
+          />
+          <div class="absolute inset-0 bg-black/30 rounded-sm flex items-center justify-center group-hover:bg-black/20 transition-all">
+            <div class="play-btn">
+              <span class="material-symbols-outlined text-black text-3xl ml-1">play_arrow</span>
+            </div>
+          </div>
+        </div>
+        <!-- Text -->
+        <div>
+          <span class="text-xs font-bold tracking-[0.2em] text-tertiary uppercase mb-4 block">Our Approach</span>
+          <h2 class="text-3xl md:text-4xl font-extrabold font-headline tracking-tighter text-black leading-tight mb-6">
+            Learning and leading through change.
+          </h2>
+          <p class="text-secondary leading-relaxed mb-6 font-light">
+            The Editorial Academy knows that the world of media and design is changing — and we won't let that stand in the way of your success. Instead, we help practitioners not just cope with change but thrive in it.
+          </p>
+          <p class="text-secondary leading-relaxed font-light">
+            Our instructors are active practitioners — architects of the industry they teach. Not academics removed from the field, but editors, designers, and strategists shaping the discipline right now.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── GLOBAL IMPACT STATS ── (dark navy, Udemy-style) -->
+    <section class="bg-primary-container px-8 py-24">
+      <div class="max-w-[1400px] mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-extrabold font-headline tracking-tighter text-white leading-tight mb-4">
+            Creating impact around the world.
+          </h2>
+          <p class="text-on-primary-container text-lg max-w-2xl mx-auto font-light">
+            With our curated catalog spanning the most rigorous editorial disciplines, practitioners everywhere are able to adapt to change and lead their industries.
+          </p>
+        </div>
+
+        <!-- Stats grid -->
+        <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-6 mb-16">
+          <div class="stat-card text-center p-6 border border-white/10 rounded-sm">
+            <div class="text-4xl font-extrabold font-headline text-white mb-1">12K+</div>
+            <div class="text-on-primary-container text-xs tracking-widest uppercase">Practitioners</div>
+          </div>
+          <div class="stat-card text-center p-6 border border-white/10 rounded-sm">
+            <div class="text-4xl font-extrabold font-headline text-white mb-1">24</div>
+            <div class="text-on-primary-container text-xs tracking-widest uppercase">Instructors</div>
+          </div>
+          <div class="stat-card text-center p-6 border border-white/10 rounded-sm">
+            <div class="text-4xl font-extrabold font-headline text-white mb-1">24</div>
+            <div class="text-on-primary-container text-xs tracking-widest uppercase">Programs</div>
+          </div>
+          <div class="stat-card text-center p-6 border border-white/10 rounded-sm">
+            <div class="text-4xl font-extrabold font-headline text-white mb-1">5</div>
+            <div class="text-on-primary-container text-xs tracking-widest uppercase">Cert Tracks</div>
+          </div>
+          <div class="stat-card text-center p-6 border border-white/10 rounded-sm">
+            <div class="text-4xl font-extrabold font-headline text-white mb-1">40+</div>
+            <div class="text-on-primary-container text-xs tracking-widest uppercase">Countries</div>
+          </div>
+          <div class="stat-card text-center p-6 border border-white/10 rounded-sm">
+            <div class="text-4xl font-extrabold font-headline text-[#e9c349] mb-1">98%</div>
+            <div class="text-on-primary-container text-xs tracking-widest uppercase">Satisfaction</div>
+          </div>
+        </div>
+
+        <!-- Sub-text -->
+        <div class="text-center mb-12">
+          <p class="text-on-primary-container max-w-2xl mx-auto leading-relaxed font-light">
+            We help organisations of all types prepare for the path ahead — wherever it leads. Our curated programs help media companies, agencies, and independents go further by placing editorial mastery at the centre of their strategy.
+          </p>
+          <a href="curricula.html" class="inline-block mt-6 px-8 py-3.5 bg-white text-black font-bold text-sm rounded-sm hover:bg-[#e9c349] transition-colors duration-200">
+            Browse Programs
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TESTIMONIALS ── -->
+    <section class="px-8 py-24 max-w-[1400px] mx-auto">
+      <div class="text-center mb-16">
+        <span class="text-xs font-bold tracking-[0.2em] text-tertiary uppercase mb-4 block">Alumni Voices</span>
+        <h2 class="text-4xl font-extrabold font-headline tracking-tighter text-black">What our practitioners say.</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <div class="testimonial-card bg-surface-container-low p-8 rounded-sm">
+          <div class="text-4xl font-headline text-tertiary mb-4">"</div>
+          <p class="text-on-surface leading-relaxed mb-6">The Editorial Academy fit our team like a glove. Their curated masterclasses deliver fresh, current knowledge from practitioners who are actually shaping the industry.</p>
+          <div>
+            <div class="font-bold text-black text-sm font-headline">Varun Patil</div>
+            <div class="text-secondary text-xs mt-1">Senior Manager, HR Development — Condé Nast</div>
+            <a href="#" class="text-tertiary text-xs font-semibold mt-3 block hover:underline">Read the full case study →</a>
+          </div>
+        </div>
+
+        <div class="testimonial-card bg-surface-container-low p-8 rounded-sm">
+          <div class="text-4xl font-headline text-tertiary mb-4">"</div>
+          <p class="text-on-surface leading-relaxed mb-6">In total, it was a transformative success. Our editorial directors came back with a completely new vocabulary for the work — and the confidence to lead complex design decisions.</p>
+          <div>
+            <div class="font-bold text-black text-sm font-headline">Alfred Helmerich</div>
+            <div class="text-secondary text-xs mt-1">Executive Training Manager — Axel Springer</div>
+            <a href="#" class="text-tertiary text-xs font-semibold mt-3 block hover:underline">Read the full case study →</a>
+          </div>
+        </div>
+
+        <div class="testimonial-card bg-surface-container-low p-8 rounded-sm">
+          <div class="text-4xl font-headline text-tertiary mb-4">"</div>
+          <p class="text-on-surface leading-relaxed mb-6">The Editorial Academy responds to the needs of our business with an agility that no other platform offers. It's truly the best solution for our creative teams and their long-term careers.</p>
+          <div>
+            <div class="font-bold text-black text-sm font-headline">Luz Santillana Romero</div>
+            <div class="text-secondary text-xs mt-1">Development & Engagement Director — Hearst</div>
+            <a href="#" class="text-tertiary text-xs font-semibold mt-3 block hover:underline">Read the full case study →</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── VALUES ── -->
+    <section class="bg-surface-container-low px-8 py-24">
+      <div class="max-w-[1400px] mx-auto">
+        <div class="mb-16">
+          <span class="text-xs font-bold tracking-[0.2em] text-tertiary uppercase mb-4 block">What We Stand For</span>
+          <h2 class="text-4xl font-extrabold font-headline tracking-tighter text-black max-w-xl">Our founding principles.</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+          <div class="bg-white p-8 rounded-sm border border-outline-variant/20">
+            <div class="w-10 h-10 bg-primary-container rounded-full flex items-center justify-center mb-6">
+              <span class="material-symbols-outlined text-on-primary-container text-sm">verified</span>
+            </div>
+            <h3 class="font-headline font-bold text-lg text-black mb-3">Uncompromising Curation</h3>
+            <p class="text-secondary text-sm leading-relaxed">Every course, instructor, and resource is hand-selected. We say no far more than we say yes.</p>
+          </div>
+          <div class="bg-white p-8 rounded-sm border border-outline-variant/20">
+            <div class="w-10 h-10 bg-primary-container rounded-full flex items-center justify-center mb-6">
+              <span class="material-symbols-outlined text-on-primary-container text-sm">groups</span>
+            </div>
+            <h3 class="font-headline font-bold text-lg text-black mb-3">Practitioner-First Faculty</h3>
+            <p class="text-secondary text-sm leading-relaxed">Our instructors are active at the pinnacle of their discipline — not retired academics, but working architects of the industry.</p>
+          </div>
+          <div class="bg-white p-8 rounded-sm border border-outline-variant/20">
+            <div class="w-10 h-10 bg-primary-container rounded-full flex items-center justify-center mb-6">
+              <span class="material-symbols-outlined text-on-primary-container text-sm">star</span>
+            </div>
+            <h3 class="font-headline font-bold text-lg text-black mb-3">Executive Depth</h3>
+            <p class="text-secondary text-sm leading-relaxed">We design for professionals who want to lead, not just execute. Our curriculum operates at the level of strategic mastery.</p>
+          </div>
+          <div class="bg-white p-8 rounded-sm border border-outline-variant/20">
+            <div class="w-10 h-10 bg-primary-container rounded-full flex items-center justify-center mb-6">
+              <span class="material-symbols-outlined text-on-primary-container text-sm">public</span>
+            </div>
+            <h3 class="font-headline font-bold text-lg text-black mb-3">Global Standard</h3>
+            <p class="text-secondary text-sm leading-relaxed">Credentials from The Editorial Academy are recognised across the media and design industries worldwide.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FINAL CTA ── -->
+    <section class="bg-primary-container px-8 py-24">
+      <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
+        <div>
+          <h2 class="text-4xl font-extrabold font-headline tracking-tighter text-white mb-4 leading-tight">
+            Ready to elevate your practice?
+          </h2>
+          <p class="text-on-primary-container text-lg font-light">Join 12,000+ practitioners who have committed to elite editorial mastery.</p>
+        </div>
+        <div class="flex gap-4 shrink-0">
+          <a href="curricula.html" class="px-8 py-4 bg-[#e9c349] text-black font-bold text-sm rounded-sm hover:bg-[#ffe088] transition-colors">
+            Browse Programs
+          </a>
+          <a href="certifications.html" class="px-8 py-4 border border-white/30 text-white font-semibold text-sm rounded-sm hover:border-white transition-colors">
+            View Certifications
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="w-full border-t border-[#e4e2e4]/40 bg-[#fcf8fa]">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-12 px-12 py-20 max-w-7xl mx-auto">
+      <div class="col-span-2 md:col-span-1 space-y-6">
+        <div class="text-lg font-bold text-black font-headline">The Editorial Academy</div>
+        <p class="text-sm text-[#545f73] leading-relaxed">Elevating the standards of digital education through meticulous curation and executive-level instruction.</p>
+      </div>
+      <div class="space-y-4">
+        <h4 class="text-xs font-bold tracking-widest uppercase text-black">Company</h4>
+        <ul class="space-y-2">
+          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="about.html">About Us</a></li>
+          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="#">Careers</a></li>
+          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="#">Press</a></li>
+        </ul>
+      </div>
+      <div class="space-y-4">
+        <h4 class="text-xs font-bold tracking-widest uppercase text-black">Support</h4>
+        <ul class="space-y-2">
+          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="#">Help Center</a></li>
+          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="#">Privacy Policy</a></li>
+          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div class="space-y-4">
+        <h4 class="text-xs font-bold tracking-widest uppercase text-black">Academics</h4>
+        <ul class="space-y-2">
+          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="curricula.html">Curricula</a></li>
+          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="library.html">Library</a></li>
+          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="instructors.html">Instructors</a></li>
+          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="certifications.html">Certifications</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="px-12 py-8 max-w-7xl mx-auto border-t border-outline-variant/10 text-center">
+      <p class="text-xs text-[#545f73] tracking-wide">© 2026 The Editorial Academy. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

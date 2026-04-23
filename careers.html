@@ -1,0 +1,527 @@
+<!doctype html>
+<html class="light" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Careers | The Editorial Academy</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            secondary: "#545f73", "on-secondary-fixed": "#111c2d", "on-surface": "#1b1b1d",
+            "error-container": "#ffdad6", "outline-variant": "#c6c6cd", "on-primary-fixed-variant": "#3f465c",
+            "on-secondary": "#ffffff", "on-background": "#1b1b1d", "inverse-primary": "#bec6e0",
+            "surface-container-low": "#f6f3f5", "tertiary-container": "#cba72f", "on-error-container": "#93000a",
+            "primary-container": "#131b2e", "surface-container": "#f0edef", "on-primary-container": "#7c839b",
+            "tertiary-fixed-dim": "#e9c349", "on-secondary-fixed-variant": "#3c475a", "inverse-on-surface": "#f3f0f2",
+            "on-surface-variant": "#45464d", "surface-bright": "#fcf8fa", primary: "#000000", "on-primary": "#ffffff",
+            surface: "#fcf8fa", "tertiary-fixed": "#ffe088", "secondary-fixed-dim": "#bcc7de", background: "#fcf8fa",
+            "surface-container-highest": "#e4e2e4", "surface-container-high": "#eae7e9", "on-tertiary": "#ffffff",
+            "surface-dim": "#dcd9db", "secondary-fixed": "#d8e3fb", "inverse-surface": "#303032",
+            "surface-container-lowest": "#ffffff", error: "#ba1a1a", "on-error": "#ffffff",
+            "surface-variant": "#e4e2e4", "primary-fixed": "#dae2fd", "on-primary-fixed": "#131b2e",
+            "on-tertiary-fixed": "#241a00", "secondary-container": "#d5e0f8", tertiary: "#735c00",
+            "primary-fixed-dim": "#bec6e0", "on-secondary-container": "#586377", "surface-tint": "#565e74",
+            outline: "#76777d", "on-tertiary-fixed-variant": "#574500", "on-tertiary-container": "#4e3d00",
+          },
+          borderRadius: { DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem" },
+          fontFamily: { headline: ["Manrope"], body: ["Inter"], label: ["Inter"] },
+        },
+      },
+    };
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 0, "opsz" 24;
+      vertical-align: middle;
+    }
+    body { animation: pageFadeIn 0.4s ease forwards; }
+    @keyframes pageFadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Sticky sub-nav */
+    .sub-nav {
+      position: sticky;
+      top: 72px;
+      z-index: 40;
+      background: #fff;
+      border-bottom: 1px solid #e4e2e4;
+    }
+    .sub-nav a {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: #545f73;
+      padding: 18px 0;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .sub-nav a:hover, .sub-nav a.active {
+      color: #000;
+      border-bottom-color: #000;
+    }
+
+    /* Value cards */
+    .value-card img { transition: transform 0.4s ease; }
+    .value-card:hover img { transform: scale(1.03); }
+
+    /* Story carousel */
+    .story-slide { display: none; }
+    .story-slide.active { display: flex; }
+
+    /* Play btn */
+    .play-btn {
+      width: 52px; height: 52px;
+      background: rgba(255,255,255,0.90);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .play-btn:hover { transform: scale(1.1); }
+
+    /* Perk item */
+    .perk-item { border-top: 2px solid #e4e2e4; padding-top: 16px; }
+
+    /* Scroll smooth */
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+
+<body class="bg-surface font-body text-on-surface antialiased">
+
+  <!-- ── Main Navbar ── -->
+  <nav class="fixed top-0 w-full z-50 bg-[#fcf8fa]/90 backdrop-blur-md shadow-sm">
+    <div class="flex justify-between items-center w-full px-8 py-4 max-w-[1920px] mx-auto">
+      <div class="flex items-center gap-12">
+        <a class="text-2xl font-black text-black tracking-tighter font-headline" href="index.html">The Editorial Academy</a>
+        <div class="hidden lg:flex items-center gap-8">
+          <a class="text-[#545f73] font-medium font-headline tracking-tight hover:text-black transition-colors duration-300" href="curricula.html">Curricula</a>
+          <a class="text-[#545f73] font-medium font-headline tracking-tight hover:text-black transition-colors duration-300" href="library.html">Library</a>
+          <a class="text-[#545f73] font-medium font-headline tracking-tight hover:text-black transition-colors duration-300" href="instructors.html">Instructors</a>
+          <a class="text-[#545f73] font-medium font-headline tracking-tight hover:text-black transition-colors duration-300" href="certifications.html">Certifications</a>
+        </div>
+      </div>
+      <div class="flex items-center gap-4">
+        <button class="px-5 py-2 text-sm font-semibold text-black hover:opacity-70 transition-opacity">Sign In</button>
+        <button class="px-5 py-2 text-sm font-bold bg-primary text-on-primary rounded-sm hover:scale-95 transition-transform duration-200">Join Elite</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Sticky Sub-Nav ── -->
+  <div class="sub-nav">
+    <div class="flex items-center gap-12 px-8 max-w-[1400px] mx-auto">
+      <a href="#why" class="active">Why The Editorial Academy?</a>
+      <a href="#teams">Meet Our Teams</a>
+      <a href="#perks">Perks & Benefits</a>
+      <a href="#locations">Our Locations</a>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ══════════════════════════════
+         SECTION 1 — WHY TEA?
+    ══════════════════════════════ -->
+    <section id="why" class="px-8 pt-24 pb-20 max-w-[1400px] mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h1 class="text-5xl md:text-6xl font-extrabold font-headline tracking-tighter text-black mb-6">Why The Editorial Academy?</h1>
+        <p class="text-lg text-secondary leading-relaxed font-light mb-6">
+          We aspire to be as rigorous and visionary as the industries we serve, as inquisitive as the practitioners who use our platform, and as transformative as the future we strive to shape for everyone.
+        </p>
+        <a href="#teams" class="text-tertiary text-sm font-bold hover:underline">Learn more about our values →</a>
+      </div>
+
+      <!-- 3 Value Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <div class="value-card">
+          <div class="overflow-hidden rounded-sm mb-6">
+            <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=600&q=80"
+              alt="Inclusive" class="w-full h-56 object-cover" />
+          </div>
+          <h3 class="text-2xl font-extrabold font-headline text-black mb-3">Inclusive</h3>
+          <p class="text-secondary text-sm leading-relaxed">
+            When people feel supported, everyone benefits. We know that doesn't just happen — we're dedicated to making it a reality. We're building teams as diverse as the practitioners we serve, so we learn to see every discipline from every perspective.
+          </p>
+        </div>
+
+        <div class="value-card">
+          <div class="overflow-hidden rounded-sm mb-6">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=80"
+              alt="Curious" class="w-full h-56 object-cover" />
+          </div>
+          <h3 class="text-2xl font-extrabold font-headline text-black mb-3">Curious</h3>
+          <p class="text-secondary text-sm leading-relaxed">
+            Learning is who we are — inside and out. One reason we're so motivated to push editorial knowledge forward is because we recognize the power it has for us at The Editorial Academy. We never stop evolving, and neither do you.
+          </p>
+        </div>
+
+        <div class="value-card">
+          <div class="overflow-hidden rounded-sm mb-6">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80"
+              alt="Revolutionary" class="w-full h-56 object-cover" />
+          </div>
+          <h3 class="text-2xl font-extrabold font-headline text-black mb-3">Revolutionary</h3>
+          <p class="text-secondary text-sm leading-relaxed">
+            Why keep editorial knowledge to yourself? We'd rather share it with the people who need it most. We improve the careers of the practitioners and instructors we serve — using our expertise to empower theirs.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="border-t border-outline-variant/30 mt-20 pt-10 text-center">
+        <p class="text-secondary text-base">There are so many reasons our people choose to <a href="#" class="text-tertiary font-semibold hover:underline">join us</a> at The Editorial Academy — whether it's the mission, the culture, or the opportunity to grow.</p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════
+         SECTION 2 — EMPLOYEE STORIES
+    ══════════════════════════════ -->
+    <section class="bg-surface-container-low py-24 px-8">
+      <div class="max-w-[1400px] mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <h2 class="text-4xl md:text-5xl font-extrabold font-headline tracking-tighter text-black mb-4">Faculty Stories</h2>
+          <p class="text-secondary leading-relaxed font-light">
+            The best way to learn about life at The Editorial Academy is to hear from our people. Each one brings their unique background, perspective, and expertise — and we are better for it.
+          </p>
+        </div>
+
+        <!-- Carousel -->
+        <div class="relative max-w-3xl mx-auto">
+          <!-- Slide 1 -->
+          <div class="story-slide active gap-8 items-center bg-white rounded-sm p-8 shadow-sm">
+            <div class="shrink-0">
+              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80"
+                alt="Celeste Aurore" class="w-36 h-44 object-cover rounded-sm" />
+            </div>
+            <div>
+              <p class="text-on-surface italic leading-relaxed mb-6 text-sm">
+                "Even though The Editorial Academy has grown substantially, the mission hasn't changed. In fact, the new focus on AI and editorial strategy is exactly what I'm passionate about. As someone who pushes creative boundaries and looks toward the future, I knew this was the right place for me."
+              </p>
+              <div class="font-bold text-black font-headline">Celeste Aurore <span class="font-normal text-secondary text-xs">(She/her)</span></div>
+              <div class="text-secondary text-xs mt-1 mb-4">Instructor — Visual Narrative</div>
+              <a href="#" class="px-5 py-2 bg-primary text-on-primary text-xs font-bold rounded-sm inline-block hover:scale-95 transition-transform">View open roles</a>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="story-slide gap-8 items-center bg-white rounded-sm p-8 shadow-sm">
+            <div class="shrink-0">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80"
+                alt="Julian Vane" class="w-36 h-44 object-cover rounded-sm" />
+            </div>
+            <div>
+              <p class="text-on-surface italic leading-relaxed mb-6 text-sm">
+                "What drew me to The Editorial Academy was the calibre of people already here. Everyone is genuinely operating at the top of their discipline. There's no padding, no hierarchy of ideas — just the work, done at the highest possible level."
+              </p>
+              <div class="font-bold text-black font-headline">Julian Vane <span class="font-normal text-secondary text-xs">(He/him)</span></div>
+              <div class="text-secondary text-xs mt-1 mb-4">Instructor — Digital Strategy</div>
+              <a href="#" class="px-5 py-2 bg-primary text-on-primary text-xs font-bold rounded-sm inline-block hover:scale-95 transition-transform">View open roles</a>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="story-slide gap-8 items-center bg-white rounded-sm p-8 shadow-sm">
+            <div class="shrink-0">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80"
+                alt="Dr. Elena Rossi" class="w-36 h-44 object-cover rounded-sm" />
+            </div>
+            <div>
+              <p class="text-on-surface italic leading-relaxed mb-6 text-sm">
+                "Typography is often treated as craft, but here it's treated as intelligence. The Editorial Academy gives me the platform to teach at the depth the discipline deserves — to practitioners who are genuinely ready for it."
+              </p>
+              <div class="font-bold text-black font-headline">Dr. Elena Rossi <span class="font-normal text-secondary text-xs">(She/her)</span></div>
+              <div class="text-secondary text-xs mt-1 mb-4">Instructor — Typography</div>
+              <a href="#" class="px-5 py-2 bg-primary text-on-primary text-xs font-bold rounded-sm inline-block hover:scale-95 transition-transform">View open roles</a>
+            </div>
+          </div>
+
+          <!-- Nav arrows -->
+          <button onclick="prevStory()" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 w-9 h-9 flex items-center justify-center border border-outline-variant rounded-full bg-white hover:bg-surface-container transition-colors">
+            <span class="material-symbols-outlined text-sm">chevron_left</span>
+          </button>
+          <button onclick="nextStory()" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 w-9 h-9 flex items-center justify-center border border-outline-variant rounded-full bg-white hover:bg-surface-container transition-colors">
+            <span class="material-symbols-outlined text-sm">chevron_right</span>
+          </button>
+        </div>
+
+        <!-- Dots -->
+        <div class="flex justify-center gap-2 mt-8" id="story-dots">
+          <button onclick="goStory(0)" class="story-dot w-2 h-2 rounded-full bg-black"></button>
+          <button onclick="goStory(1)" class="story-dot w-2 h-2 rounded-full bg-outline-variant"></button>
+          <button onclick="goStory(2)" class="story-dot w-2 h-2 rounded-full bg-outline-variant"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════
+         SECTION 3 — MEET OUR TEAMS
+    ══════════════════════════════ -->
+    <section id="teams" class="px-8 py-24 max-w-[1400px] mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-4xl md:text-5xl font-extrabold font-headline tracking-tighter text-black mb-4">Meet Our Teams</h2>
+        <p class="text-secondary leading-relaxed font-light">
+          We are the leading editorial education platform, serving thousands of practitioners and organisations worldwide — so our impact is huge. We have a variety of roles spanning Curriculum, Technology, Marketing, and Operations. Explore which one would be best for you.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <!-- Team 1 -->
+        <div>
+          <div class="relative group cursor-pointer mb-5 overflow-hidden rounded-sm">
+            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80"
+              alt="Curriculum & Instruction" class="w-full h-52 object-cover group-hover:scale-103 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-black/25 flex items-center justify-center">
+              <div class="play-btn"><span class="material-symbols-outlined text-black text-2xl ml-0.5">play_arrow</span></div>
+            </div>
+          </div>
+          <h3 class="font-headline font-extrabold text-xl text-black mb-3">Curriculum & Instruction</h3>
+          <p class="text-secondary text-sm leading-relaxed mb-4">We're looking for the sharpest editorial minds who share our passion for bringing elite knowledge to practitioners worldwide. You'll work on high-impact curriculum projects that shape how the industry learns.</p>
+          <a href="#" class="text-tertiary text-xs font-bold hover:underline">View Curriculum & Instruction roles →</a>
+        </div>
+
+        <!-- Team 2 -->
+        <div>
+          <div class="relative group cursor-pointer mb-5 overflow-hidden rounded-sm">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80"
+              alt="Product & Technology" class="w-full h-52 object-cover group-hover:scale-103 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-black/25 flex items-center justify-center">
+              <div class="play-btn"><span class="material-symbols-outlined text-black text-2xl ml-0.5">play_arrow</span></div>
+            </div>
+          </div>
+          <h3 class="font-headline font-extrabold text-xl text-black mb-3">Product & Technology</h3>
+          <p class="text-secondary text-sm leading-relaxed mb-4">In Product & Technology, you'll play a crucial role in building the infrastructure that delivers elite education at scale. Join our team and be surrounded by people who are just as driven as they are inventive.</p>
+          <a href="#" class="text-tertiary text-xs font-bold hover:underline">View Product & Technology roles →</a>
+        </div>
+
+        <!-- Team 3 -->
+        <div>
+          <div class="relative group cursor-pointer mb-5 overflow-hidden rounded-sm">
+            <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&q=80"
+              alt="Marketing & Brand" class="w-full h-52 object-cover group-hover:scale-103 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-black/25 flex items-center justify-center">
+              <div class="play-btn"><span class="material-symbols-outlined text-black text-2xl ml-0.5">play_arrow</span></div>
+            </div>
+          </div>
+          <h3 class="font-headline font-extrabold text-xl text-black mb-3">Marketing & Brand</h3>
+          <p class="text-secondary text-sm leading-relaxed mb-4">At The Editorial Academy, we value distinct perspectives — especially on our Marketing & Brand team. You'll shape a voice that speaks to the most discerning practitioners in the industry.</p>
+          <a href="#" class="text-tertiary text-xs font-bold hover:underline">View Marketing & Brand roles →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════
+         SECTION 4 — PERKS & BENEFITS
+    ══════════════════════════════ -->
+    <section id="perks" class="bg-surface-container-low px-8 py-24">
+      <div class="max-w-[1400px] mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-20">
+          <h2 class="text-4xl md:text-5xl font-extrabold font-headline tracking-tighter text-black mb-4">Perks & Benefits</h2>
+          <p class="text-secondary leading-relaxed font-light">
+            Of course, the best thing about being part of The Editorial Academy is knowing that your work elevates the practice of entire industries worldwide. We also have a great benefits package that makes life here even better — tailored to each of our team members.
+          </p>
+        </div>
+
+        <!-- Perks grid row 1 -->
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-x-8 gap-y-10 mb-12">
+          <div class="perk-item">
+            <h4 class="font-headline font-bold text-sm text-black mb-2">Learning incentives</h4>
+            <p class="text-secondary text-xs leading-relaxed">Full access to all Editorial Academy programs — plus a yearly budget for external professional development.</p>
+          </div>
+          <div class="perk-item">
+            <h4 class="font-headline font-bold text-sm text-black mb-2">Learning programs</h4>
+            <p class="text-secondary text-xs leading-relaxed">Our Learning & Development team provides top-notch training sessions and company-wide mastery initiatives throughout the year.</p>
+          </div>
+          <div class="perk-item">
+            <h4 class="font-headline font-bold text-sm text-black mb-2">Holistic care</h4>
+            <p class="text-secondary text-xs leading-relaxed">Mental health is vital. Access free coaching and therapy through our wellness programme and a dedicated mental health budget.</p>
+          </div>
+          <div class="perk-item">
+            <h4 class="font-headline font-bold text-sm text-black mb-2">Charitable matching</h4>
+            <p class="text-secondary text-xs leading-relaxed">Support causes that matter to you. We match your donations up to an annual limit for eligible nonprofits and charities.</p>
+          </div>
+          <div class="perk-item">
+            <h4 class="font-headline font-bold text-sm text-black mb-2">BEDI program</h4>
+            <p class="text-secondary text-xs leading-relaxed">We prioritise diversity and inclusion through equitable hiring, retention, mobility, and leadership development across every team.</p>
+          </div>
+        </div>
+
+        <!-- Perks grid row 2 -->
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-x-8 gap-y-10">
+          <div class="perk-item">
+            <h4 class="font-headline font-bold text-sm text-black mb-2">Guest speakers</h4>
+            <p class="text-secondary text-xs leading-relaxed">We regularly host speakers from across the media and design industries to enrich our team's perspective and continuous learning.</p>
+          </div>
+          <div class="perk-item">
+            <h4 class="font-headline font-bold text-sm text-black mb-2">Company events</h4>
+            <p class="text-secondary text-xs leading-relaxed">Enjoy team celebrations, cultural events, wellness activities, and extracurriculars like editorial salons and creative workshops.</p>
+          </div>
+          <div class="perk-item">
+            <h4 class="font-headline font-bold text-sm text-black mb-2">Global Leave Programs</h4>
+            <p class="text-secondary text-xs leading-relaxed">A global parental leave policy that applies to all new parents, inclusive of gender, family structure, and path to parenthood.</p>
+          </div>
+          <div class="perk-item">
+            <h4 class="font-headline font-bold text-sm text-black mb-2">Parental benefits</h4>
+            <p class="text-secondary text-xs leading-relaxed">We support fertility, adoption, and family-building expenses with comprehensive coverage and dedicated family health resources.</p>
+          </div>
+          <div class="perk-item">
+            <h4 class="font-headline font-bold text-sm text-black mb-2">Financial care</h4>
+            <p class="text-secondary text-xs leading-relaxed">We support your financial wellbeing with access to financial planners, equity participation, and long-term planning resources.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════
+         SECTION 5 — LOCATIONS
+    ══════════════════════════════ -->
+    <section id="locations" class="px-8 py-24 max-w-[1400px] mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="text-4xl md:text-5xl font-extrabold font-headline tracking-tighter text-black mb-4">Our Locations</h2>
+        <p class="text-secondary leading-relaxed font-light">
+          We operate across global creative capitals — from London and New York to Tokyo and São Paulo. Our teams are distributed, and our culture travels with them.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="relative group overflow-hidden rounded-sm">
+          <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=500&q=80"
+            alt="London" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-5">
+            <div>
+              <div class="text-white font-headline font-extrabold text-lg">London</div>
+              <div class="text-white/70 text-xs">Global HQ</div>
+            </div>
+          </div>
+        </div>
+        <div class="relative group overflow-hidden rounded-sm">
+          <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=500&q=80"
+            alt="New York" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-5">
+            <div>
+              <div class="text-white font-headline font-extrabold text-lg">New York</div>
+              <div class="text-white/70 text-xs">Americas</div>
+            </div>
+          </div>
+        </div>
+        <div class="relative group overflow-hidden rounded-sm">
+          <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=500&q=80"
+            alt="Tokyo" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-5">
+            <div>
+              <div class="text-white font-headline font-extrabold text-lg">Tokyo</div>
+              <div class="text-white/70 text-xs">Asia Pacific</div>
+            </div>
+          </div>
+        </div>
+        <div class="relative group overflow-hidden rounded-sm">
+          <img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=500&q=80"
+            alt="São Paulo" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-5">
+            <div>
+              <div class="text-white font-headline font-extrabold text-lg">São Paulo</div>
+              <div class="text-white/70 text-xs">Latin America</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Final CTA ── -->
+    <section class="bg-primary-container px-8 py-20">
+      <div class="max-w-[1400px] mx-auto text-center">
+        <h2 class="text-4xl font-extrabold font-headline tracking-tighter text-white mb-4">Ready to shape the future of editorial education?</h2>
+        <p class="text-on-primary-container font-light mb-8 max-w-xl mx-auto">Join a team of practitioners, builders, and visionaries committed to raising the bar of the industry.</p>
+        <a href="#" class="px-10 py-4 bg-[#e9c349] text-black font-bold text-sm rounded-sm hover:bg-[#ffe088] transition-colors inline-block">View Open Roles</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="w-full border-t border-[#e4e2e4]/40 bg-[#fcf8fa]">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-12 px-12 py-20 max-w-7xl mx-auto">
+      <div class="col-span-2 md:col-span-1 space-y-6">
+        <div class="text-lg font-bold text-black font-headline">The Editorial Academy</div>
+        <p class="text-sm text-[#545f73] leading-relaxed">Elevating the standards of digital education through meticulous curation and executive-level instruction.</p>
+      </div>
+      <div class="space-y-4">
+        <h4 class="text-xs font-bold tracking-widest uppercase text-black">Company</h4>
+        <ul class="space-y-2">
+          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="about.html">About Us</a></li>
+          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="careers.html">Careers</a></li>
+          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="#">Press</a></li>
+        </ul>
+      </div>
+      <div class="space-y-4">
+        <h4 class="text-xs font-bold tracking-widest uppercase text-black">Support</h4>
+        <ul class="space-y-2">
+          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="#">Help Center</a></li>
+          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="#">Privacy Policy</a></li>
+          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div class="space-y-4">
+        <h4 class="text-xs font-bold tracking-widest uppercase text-black">Academics</h4>
+        <ul class="space-y-2">
+          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="curricula.html">Curricula</a></li>
+          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="library.html">Library</a></li>
+          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="instructors.html">Instructors</a></li>
+          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="certifications.html">Certifications</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="px-12 py-8 max-w-7xl mx-auto border-t border-outline-variant/10 text-center">
+      <p class="text-xs text-[#545f73] tracking-wide">© 2026 The Editorial Academy. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // ── Story carousel ──
+    let currentStory = 0;
+    const slides = document.querySelectorAll('.story-slide');
+    const dots = document.querySelectorAll('.story-dot');
+
+    function goStory(idx) {
+      slides[currentStory].classList.remove('active');
+      dots[currentStory].style.background = '#c6c6cd';
+      currentStory = (idx + slides.length) % slides.length;
+      slides[currentStory].classList.add('active');
+      dots[currentStory].style.background = '#000';
+    }
+    function nextStory() { goStory(currentStory + 1); }
+    function prevStory() { goStory(currentStory - 1); }
+
+    // init dot states
+    dots.forEach((d, i) => d.style.background = i === 0 ? '#000' : '#c6c6cd');
+
+    // ── Sub-nav active on scroll ──
+    const sections = ['why','teams','perks','locations'];
+    const subLinks = document.querySelectorAll('.sub-nav a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && window.scrollY >= el.offsetTop - 120) current = id;
+      });
+      subLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    });
+  </script>
+
+</body>
+</html>
