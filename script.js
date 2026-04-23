@@ -643,6 +643,7 @@
     initCurriculaPage(); // hanya aktif di curricula.html
     initLibraryPage();   // hanya aktif di library.html
     initInstructorsPage(); // hanya aktif di instructors.html
+    initCertificationsPage(); // hanya aktif di certifications.html
   });
   /* ─────────────────────────────────────────
        7. Library Page — Resources & Instructor Masterworks
@@ -971,6 +972,232 @@
     });
 
     render();
+  }
+
+  /* ─────────────────────────────────────────
+     9. Certifications Page
+     Hanya aktif kalau #tracks-grid ada.
+     5 discipline tracks + credential mockup + alumni holders.
+  ───────────────────────────────────────── */
+  function initCertificationsPage() {
+    if (!document.getElementById('tracks-grid')) return;
+
+    const tracks = [
+      {
+        discipline: 'Visual Narrative',
+        credential: 'Certified Visual Narrative Director',
+        icon: 'photo_camera',
+        duration: '~6 months',
+        price: 2970,
+        enrolled: 1240,
+        courses: [
+          { title: 'Minimalist Brand Identity', instructor: 'Anders Holm' },
+          { title: 'Editorial Photography Mastery', instructor: 'Lydia Grant' },
+          { title: 'The Language of Luxury Imagery', instructor: 'Celeste Aurore' },
+          { title: 'Color Theory for Editorial Excellence', instructor: 'Naomi Sato' },
+          { title: 'Motion & Still: Cinematic Storytelling', instructor: 'Rafael Moreno' },
+        ],
+      },
+      {
+        discipline: 'Digital Strategy',
+        credential: 'Certified Digital Editorial Strategist',
+        icon: 'trending_up',
+        duration: '~7 months',
+        price: 4690,
+        enrolled: 980,
+        courses: [
+          { title: 'The Architecture of Digital Narrative', instructor: 'Julian Vane' },
+          { title: 'Algorithmic Content Curation', instructor: 'Sofia Chen' },
+          { title: 'Monetising Digital Media at Scale', instructor: 'Marcus Elliot' },
+          { title: 'Audience Intelligence & Data Storytelling', instructor: 'Priya Nair' },
+          { title: 'Executive Presence in the Digital Age', instructor: 'Thomas Whitfield' },
+        ],
+      },
+      {
+        discipline: 'Editorial Design',
+        credential: 'Certified Editorial Design Director',
+        icon: 'design_services',
+        duration: '~7 months',
+        price: 4580,
+        enrolled: 860,
+        courses: [
+          { title: 'Modern Magazine Layouts', instructor: 'Marcus Thorne' },
+          { title: 'Grid Systems & White Space Mastery', instructor: 'Ingrid Larsen' },
+          { title: 'Print to Digital: Transitional Design', instructor: 'Olivier Dumont' },
+          { title: 'Cover Design: The Art of First Impression', instructor: 'Alicia Monroe' },
+          { title: 'Interactive Editorial: UX for Long-Form', instructor: 'Kwame Osei' },
+        ],
+      },
+      {
+        discipline: 'Typography',
+        credential: 'Certified Editorial Typographer',
+        icon: 'text_fields',
+        duration: '~5 months',
+        price: 3680,
+        enrolled: 640,
+        courses: [
+          { title: 'Advanced Glyphs & Visual Systems', instructor: 'Dr. Elena Rossi' },
+          { title: 'Type as Image: Expressive Letterforms', instructor: 'Hana Yamamoto' },
+          { title: 'Variable Fonts & the Future of Reading', instructor: 'Sven Albers' },
+          { title: 'Heritage Typefaces: History & Application', instructor: 'Prof. Beatrice Wren' },
+        ],
+      },
+      {
+        discipline: 'Artificial Intelligence',
+        credential: 'Certified AI Editorial Leader',
+        icon: 'smart_toy',
+        duration: '~6 months',
+        price: 9000,
+        enrolled: 510,
+        courses: [
+          { title: 'Generative AI for Editorial Leaders', instructor: 'Dr. Amara Okafor' },
+          { title: 'AI-Augmented Content Strategy', instructor: 'Leon Hartmann' },
+          { title: 'Machine Perception & Visual Intelligence', instructor: 'Dr. Yuki Tanaka' },
+          { title: 'Ethical AI in Modern Newsrooms', instructor: 'Prof. Isabelle Laurent' },
+          { title: 'Prompt Engineering for Creative Executives', instructor: 'Nathan Cole' },
+        ],
+      },
+    ];
+
+    const holders = [
+      { name: 'Camille Durand', role: 'Creative Director, Le Figaro', track: 'Editorial Design', avatar: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=80&q=80', year: '2024' },
+      { name: 'James Obi', role: 'Head of Visual, Reuters', track: 'Visual Narrative', avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&q=80', year: '2024' },
+      { name: 'Yuna Park', role: 'Type Director, Wallpaper*', track: 'Typography', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&q=80', year: '2023' },
+      { name: 'Marco Bellini', role: 'Digital Strategy Lead, Condé Nast', track: 'Digital Strategy', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80', year: '2024' },
+      { name: 'Aisha Mensah', role: 'AI Content Lead, BBC', track: 'Artificial Intelligence', avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&q=80', year: '2024' },
+      { name: 'Tobias Keller', role: 'Senior Designer, Der Spiegel', track: 'Editorial Design', avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&q=80', year: '2023' },
+      { name: 'Sakura Ito', role: 'Photo Editor, Monocle', track: 'Visual Narrative', avatar: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=80&q=80', year: '2024' },
+      { name: 'Luca Ferretti', role: 'Strategist, Bloomberg Media', track: 'Digital Strategy', avatar: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=80&q=80', year: '2023' },
+    ];
+
+    /* ── Render tracks ── */
+    function renderTracks() {
+      const grid = document.getElementById('tracks-grid');
+      grid.innerHTML = tracks.map((t, i) => `
+        <div class="border border-outline-variant/20 rounded-lg overflow-hidden group">
+          <!-- Track header — clickable to expand -->
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 p-8 cursor-pointer hover:bg-surface-container-low transition-colors" onclick="this.parentElement.querySelector('.track-body').classList.toggle('hidden')">
+            <div class="flex items-center gap-6">
+              <div class="w-14 h-14 bg-primary-container rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-on-primary-container">${t.icon}</span>
+              </div>
+              <div>
+                <span class="text-tertiary text-xs font-bold tracking-widest uppercase mb-1 block">${t.discipline}</span>
+                <h3 class="font-headline font-bold text-xl text-black">${t.credential}</h3>
+                <div class="flex items-center gap-4 mt-1">
+                  <span class="text-secondary text-xs">${t.courses.length} courses · ${t.duration}</span>
+                  <span class="text-secondary text-xs">${t.enrolled.toLocaleString()} enrolled</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-6 flex-shrink-0">
+              <div class="text-right">
+                <span class="text-2xl font-bold text-black block">$${t.price.toLocaleString()}</span>
+                <span class="text-secondary text-xs">Full track · save 15%</span>
+              </div>
+              <button class="px-6 py-3 bg-primary text-on-primary font-bold text-sm rounded hover:bg-primary/80 transition-all">Enroll</button>
+              <span class="material-symbols-outlined text-secondary">expand_more</span>
+            </div>
+          </div>
+          <!-- Expandable course list -->
+          <div class="track-body hidden border-t border-outline-variant/20 bg-surface-container-low px-8 py-6">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="material-symbols-outlined text-tertiary text-sm">verified</span>
+              <span class="text-xs font-bold text-black tracking-widest uppercase">Courses Included in This Track</span>
+            </div>
+            <div class="space-y-3">
+              ${t.courses.map((c, ci) => `
+                <div class="flex items-center gap-4 py-3 border-b border-outline-variant/10 last:border-0">
+                  <span class="text-xs font-bold text-outline w-6 text-right flex-shrink-0">${String(ci + 1).padStart(2, '0')}</span>
+                  <div class="flex-grow">
+                    <span class="text-sm font-medium text-black">${c.title}</span>
+                    <span class="text-xs text-secondary block">${c.instructor}</span>
+                  </div>
+                  <a href="curricula.html" class="text-xs font-bold text-primary flex items-center gap-1 hover:gap-2 transition-all flex-shrink-0">
+                    View <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                  </a>
+                </div>`).join('')}
+            </div>
+            <!-- Digital credential badge preview -->
+            <div class="mt-6 pt-6 border-t border-outline-variant/20 flex items-center gap-4">
+              <div class="w-12 h-12 bg-primary-container rounded-lg flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-tertiary">workspace_premium</span>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-black block">Upon completion you receive:</span>
+                <span class="text-xs text-secondary">Digital badge (LinkedIn-ready) · Verified PDF certificate · Credential ID</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    /* ── Render credential mockup ── */
+    function renderMockup() {
+      const el = document.getElementById('credential-mockup');
+      if (!el) return;
+      el.innerHTML = `
+        <div class="bg-surface rounded-lg border border-outline-variant/20 overflow-hidden shadow-2xl">
+          <!-- Certificate top bar -->
+          <div class="bg-primary px-8 py-5 flex items-center justify-between">
+            <span class="text-white font-headline font-black tracking-tighter text-lg">The Editorial Academy</span>
+            <span class="material-symbols-outlined text-tertiary text-2xl">workspace_premium</span>
+          </div>
+          <!-- Certificate body -->
+          <div class="px-8 py-8">
+            <p class="text-secondary text-xs uppercase tracking-widest mb-2">This certifies that</p>
+            <h3 class="font-headline font-black text-2xl text-black tracking-tighter mb-1">Alexandra Winters</h3>
+            <p class="text-secondary text-sm mb-6">has successfully completed all requirements for</p>
+            <div class="border-l-2 border-tertiary pl-4 mb-6">
+              <span class="font-headline font-bold text-lg text-black block">Certified Editorial Design Director</span>
+              <span class="text-tertiary text-xs font-bold tracking-widest uppercase">Editorial Design Track</span>
+            </div>
+            <div class="flex items-center justify-between text-xs text-secondary pt-4 border-t border-outline-variant/20">
+              <span>Issued: November 2024</span>
+              <span class="font-mono text-outline">TEA-2024-ED-0041</span>
+            </div>
+          </div>
+          <!-- LinkedIn share bar -->
+          <div class="bg-surface-container-low px-8 py-4 flex items-center gap-3">
+            <div class="w-6 h-6 bg-[#0077b5] rounded flex items-center justify-center flex-shrink-0">
+              <span class="text-white text-xs font-bold">in</span>
+            </div>
+            <span class="text-xs text-secondary flex-grow">Share to LinkedIn</span>
+            <span class="material-symbols-outlined text-secondary text-sm">open_in_new</span>
+          </div>
+        </div>
+      `;
+    }
+
+    /* ── Render credential holders ── */
+    function renderHolders() {
+      const grid = document.getElementById('holders-grid');
+      if (!grid) return;
+      grid.innerHTML = holders.map(h => `
+        <div class="flex flex-col bg-surface border border-outline-variant/20 rounded-lg p-6 hover:shadow-md transition-all">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-highest flex-shrink-0">
+              <img class="w-full h-full object-cover" src="${h.avatar}" alt="${h.name}"
+                onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80'" />
+            </div>
+            <div>
+              <h4 class="font-bold text-sm text-black">${h.name}</h4>
+              <span class="text-secondary text-xs">${h.role}</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 mt-auto pt-4 border-t border-outline-variant/20">
+            <span class="material-symbols-outlined text-tertiary text-sm">workspace_premium</span>
+            <span class="text-xs text-secondary flex-grow">${h.track}</span>
+            <span class="text-xs text-outline">${h.year}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    renderTracks();
+    renderMockup();
+    renderHolders();
   }
 
 })();
