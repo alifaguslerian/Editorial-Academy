@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center | The Editorial Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        secondary: "#545f73",
+                        "on-secondary-fixed": "#111c2d",
+                        "on-surface": "#1b1b1d",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c6c6cd",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#1b1b1d",
+                        "inverse-primary": "#bec6e0",
+                        "surface-container-low": "#f6f3f5",
+                        "tertiary-container": "#cba72f",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#131b2e",
+                        "surface-container": "#f0edef",
+                        "on-primary-container": "#7c839b",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "on-secondary-fixed-variant": "#3c475a",
+                        "inverse-on-surface": "#f3f0f2",
+                        "on-surface-variant": "#45464d",
+                        "surface-bright": "#fcf8fa",
+                        primary: "#000000",
+                        "on-primary": "#ffffff",
+                        surface: "#fcf8fa",
+                        "tertiary-fixed": "#ffe088",
+                        "secondary-fixed-dim": "#bcc7de",
+                        background: "#fcf8fa",
+                        "surface-container-highest": "#e4e2e4",
+                        "surface-container-high": "#eae7e9",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#dcd9db",
+                        "secondary-fixed": "#d8e3fb",
+                        "inverse-surface": "#303032",
+                        "surface-container-lowest": "#ffffff",
+                        error: "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e4e2e4",
+                        "primary-fixed": "#dae2fd",
+                        "on-primary-fixed": "#131b2e",
+                        "on-tertiary-fixed": "#241a00",
+                        "secondary-container": "#d5e0f8",
+                        tertiary: "#735c00",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-secondary-container": "#586377",
+                        "surface-tint": "#565e74",
+                        outline: "#76777d",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "on-tertiary-container": "#4e3d00",
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.125rem",
+                        lg: "0.25rem",
+                        xl: "0.5rem",
+                        full: "0.75rem"
+                    },
+                    fontFamily: {
+                        headline: ["Manrope"],
+                        body: ["Inter"],
+                        label: ["Inter"]
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fcf8fa;
+            color: #1b1b1d;
+        }
+        
+        .font-headline {
+            font-family: 'Manrope', sans-serif;
+        }
+        
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 20px;
+            display: inline-block;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            white-space: nowrap;
+            direction: ltr;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        nav a {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #1b1b1d;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+        
+        nav a:hover {
+            opacity: 1;
+        }
+        
+        .search-bar {
+            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            border-radius: 0.125rem;
+            background: rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            gap: 10px;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+        
+        .search-bar input {
+            border: none;
+            outline: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            width: 100%;
+            padding: 14px 0;
+            background: transparent;
+            color: white;
+        }
+        
+        .search-bar input::placeholder {
+            color: rgba(255, 255, 255, 0.35);
+        }
+        
+        .category-card {
+            border: 1px solid #e4e2e4;
+            background: white;
+            padding: 28px 24px;
+            cursor: pointer;
+            transition: border-color 0.2s, transform 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .category-card:hover {
+            border-color: #1b1b1d;
+            transform: translateY(-2px);
+        }
+        
+        .accordion-item {
+            border-bottom: 1px solid #e4e2e4;
+        }
+        
+        .accordion-btn {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            color: #1b1b1d;
+            font-weight: 500;
+        }
+        
+        .accordion-btn .icon {
+            transition: transform 0.3s;
+        }
+        
+        .accordion-btn.open .icon {
+            transform: rotate(45deg);
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+        
+        .accordion-content.open {
+            max-height: 300px;
+        }
+        
+        .accordion-content p {
+            padding-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.75;
+            color: #45464d;
+        }
+        
+        .tag {
+            display: inline-block;
+            font-size: 11px;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            background: #f0edef;
+            color: #45464d;
+            padding: 4px 10px;
+            font-weight: 500;
+        }
+        
+        .contact-card {
+            border: 1px solid #e4e2e4;
+            background: white;
+            padding: 32px 28px;
+            transition: border-color 0.2s;
+            cursor: pointer;
+        }
+        
+        .contact-card:hover {
+            border-color: #1b1b1d;
+        }
+        
+        .nav-btn {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            border: 1px solid #1b1b1d;
+            padding: 7px 16px;
+            border-radius: 0.125rem;
+            background: transparent;
+            cursor: pointer;
+            color: #1b1b1d;
+            transition: background 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .nav-btn:hover {
+            background: #f0edef;
+        }
+        
+        .nav-btn.filled {
+            background: #1b1b1d;
+            color: white;
+        }
+        
+        .nav-btn.filled:hover {
+            background: #303032;
+        }
+        
+        .breadcrumb a {
+            color: #76777d;
+            font-size: 12px;
+            text-decoration: none;
+        }
+        
+        .breadcrumb span {
+            color: #76777d;
+            font-size: 12px;
+            margin: 0 6px;
+        }
+        
+        .breadcrumb .current {
+            color: #1b1b1d;
+            font-size: 12px;
+        }
+        
+        .popular-article-link {
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            padding-bottom: 16px;
+            display: block;
+        }
+        
+        .popular-article-link .dark-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            background: rgba(255, 255, 255, 0.07);
+            color: rgba(255, 255, 255, 0.45);
+            padding: 4px 10px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+        
+        .popular-article-link p {
+            font-size: 13px;
+            color: white;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-[#fcf8fa]/80 backdrop-blur-md shadow-sm">
+        <div class="flex justify-between items-center w-full px-8 py-4 max-w-[1920px] mx-auto">
+            <div class="flex items-center gap-12">
+                <a href="index.html" class="text-2xl font-black text-black tracking-tighter font-headline">The Editorial
+          Academy</a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a class="text-[#545f73] font-medium hover:text-black transition-colors duration-300 font-headline tracking-tight" href="curricula.html">Curricula</a>
+                    <a class="text-[#545f73] font-medium hover:text-black transition-colors duration-300 font-headline tracking-tight" href="library.html">Library</a>
+                    <a class="text-[#545f73] font-medium hover:text-black transition-colors duration-300 font-headline tracking-tight" href="instructors.html">Instructors</a>
+                    <a class="text-[#545f73] font-medium hover:text-black transition-colors duration-300 font-headline tracking-tight" href="certifications.html">Certifications</a>
+                </div>
+            </div>
+            <div class="flex items-center gap-6">
+                <div class="hidden lg:flex items-center gap-4 mr-4">
+                    <span class="material-symbols-outlined text-secondary cursor-pointer hover:text-primary transition-colors">shopping_cart</span>
+                    <span class="material-symbols-outlined text-secondary cursor-pointer hover:text-primary transition-colors">notifications</span>
+                </div>
+                <button class="px-6 py-2 text-primary font-medium hover:opacity-70 transition-opacity">Sign In</button>
+                <button class="px-6 py-2 bg-primary text-on-primary font-bold rounded-lg scale-95 hover:scale-100 transition-transform duration-200">Join
+          Elite</button>
+            </div>
+        </div>
+    </nav>
+
+
+    <main>
+
+        <!-- ======= HERO / SEARCH ======= -->
+        <section style="background: #1b1b1d; padding: 72px 40px 64px; text-align: center;">
+            <div class="tag" style="background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); margin-bottom: 24px;">Support</div>
+            <h1 class="font-headline" style="font-size: 42px; font-weight: 800; color: white; letter-spacing: -0.03em; margin-bottom: 12px; line-height: 1.15;">Help Center</h1>
+            <p style="color: rgba(255,255,255,0.55); font-size: 15px; margin-bottom: 36px;">Find answers, guides, and everything you need to get the most out of the Academy.</p>
+            <div class="search-bar">
+                <span class="material-symbols-outlined" style="color: rgba(255,255,255,0.4); font-size:18px;">search</span>
+                <input type="text" placeholder="Search for topics, articles, billing…" id="search-input">
+            </div>
+            <p style="color: rgba(255,255,255,0.3); font-size: 12px; margin-top: 14px;">Popular: Enrollment, Certification, Refund Policy, Accessing Courses</p>
+        </section>
+
+        <!-- Breadcrumb -->
+        <div style="padding: 16px 40px; border-bottom: 1px solid #e4e2e4;" class="breadcrumb">
+            <a href="index.html">Home</a><span>›</span><span class="current">Help Center</span>
+        </div>
+
+        <!-- ======= CATEGORY CARDS ======= -->
+        <section style="padding: 64px 40px 48px;">
+            <div style="max-width: 960px; margin: 0 auto;">
+                <p style="font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #76777d; margin-bottom: 10px; font-weight: 500;">Browse by Topic</p>
+                <h2 class="font-headline" style="font-size: 28px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 32px;">How can we help?</h2>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #e4e2e4; border: 1px solid #e4e2e4;">
+
+                    <a href="#" class="category-card">
+                        <span class="material-symbols-outlined" style="color: #1b1b1d; margin-bottom: 16px; font-size: 24px;">rocket_launch</span>
+                        <h3 class="font-headline" style="font-size: 16px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em;">Getting Started</h3>
+                        <p style="font-size: 13px; color: #45464d; line-height: 1.6; margin-bottom: 14px;">New to the Academy? Learn how to create your account, explore the library, and enroll in your first curriculum.</p>
+                    </a>
+
+                    <a href="#" class="category-card">
+                        <span class="material-symbols-outlined" style="color: #1b1b1d; margin-bottom: 16px; font-size: 24px;">credit_card</span>
+                        <h3 class="font-headline" style="font-size: 16px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em;">Billing & Payments</h3>
+                        <p style="font-size: 13px; color: #45464d; line-height: 1.6; margin-bottom: 14px;">Manage your subscription, request refunds, update payment methods, and understand our pricing tiers.</p>
+                    </a>
+
+                    <a href="#" class="category-card">
+                        <span class="material-symbols-outlined" style="color: #1b1b1d; margin-bottom: 16px; font-size: 24px;">workspace_premium</span>
+                        <h3 class="font-headline" style="font-size: 16px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em;">Certifications</h3>
+                        <p style="font-size: 13px; color: #45464d; line-height: 1.6; margin-bottom: 14px;">Understand requirements, download your certificates, and learn how to share credentials with employers.</p>
+                    </a>
+
+                    <a href="#" class="category-card">
+                        <span class="material-symbols-outlined" style="color: #1b1b1d; margin-bottom: 16px; font-size: 24px;">play_circle</span>
+                        <h3 class="font-headline" style="font-size: 16px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em;">Courses & Content</h3>
+                        <p style="font-size: 13px; color: #45464d; line-height: 1.6; margin-bottom: 14px;">Access your enrolled curricula, download materials, and troubleshoot video playback issues.</p>
+                    </a>
+
+                    <a href="#" class="category-card">
+                        <span class="material-symbols-outlined" style="color: #1b1b1d; margin-bottom: 16px; font-size: 24px;">manage_accounts</span>
+                        <h3 class="font-headline" style="font-size: 16px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em;">Account & Profile</h3>
+                        <p style="font-size: 13px; color: #45464d; line-height: 1.6; margin-bottom: 14px;">Update your information, manage notifications, change your password, and configure privacy settings.</p>
+                    </a>
+
+                    <a href="#" class="category-card">
+                        <span class="material-symbols-outlined" style="color: #1b1b1d; margin-bottom: 16px; font-size: 24px;">build</span>
+                        <h3 class="font-headline" style="font-size: 16px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em;">Technical Issues</h3>
+                        <p style="font-size: 13px; color: #45464d; line-height: 1.6; margin-bottom: 14px;">Resolve common technical problems, browser compatibility, and connectivity issues on any device.</p>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ======= FAQ + CONTACT ======= -->
+        <section style="padding: 0 40px 72px;">
+            <div style="max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px;">
+
+                <!-- FAQ Accordion -->
+                <div>
+                    <p style="font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #76777d; margin-bottom: 10px; font-weight: 500;">Quick Answers</p>
+                    <h2 class="font-headline" style="font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 28px;">Frequently Asked</h2>
+
+                    <div class="accordion-item" style="border-top: 1px solid #e4e2e4;">
+                        <button class="accordion-btn" onclick="toggle(this)">
+            <span>How do I enroll in a curriculum?</span>
+            <span class="material-symbols-outlined icon" style="font-size:18px; color: #76777d;">add</span>
+          </button>
+                        <div class="accordion-content">
+                            <p>Navigate to the Library, select your desired curriculum, and click "Enroll Now." You'll be guided through the checkout process. Once payment is confirmed, the content is immediately accessible from your dashboard.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-btn" onclick="toggle(this)">
+            <span>What is the Elite Pass and how does it work?</span>
+            <span class="material-symbols-outlined icon" style="font-size:18px; color: #76777d;">add</span>
+          </button>
+                        <div class="accordion-content">
+                            <p>The Elite Pass is an annual subscription that unlocks access to every certification and curriculum in our library. It renews automatically each year and includes early access to new content, priority support, and exclusive
+                                community events.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-btn" onclick="toggle(this)">
+            <span>Can I get a refund after purchasing?</span>
+            <span class="material-symbols-outlined icon" style="font-size:18px; color: #76777d;">add</span>
+          </button>
+                        <div class="accordion-content">
+                            <p>We offer a 14-day refund window for all single-course purchases, provided you have completed less than 20% of the content. Elite Pass refunds are available within 7 days of initial purchase. Contact our support team to initiate
+                                the process.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-btn" onclick="toggle(this)">
+            <span>Do certifications expire?</span>
+            <span class="material-symbols-outlined icon" style="font-size:18px; color: #76777d;">add</span>
+          </button>
+                        <div class="accordion-content">
+                            <p>Certifications from The Editorial Academy do not expire. Once earned, they are permanently linked to your profile and available for download anytime. We recommend sharing them on LinkedIn using the verification link provided.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-btn" onclick="toggle(this)">
+            <span>Can I access courses on mobile devices?</span>
+            <span class="material-symbols-outlined icon" style="font-size:18px; color: #76777d;">add</span>
+          </button>
+                        <div class="accordion-content">
+                            <p>Yes. Our platform is fully responsive and optimized for mobile browsers. While we don't offer a native app, all course content, video lectures, and downloadable materials are accessible from any modern mobile browser.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Contact Support -->
+                <div>
+                    <p style="font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #76777d; margin-bottom: 10px; font-weight: 500;">Still Need Help?</p>
+                    <h2 class="font-headline" style="font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 28px;">Contact Support</h2>
+
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+
+                        <div class="contact-card">
+                            <div style="display: flex; align-items: flex-start; gap: 16px;">
+                                <span class="material-symbols-outlined" style="font-size: 22px; color: #1b1b1d; margin-top: 2px;">mail</span>
+                                <div>
+                                    <h3 class="font-headline" style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Email Support</h3>
+                                    <p style="font-size: 13px; color: #45464d; line-height: 1.6; margin-bottom: 12px;">Our team typically responds within 24 hours on weekdays. Best for detailed or billing-related inquiries.</p>
+                                    <a href="https://mail.google.com/mail/u/0/#inbox?compose=new" style="font-size: 13px; font-weight: 500; color: #1b1b1d; text-decoration: none; display: flex; align-items: center; gap: 4px;">Send a message <span class="material-symbols-outlined" style="font-size:14px;">arrow_forward</span></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: #f0edef; padding: 20px 24px;">
+                            <div style="display: flex; gap: 12px; align-items: flex-start;">
+                                <span class="material-symbols-outlined" style="font-size:18px; color: #735c00; margin-top: 2px;">star</span>
+                                <div>
+                                    <p style="font-size: 12px; font-weight: 600; color: #735c00; margin-bottom: 4px; font-family: 'Manrope', sans-serif;">Elite Members</p>
+                                    <p style="font-size: 13px; color: #45464d; line-height: 1.6;">Priority queue access with guaranteed 4-hour response during business hours.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ======= POPULAR ARTICLES ======= -->
+        <section style="background: #1b1b1d; padding: 52px 40px;">
+            <div style="max-width: 960px; margin: 0 auto;">
+                <p style="font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 10px; font-weight: 500;">Trending</p>
+                <h2 class="font-headline" style="font-size: 22px; font-weight: 700; color: white; letter-spacing: -0.02em; margin-bottom: 32px;">Popular Articles</h2>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;">
+
+                    <a class="popular-article-link" onclick="openArticle('getting-started'); return false;" href="#">
+                        <span class="dark-tag">Getting Started</span>
+                        <p>How to set up your learner profile from scratch</p>
+                    </a>
+
+                    <a class="popular-article-link" onclick="openArticle('billing'); return false;" href="#">
+                        <span class="dark-tag">Billing</span>
+                        <p>Understanding your invoice and payment schedule</p>
+                    </a>
+
+                    <a class="popular-article-link" onclick="openArticle('certifications'); return false;" href="#">
+                        <span class="dark-tag">Certifications</span>
+                        <p>Sharing your credential on LinkedIn and portfolios</p>
+                    </a>
+
+                    <a class="popular-article-link" onclick="openArticle('technical'); return false;" href="#">
+                        <span class="dark-tag">Technical</span>
+                        <p>Video not loading? Common fixes for all browsers</p>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ======= ARTICLE POPUP ======= -->
+    <div id="article-overlay" onclick="if(event.target===this)closeArticle()" style="display:none; position:fixed; inset:0; background:rgba(27,27,29,0.6); z-index:999; align-items:center; justify-content:center;">
+        <div style="background:#fcf8fa; width:540px; max-height:82vh; overflow-y:auto; border:1px solid #e4e2e4; display:flex; flex-direction:column;" id="article-popup">
+
+            <div id="article-header" style="background:#1b1b1d; padding:22px 28px; display:flex; justify-content:space-between; align-items:flex-start; position:sticky; top:0; z-index:2;">
+                <div>
+                    <div id="article-tag" style="font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.4); font-weight:500; margin-bottom:6px;"></div>
+                    <div id="article-title" class="font-headline" style="font-size:18px; font-weight:700; color:white; letter-spacing:-0.02em; line-height:1.3; max-width:400px;"></div>
+                </div>
+                <button onclick="closeArticle()" style="background:rgba(255,255,255,0.1); border:none; cursor:pointer; width:30px; height:30px; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.7); flex-shrink:0; margin-left:16px; transition:background 0.15s;"
+                    onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+        <span class="material-symbols-outlined" style="font-size:18px;">close</span>
+      </button>
+            </div>
+
+            <div id="article-body" style="padding:28px; flex:1; font-size:14px; color:#45464d; line-height:1.8;"></div>
+
+            <div style="border-top:1px solid #e4e2e4; padding:16px 28px; display:flex; justify-content:space-between; align-items:center; background:#fcf8fa; position:sticky; bottom:0;">
+                <a href="#" style="font-size:12px; color:#45464d; text-decoration:none; display:inline-flex; align-items:center; gap:4px;">View all articles <span class="material-symbols-outlined" style="font-size:13px;">arrow_forward</span></a>
+                <div style="display:flex; align-items:center; gap:8px; font-size:12px; color:#76777d;">
+                    Was this helpful?
+                    <button style="border:1px solid #e4e2e4; background:white; padding:4px 12px; font-size:12px; cursor:pointer; font-family:'Inter',sans-serif; color:#45464d; transition:border-color 0.15s;" onmouseover="this.style.borderColor='#1b1b1d'" onmouseout="this.style.borderColor='#e4e2e4'">Yes</button>
+                    <button style="border:1px solid #e4e2e4; background:white; padding:4px 12px; font-size:12px; cursor:pointer; font-family:'Inter',sans-serif; color:#45464d; transition:border-color 0.15s;" onmouseover="this.style.borderColor='#1b1b1d'" onmouseout="this.style.borderColor='#e4e2e4'">No</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ======= FOOTER ======= -->
+    <footer style="border-top: 1px solid #e4e2e4; padding: 48px 40px 32px; background: #fcf8fa;">
+        <div style="max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px;">
+            <div>
+                <p class="font-headline" style="font-size: 14px; font-weight: 700; margin-bottom: 10px;">The Editorial Academy</p>
+                <p style="font-size: 13px; color: #45464d; line-height: 1.7;">The premier institution for professional growth and editorial mastery in the digital age.</p>
+            </div>
+            <div>
+                <p style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #45464d; margin-bottom: 14px;">Learning</p>
+                <div style="display: flex; flex-direction: column; gap: 9px;">
+                    <a href="curricula.html" style="font-size: 13px; color: #45464d; text-decoration: none;">Curricula</a>
+                    <a href="instructors.html" style="font-size: 13px; color: #45464d; text-decoration: none;">Instructors</a>
+                    <a href="certifications.html" style="font-size: 13px; color: #45464d; text-decoration: none;">Certifications</a>
+                </div>
+            </div>
+            <div>
+                <p style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #45464d; margin-bottom: 14px;">Institution</p>
+                <div style="display: flex; flex-direction: column; gap: 9px;">
+                    <a href="about.html" style="font-size: 13px; color: #45464d; text-decoration: none;">About Us</a>
+                    <a href="careers.html" style="font-size: 13px; color: #45464d; text-decoration: none;">Careers</a>
+                    <a href="#" style="font-size: 13px; color: #45464d; text-decoration: none;">Press</a>
+                </div>
+            </div>
+            <div>
+                <p style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #45464d; margin-bottom: 14px;">Support</p>
+                <div style="display: flex; flex-direction: column; gap: 9px;">
+                    <a href="help-center.html" style="font-size: 13px; color: #1b1b1d; text-decoration: none; font-weight: 500;">Help Center</a>
+                    <a href="#" style="font-size: 13px; color: #45464d; text-decoration: none;">Privacy Policy</a>
+                    <a href="#" style="font-size: 13px; color: #45464d; text-decoration: none;">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+        <div style="border-top: 1px solid #e4e2e4; padding-top: 24px;">
+            <p style="font-size: 12px; color: #76777d;">© 2026 The Editorial Academy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="HelpCenterScript.js"></script>
+</body>
+
+</html>
