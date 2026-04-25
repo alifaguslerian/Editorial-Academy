@@ -303,6 +303,51 @@
             line-height: 1.6;
             font-weight: 500;
         }
+      
+        
+        .plus-btn {
+            background: none;
+            border: 1px solid #e4e2e4;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: border-color 0.2s;
+        }
+        
+        .plus-btn:hover {
+            border-color: #1b1b1d;
+        }
+        
+        .plus-btn.open {
+            border-color: #1b1b1d;
+        }
+        
+        .plus-btn.open .material-symbols-outlined {
+            transform: rotate(45deg);
+        }
+        
+        .card-expand {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .card-expand.open {
+            max-height: 120px;
+        }
+        
+        .card-expand-inner {
+            border-top: 1px solid #f0edef;
+            margin-top: 14px;
+            padding-top: 14px;
+            font-size: 13px;
+            color: #45464d;
+            line-height: 1.7;
+        }
     </style>
 </head>
 
@@ -356,45 +401,81 @@
         <!-- ======= CATEGORY CARDS ======= -->
         <section style="padding: 64px 40px 48px;">
             <div style="max-width: 960px; margin: 0 auto;">
-                <p style="font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #76777d; margin-bottom: 10px; font-weight: 500;">Browse by Topic</p>
                 <h2 class="font-headline" style="font-size: 28px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 32px;">How can we help?</h2>
+
                 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #e4e2e4; border: 1px solid #e4e2e4;">
 
-                    <a href="#" class="category-card">
-                        <span class="material-symbols-outlined" style="color: #1b1b1d; margin-bottom: 16px; font-size: 24px;">rocket_launch</span>
+                    <div class="category-card">
+                        <div style="display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:14px;">
+                            <span class="material-symbols-outlined" style="color:#1b1b1d; font-size:22px;">rocket_launch</span>
+                            <button class="plus-btn" onclick="expand(this)"><span class="material-symbols-outlined" style="font-size:16px; color:#76777d; transition:transform 0.3s;">add</span></button>
+                        </div>
                         <h3 class="font-headline" style="font-size: 16px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em;">Getting Started</h3>
-                        <p style="font-size: 13px; color: #45464d; line-height: 1.6; margin-bottom: 14px;">New to the Academy? Learn how to create your account, explore the library, and enroll in your first curriculum.</p>
-                    </a>
+                        <p style="font-size: 13px; color: #45464d; line-height: 1.6;">New to the Academy? Learn how to create your account and enroll.</p>
+                        <div class="card-expand">
+                            <div class="card-expand-inner">Create your account, complete your learner profile, and explore the full curriculum library. Everything you need to take your first step is right here.</div>
+                        </div>
+                    </div>
 
-                    <a href="#" class="category-card">
-                        <span class="material-symbols-outlined" style="color: #1b1b1d; margin-bottom: 16px; font-size: 24px;">credit_card</span>
+                    <div class="category-card">
+                        <div style="display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:14px;">
+                            <span class="material-symbols-outlined" style="color:#1b1b1d; font-size:22px;">credit_card</span>
+                            <button class="plus-btn" onclick="expand(this)"><span class="material-symbols-outlined" style="font-size:16px; color:#76777d; transition:transform 0.3s;">add</span></button>
+                        </div>
                         <h3 class="font-headline" style="font-size: 16px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em;">Billing & Payments</h3>
-                        <p style="font-size: 13px; color: #45464d; line-height: 1.6; margin-bottom: 14px;">Manage your subscription, request refunds, update payment methods, and understand our pricing tiers.</p>
-                    </a>
+                        <p style="font-size: 13px; color: #45464d; line-height: 1.6;">Manage your subscription, refunds, and payment methods.</p>
+                        <div class="card-expand">
+                            <div class="card-expand-inner">View and download invoices, request refunds within the eligible window, update your card details, or cancel your Elite Pass subscription at any time.</div>
+                        </div>
+                    </div>
 
-                    <a href="#" class="category-card">
-                        <span class="material-symbols-outlined" style="color: #1b1b1d; margin-bottom: 16px; font-size: 24px;">workspace_premium</span>
+                    <div class="category-card">
+                        <div style="display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:14px;">
+                            <span class="material-symbols-outlined" style="color:#1b1b1d; font-size:22px;">workspace_premium</span>
+                            <button class="plus-btn" onclick="expand(this)"><span class="material-symbols-outlined" style="font-size:16px; color:#76777d; transition:transform 0.3s;">add</span></button>
+                        </div>
                         <h3 class="font-headline" style="font-size: 16px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em;">Certifications</h3>
-                        <p style="font-size: 13px; color: #45464d; line-height: 1.6; margin-bottom: 14px;">Understand requirements, download your certificates, and learn how to share credentials with employers.</p>
-                    </a>
+                        <p style="font-size: 13px; color: #45464d; line-height: 1.6;">Download certificates and share your credentials with employers.</p>
+                        <div class="card-expand">
+                            <div class="card-expand-inner">Once you complete a curriculum, your certificate is issued instantly. Download it as a PDF, grab your verification URL, and add it directly to your LinkedIn profile.</div>
+                        </div>
+                    </div>
 
-                    <a href="#" class="category-card">
-                        <span class="material-symbols-outlined" style="color: #1b1b1d; margin-bottom: 16px; font-size: 24px;">play_circle</span>
+                    <div class="category-card">
+                        <div style="display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:14px;">
+                            <span class="material-symbols-outlined" style="color:#1b1b1d; font-size:22px;">play_circle</span>
+                            <button class="plus-btn" onclick="expand(this)"><span class="material-symbols-outlined" style="font-size:16px; color:#76777d; transition:transform 0.3s;">add</span></button>
+                        </div>
                         <h3 class="font-headline" style="font-size: 16px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em;">Courses & Content</h3>
-                        <p style="font-size: 13px; color: #45464d; line-height: 1.6; margin-bottom: 14px;">Access your enrolled curricula, download materials, and troubleshoot video playback issues.</p>
-                    </a>
+                        <p style="font-size: 13px; color: #45464d; line-height: 1.6;">Access your enrolled curricula and download materials.</p>
+                        <div class="card-expand">
+                            <div class="card-expand-inner">All enrolled courses are available from your dashboard. Downloadable materials, reading lists, and supplementary resources are found inside each individual lesson.</div>
+                        </div>
+                    </div>
 
-                    <a href="#" class="category-card">
-                        <span class="material-symbols-outlined" style="color: #1b1b1d; margin-bottom: 16px; font-size: 24px;">manage_accounts</span>
+                    <div class="category-card">
+                        <div style="display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:14px;">
+                            <span class="material-symbols-outlined" style="color:#1b1b1d; font-size:22px;">manage_accounts</span>
+                            <button class="plus-btn" onclick="expand(this)"><span class="material-symbols-outlined" style="font-size:16px; color:#76777d; transition:transform 0.3s;">add</span></button>
+                        </div>
                         <h3 class="font-headline" style="font-size: 16px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em;">Account & Profile</h3>
-                        <p style="font-size: 13px; color: #45464d; line-height: 1.6; margin-bottom: 14px;">Update your information, manage notifications, change your password, and configure privacy settings.</p>
-                    </a>
+                        <p style="font-size: 13px; color: #45464d; line-height: 1.6;">Update your info, password, and notification settings.</p>
+                        <div class="card-expand">
+                            <div class="card-expand-inner">Edit your display name, profile photo, and bio. Change your email or password under Security. Configure what notifications you receive and how often.</div>
+                        </div>
+                    </div>
 
-                    <a href="#" class="category-card">
-                        <span class="material-symbols-outlined" style="color: #1b1b1d; margin-bottom: 16px; font-size: 24px;">build</span>
+                    <div class="category-card">
+                        <div style="display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:14px;">
+                            <span class="material-symbols-outlined" style="color:#1b1b1d; font-size:22px;">build</span>
+                            <button class="plus-btn" onclick="expand(this)"><span class="material-symbols-outlined" style="font-size:16px; color:#76777d; transition:transform 0.3s;">add</span></button>
+                        </div>
                         <h3 class="font-headline" style="font-size: 16px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em;">Technical Issues</h3>
-                        <p style="font-size: 13px; color: #45464d; line-height: 1.6; margin-bottom: 14px;">Resolve common technical problems, browser compatibility, and connectivity issues on any device.</p>
-                    </a>
+                        <p style="font-size: 13px; color: #45464d; line-height: 1.6;">Resolve browser, connectivity, and playback problems.</p>
+                        <div class="card-expand">
+                            <div class="card-expand-inner">If something isn't working, try a hard refresh first. We support Chrome, Firefox, Safari, and Edge. For persistent issues, reach out via Live Chat with your browser and OS details.</div>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -426,7 +507,8 @@
           </button>
                         <div class="accordion-content">
                             <p>The Elite Pass is an annual subscription that unlocks access to every certification and curriculum in our library. It renews automatically each year and includes early access to new content, priority support, and exclusive
-                                community events.</p>
+                                community events.
+                            </p>
                         </div>
                     </div>
 

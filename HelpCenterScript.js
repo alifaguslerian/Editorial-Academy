@@ -1,3 +1,4 @@
+//FAQ Accordion 
 function toggle(btn) {
     const content = btn.nextElementSibling;
     const isOpen = btn.classList.contains('open');
@@ -9,6 +10,15 @@ function toggle(btn) {
         btn.classList.add('open');
         content.classList.add('open');
     }
+}
+
+// Category 
+function expand(btn) {
+    const card = btn.closest('.category-card');
+    const content = card.querySelector('.card-expand');
+    const isOpen = btn.classList.contains('open');
+    btn.classList.toggle('open', !isOpen);
+    content.classList.toggle('open', !isOpen);
 }
 
 document.getElementById('search-input').addEventListener('keydown', function(e) {
