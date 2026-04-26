@@ -110,3 +110,105 @@ function closeArticle() {
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeArticle();
 });
+
+//Search functionality
+
+const searchData = [
+    { title: "Getting Started", desc: "Create your account, complete your learner profile, and explore the full curriculum library.", target: "cat-getting-started", type: "Category" },
+    { title: "Billing & Payments", desc: "View invoices, request refunds, update your card details, or cancel your Elite Pass.", target: "cat-billing", type: "Category" },
+    { title: "Certifications", desc: "Download certificates, grab your verification URL, and add it to LinkedIn.", target: "cat-certifications", type: "Category" },
+    { title: "Courses & Content", desc: "Access enrolled curricula, download materials and reading lists.", target: "cat-courses", type: "Category" },
+    { title: "Account & Profile", desc: "Edit display name, photo, bio, email, password, and notification settings.", target: "cat-account", type: "Category" },
+    { title: "Technical Issues", desc: "Hard refresh, supported browsers, connectivity and playback fixes.", target: "cat-technical", type: "Category" },
+    { title: "How do I enroll in a curriculum?", desc: "Navigate to the Library, select your curriculum, and click Enroll Now.", target: "faq-1", type: "FAQ" },
+    { title: "What is the Elite Pass?", desc: "Annual subscription unlocking every certification and curriculum.", target: "faq-2", type: "FAQ" },
+    { title: "Can I get a refund?", desc: "14-day refund window for single courses with less than 20% completion.", target: "faq-3", type: "FAQ" },
+    { title: "Do certifications expire?", desc: "No, certifications are permanent and always available for download.", target: "faq-4", type: "FAQ" },
+    { title: "Can I access courses on mobile?", desc: "Yes, all content is accessible from any modern mobile browser.", target: "faq-5", type: "FAQ" },
+];
+
+const input = document.getElementById('search-input');
+
+// Buat dropdown
+const dropdown = document.createElement('div');
+dropdown.id = 'search-dropdown';
+dropdown.style.cssText = `
+  position: absolute; top: calc(100% + 8px); left: 0; right: 0;
+  background: white; border: 1px solid #e4e2e4;
+  max-height: 320px; overflow-y: auto;
+  display: none; z-index: 100; text-align: left;
+`;
+input.closest('.search-bar').style.position = 'relative';
+input.closest('.search-bar').appendChild(dropdown);
+
+input.addEventListener('input', function() {
+    const q = this.value.trim().toLowerCase();
+    dropdown.innerHTML = '';
+
+    if (!q) { dropdown.style.display = 'none'; return; }
+
+    const results = searchData.filter(item =>
+        item.title.toLowerCase().includes(q) ||
+        item.desc.toLowerCase().includes(q)
+    );
+
+    if (!results.length) {
+        dropdown.innerHTML = `<div style="padding:16px 20px; font-size:13px; color:#76777d; font-family:'Inter',sans-serif;">No results for "<strong style="color:#1b1b1d;">${this.value}</strong>"</div>`;
+        dropdown.style.display = 'block';
+        return;
+    }
+
+    results.forEach(item => {
+        const el = document.createElement('div');
+        el.style.cssText = 'padding:14px 20px; cursor:pointer; border-bottom:1px solid #f0edef; transition:background 0.15s;';
+        el.innerHTML = `
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:3px;">
+        <span style="font-size:10px; font-family:\'Inter\',sans-serif; letter-spacing:0.08em; text-transform:uppercase; background:#f0edef; color:#45464d; padding:2px 8px; font-weight:500;">${item.type}</span>
+        <span style="font-size:14px; font-weight:500; color:#1b1b1d; font-family:\'Inter\',sans-serif;">${item.title}</span>
+      </div>
+      <div style="font-size:12px; color:#76777d; line-height:1.5; padding-left:2px; font-family:\'Inter\',sans-serif;">${item.desc}</div>
+    `;
+        el.onmouseover = () => el.style.background = '#f6f3f5';
+        el.onmouseout = () => el.style.background = 'white';
+        el.onclick = () => {
+            const target = document.getElementById(item.target);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                // Kalau FAQ, auto-open accordion-nya
+                if (item.type === 'FAQ') {
+                    const btn = target.querySelector('.accordion-btn');
+                    if (btn && !btn.classList.contains('open')) btn.click();
+                }
+                // Kalau Category, auto-open expand-nya
+                if (item.type === 'Category') {
+                    const plusBtn = target.querySelector('.plus-btn');
+                    if (plusBtn && !plusBtn.classList.contains('open')) plusBtn.click();
+                }
+                // Highlight sebentar
+                target.style.transition = 'outline 0s';
+                target.style.outline = '2px solid #1b1b1d';
+                setTimeout(() => target.style.outline = 'none', 1500);
+            }
+            dropdown.style.display = 'none';
+            input.value = item.title;
+        };
+        dropdown.appendChild(el);
+    });
+
+    dropdown.style.display = 'block';
+});
+
+// Tutup dropdown kalau klik di luar
+document.addEventListener('click', (e) => {
+    if (!input.closest('.search-bar').contains(e.target)) {
+        dropdown.style.display = 'none';
+    }
+});
+
+// Enter = pilih hasil pertama
+input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        const first = dropdown.querySelector('div');
+        if (first) first.click();
+    }
+});
