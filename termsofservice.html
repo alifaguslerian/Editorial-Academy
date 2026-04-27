@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service | The Editorial Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:      #f9f8f6;
+      --surface: #ffffff;
+      --surf2:   #f3f2ef;
+      --ink:     #111110;
+      --ink2:    #3d3d3a;
+      --ink3:    #78776e;
+      --ink4:    #b0aea5;
+      --border:  #e4e3de;
+      --border2: #d0cec7;
+      --serif:   'Instrument Serif', Georgia, serif;
+      --sans:    'Plus Jakarta Sans', system-ui, sans-serif;
+      --nav-h:   64px;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--ink2); font-family: var(--sans); font-weight: 400; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 99; height: var(--nav-h); background: rgba(249,248,246,0.94); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); display: flex; align-items: center; padding: 0 2.5rem; gap: 2rem; }
+    .nav-logo { font-family: var(--sans); font-size: 0.88rem; font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; flex-shrink: 0; line-height: 1.25; }
+    .nav-logo span { display: block; }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; flex: 1; justify-content: center; }
+    .nav-links a { font-size: 0.82rem; font-weight: 500; color: var(--ink3); text-decoration: none; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-right { display: flex; align-items: center; gap: 0.4rem; flex-shrink: 0; }
+    .nav-icon { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--ink3); cursor: pointer; transition: background 0.15s, color 0.15s; }
+    .nav-icon:hover { background: var(--surf2); color: var(--ink); }
+    .nav-icon .material-icons { font-size: 20px; }
+    .nav-div { width: 1px; height: 20px; background: var(--border2); margin: 0 0.4rem; }
+    .btn-in { font-size: 0.82rem; font-weight: 500; color: var(--ink2); text-decoration: none; padding: 0.4rem 0.8rem; border-radius: 6px; transition: background 0.15s; }
+    .btn-in:hover { background: var(--surf2); }
+    .btn-join { font-size: 0.82rem; font-weight: 600; background: var(--ink); color: #fff; text-decoration: none; padding: 0.45rem 1rem; border-radius: 6px; transition: opacity 0.15s; }
+    .btn-join:hover { opacity: 0.82; }
+
+    /* PAGE HEADER */
+    .page-header { margin-top: var(--nav-h); padding: 3.5rem 2.5rem 2.5rem; border-bottom: 1px solid var(--border); background: var(--surface); }
+    .ph-inner { max-width: 1080px; margin: 0 auto; }
+    .breadcrumb { display: flex; align-items: center; gap: 0.3rem; font-size: 0.78rem; color: var(--ink3); margin-bottom: 1.4rem; }
+    .breadcrumb a { color: var(--ink3); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--ink); text-decoration: underline; }
+    .breadcrumb .material-icons { font-size: 14px; }
+    .page-header h1 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; color: var(--ink); letter-spacing: -0.02em; line-height: 1.1; }
+    .page-header h1 em { font-style: italic; }
+    .meta-row { display: flex; flex-wrap: wrap; gap: 2.2rem; margin-top: 1.8rem; padding-top: 1.6rem; border-top: 1px solid var(--border); }
+    .meta-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink4); margin-bottom: 0.2rem; }
+    .meta-value { font-size: 0.85rem; color: var(--ink2); font-weight: 500; }
+
+    /* LAYOUT */
+    .layout { display: grid; grid-template-columns: 236px 1fr; max-width: 1080px; margin: 0 auto; padding: 0 2.5rem; }
+
+    /* SIDEBAR */
+    .sidebar { padding: 2.5rem 1.8rem 2.5rem 0; border-right: 1px solid var(--border); position: sticky; top: var(--nav-h); height: fit-content; align-self: start; }
+    .toc-title { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink4); margin-bottom: 0.8rem; }
+    .toc-list { list-style: none; }
+    .toc-list a { display: block; font-size: 0.81rem; color: var(--ink3); text-decoration: none; padding: 0.3rem 0.55rem; border-radius: 5px; transition: all 0.15s; line-height: 1.4; }
+    .toc-list a:hover, .toc-list a.active { background: var(--surf2); color: var(--ink); }
+    .toc-list a.active { font-weight: 500; }
+    .toc-sep { height: 1px; background: var(--border); margin: 0.55rem 0.55rem; }
+
+    /* CONTENT */
+    .content { padding: 2.5rem 0 5rem 3rem; }
+    .preamble { background: var(--surf2); border: 1px solid var(--border); border-radius: 10px; padding: 1.3rem 1.6rem; margin-bottom: 2.8rem; display: flex; gap: 0.9rem; align-items: flex-start; }
+    .preamble .material-icons { font-size: 19px; color: var(--ink3); margin-top: 0.1rem; flex-shrink: 0; }
+    .preamble p { font-size: 0.86rem; color: var(--ink3); line-height: 1.7; }
+
+    /* SECTIONS */
+    .section { padding-bottom: 2.8rem; margin-bottom: 2.8rem; border-bottom: 1px solid var(--border); }
+    .section:last-child { border-bottom: none; padding-bottom: 0; }
+    .sec-num { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 6px; background: var(--surf2); border: 1px solid var(--border); font-size: 0.65rem; font-weight: 700; color: var(--ink3); margin-bottom: 0.75rem; }
+    .section h2 { font-family: var(--serif); font-size: 1.45rem; font-weight: 400; font-style: italic; color: var(--ink); margin-bottom: 1.1rem; line-height: 1.2; letter-spacing: -0.01em; }
+    .section p { font-size: 0.875rem; color: var(--ink3); margin-bottom: 0.85rem; line-height: 1.8; }
+    .section p:last-child { margin-bottom: 0; }
+    .section p strong { color: var(--ink2); font-weight: 600; }
+    .section ul, .section ol { margin: 0.75rem 0 0.85rem 1.15rem; }
+    .section li { font-size: 0.875rem; color: var(--ink3); margin-bottom: 0.5rem; line-height: 1.75; }
+    .section li::marker { color: var(--ink4); }
+    .callout { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--ink); border-radius: 0 8px 8px 0; padding: 1rem 1.3rem; margin: 1.1rem 0; }
+    .callout p { font-size: 0.85rem; margin-bottom: 0 !important; }
+    .callout strong { color: var(--ink2); font-weight: 600; }
+
+    /* DEF GRID */
+    .def-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin: 1.1rem 0; }
+    .def-item { background: var(--surface); padding: 0.95rem 1.15rem; }
+    .def-term { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink2); margin-bottom: 0.3rem; }
+    .def-desc { font-size: 0.82rem; color: var(--ink3); line-height: 1.6; }
+
+    /* CONTACT */
+    .contact-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem 1.7rem; margin-top: 1.1rem; }
+    .contact-card h3 { font-size: 0.87rem; font-weight: 600; color: var(--ink); margin-bottom: 0.9rem; }
+    .contact-row { display: flex; gap: 2.2rem; flex-wrap: wrap; }
+    .contact-col dt { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink4); margin-bottom: 0.2rem; }
+    .contact-col dd { font-size: 0.83rem; color: var(--ink3); line-height: 1.6; }
+    .contact-col dd a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
+
+    /* CTA */
+    .cta-strip { background: var(--ink); border-radius: 10px; padding: 2rem 2.2rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin-top: 3rem; flex-wrap: wrap; }
+    .cta-strip p { font-size: 0.86rem; color: rgba(255,255,255,0.65); }
+    .cta-strip strong { display: block; font-size: 1rem; color: #fff; margin-bottom: 0.2rem; }
+    .cta-strip a { font-size: 0.82rem; font-weight: 600; background: #fff; color: var(--ink); padding: 0.5rem 1.2rem; border-radius: 6px; text-decoration: none; white-space: nowrap; transition: opacity 0.15s; display: flex; align-items: center; gap: 0.3rem; }
+    .cta-strip a:hover { opacity: 0.88; }
+    .cta-strip a .material-icons { font-size: 16px; }
+
+    /* FOOTER */
+    footer { background: var(--surface); border-top: 1px solid var(--border); padding: 3rem 2.5rem 2rem; }
+    .footer-inner { max-width: 1080px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; padding-bottom: 2.2rem; border-bottom: 1px solid var(--border); }
+    .footer-logo { font-size: 0.87rem; font-weight: 700; color: var(--ink); display: block; margin-bottom: 0.55rem; }
+    .footer-brand p { font-size: 0.82rem; color: var(--ink3); line-height: 1.65; }
+    .footer-col h5 { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); margin-bottom: 0.85rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.45rem; }
+    .footer-col a { font-size: 0.83rem; color: var(--ink3); text-decoration: none; transition: color 0.15s; }
+    .footer-col a:hover { color: var(--ink); }
+    .footer-col a.cur { color: var(--ink); font-weight: 500; }
+    .footer-bottom { display: flex; justify-content: space-between; padding-top: 1.4rem; flex-wrap: wrap; gap: 0.4rem; }
+    .footer-bottom p { font-size: 0.77rem; color: var(--ink4); }
+
+    /* RESPONSIVE */
+    @media (max-width: 820px) {
+      nav { padding: 0 1.2rem; }
+      .nav-links { display: none; }
+      .page-header { padding: 2.5rem 1.2rem 2rem; }
+      .layout { grid-template-columns: 1fr; padding: 0 1.2rem; }
+      .sidebar { display: none; }
+      .content { padding: 2rem 0 3rem; }
+      .def-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .cta-strip { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://editorial-academy.vercel.app/index.html" class="nav-logo">
+    <span>The Editorial</span>
+    <span>Academy</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://editorial-academy.vercel.app/curricula.html">Curricula</a></li>
+    <li><a href="https://editorial-academy.vercel.app/library.html">Library</a></li>
+    <li><a href="https://editorial-academy.vercel.app/instructors.html">Instructors</a></li>
+    <li><a href="https://editorial-academy.vercel.app/certifications.html">Certifications</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="nav-icon"><span class="material-icons">shopping_cart</span></div>
+    <div class="nav-icon"><span class="material-icons">notifications</span></div>
+    <div class="nav-div"></div>
+    <a href="#" class="btn-in">Sign In</a>
+    <a href="#" class="btn-join">Join Elite</a>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="ph-inner">
+    <nav class="breadcrumb" aria-label="breadcrumb">
+      <a href="https://editorial-academy.vercel.app/index.html">Home</a>
+      <span class="material-icons">chevron_right</span>
+      <span>Terms of Service</span>
+    </nav>
+    <h1>Terms of <em>Service</em></h1>
+    <div class="meta-row">
+      <div class="meta-item">
+        <div class="meta-label">Effective Date</div>
+        <div class="meta-value">January 1, 2026</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Last Updated</div>
+        <div class="meta-value">April 27, 2026</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Version</div>
+        <div class="meta-value">2.4</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Governing Law</div>
+        <div class="meta-value">Republic of Indonesia</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <p class="toc-title">On this page</p>
+    <ul class="toc-list">
+      <li><a href="#acceptance">1. Acceptance of Terms</a></li>
+      <li><a href="#definitions">2. Definitions</a></li>
+      <li><a href="#eligibility">3. Eligibility</a></li>
+      <li><a href="#account">4. Account &amp; Membership</a></li>
+      <li><a href="#enrollment">5. Course Enrollment</a></li>
+      <li><a href="#payment">6. Payment &amp; Billing</a></li>
+      <div class="toc-sep"></div>
+      <li><a href="#ip">7. Intellectual Property</a></li>
+      <li><a href="#conduct">8. User Conduct</a></li>
+      <li><a href="#certificates">9. Certifications</a></li>
+      <li><a href="#privacy">10. Privacy &amp; Data</a></li>
+      <div class="toc-sep"></div>
+      <li><a href="#disclaimer">11. Disclaimer</a></li>
+      <li><a href="#limitation">12. Limitation of Liability</a></li>
+      <li><a href="#termination">13. Termination</a></li>
+      <li><a href="#changes">14. Changes to Terms</a></li>
+      <li><a href="#contact">15. Contact</a></li>
+    </ul>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <div class="preamble">
+      <span class="material-icons">info</span>
+      <p>Welcome to The Editorial Academy. These Terms of Service govern your access to and use of our platform, curricula, digital resources, and all related services. By registering or using any part of The Editorial Academy, you agree to be bound by these Terms in their entirety. Please read them carefully before proceeding.</p>
+    </div>
+
+    <div class="section" id="acceptance">
+      <div class="sec-num">01</div>
+      <h2>Acceptance of Terms</h2>
+      <p>By accessing or using The Editorial Academy's platform, website, or any associated services (collectively, the "Platform"), you affirm that you have read, understood, and agree to be bound by these Terms of Service ("Terms"), our Privacy Policy, and any additional guidelines incorporated herein by reference.</p>
+      <p>If you are accessing the Platform on behalf of an organization or legal entity, you represent that you have the authority to bind that entity to these Terms. In such cases, "you" and "your" shall refer to that entity.</p>
+      <p>If you do not agree to these Terms, you must immediately discontinue use of the Platform and refrain from creating or accessing any account.</p>
+    </div>
+
+    <div class="section" id="definitions">
+      <div class="sec-num">02</div>
+      <h2>Definitions</h2>
+      <p>For purposes of these Terms, the following definitions apply:</p>
+      <div class="def-grid">
+        <div class="def-item">
+          <div class="def-term">Platform</div>
+          <div class="def-desc">The Editorial Academy website, learning management system, and all associated digital infrastructure.</div>
+        </div>
+        <div class="def-item">
+          <div class="def-term">Content</div>
+          <div class="def-desc">All materials available through the Platform, including video lessons, written modules, assessments, and downloadable assets.</div>
+        </div>
+        <div class="def-item">
+          <div class="def-term">User / Member</div>
+          <div class="def-desc">Any individual who registers for, accesses, or uses the Platform — free visitor, enrolled student, or Elite Pass holder.</div>
+        </div>
+        <div class="def-item">
+          <div class="def-term">Instructor</div>
+          <div class="def-desc">Subject-matter experts who create and deliver curricula through the Platform under agreement with The Editorial Academy.</div>
+        </div>
+        <div class="def-item">
+          <div class="def-term">Elite Pass</div>
+          <div class="def-desc">The premium annual membership tier granting unlimited access to all certifications, curricula, and exclusive member resources.</div>
+        </div>
+        <div class="def-item">
+          <div class="def-term">Certification</div>
+          <div class="def-desc">A digital credential issued upon successful completion of a designated curriculum and associated assessments.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="eligibility">
+      <div class="sec-num">03</div>
+      <h2>Eligibility</h2>
+      <p>To register for and use the Platform, you must:</p>
+      <ul>
+        <li>Be at least 17 years of age, or the age of majority in your jurisdiction, whichever is greater;</li>
+        <li>Possess the legal capacity to enter into a binding agreement;</li>
+        <li>Not be prohibited from accessing the Platform under applicable local, national, or international law;</li>
+        <li>Provide accurate, complete, and current information during registration and maintain such information throughout your membership.</li>
+      </ul>
+      <p>The Editorial Academy reserves the right to refuse access to any individual who does not satisfy these requirements or who provides false information during registration.</p>
+    </div>
+
+    <div class="section" id="account">
+      <div class="sec-num">04</div>
+      <h2>Account &amp; Membership</h2>
+      <p>Upon successful registration, you will be issued a personal account ("Account") granting you access to the Platform. You are solely responsible for:</p>
+      <ul>
+        <li>Maintaining the strict confidentiality of your login credentials, including your password;</li>
+        <li>All activities conducted under your Account, whether or not authorized by you;</li>
+        <li>Notifying The Editorial Academy immediately at <strong>security@editorialacademy.com</strong> upon suspecting unauthorized Account use;</li>
+        <li>Ensuring your account information remains accurate and up-to-date.</li>
+      </ul>
+      <div class="callout">
+        <p><strong>Important:</strong> Your Account is strictly personal and non-transferable. You may not share login credentials, sell your Account, or permit any third party to access the Platform using your details. Violation of this provision may result in immediate suspension or termination without refund.</p>
+      </div>
+    </div>
+
+    <div class="section" id="enrollment">
+      <div class="sec-num">05</div>
+      <h2>Course Enrollment &amp; Access</h2>
+      <p>Upon completing enrollment for a specific curriculum or obtaining an Elite Pass, you are granted a limited, personal, non-exclusive, and non-transferable license to access and engage with the relevant Content for educational purposes.</p>
+      <p>Unless otherwise stated at the time of purchase:</p>
+      <ul>
+        <li>Individually purchased curricula grant <strong>lifetime access</strong> to the specific Content as it exists at enrollment, subject to reasonable updates;</li>
+        <li>Elite Pass membership grants access to all available Content for the duration of the active subscription period;</li>
+        <li>Access is subject to continued Platform operation and availability of internet connectivity.</li>
+      </ul>
+      <p>The Editorial Academy reserves the right to modify, retire, or discontinue specific Content with reasonable notice to enrolled users where practicable.</p>
+    </div>
+
+    <div class="section" id="payment">
+      <div class="sec-num">06</div>
+      <h2>Payment &amp; Billing</h2>
+      <p>All fees are stated in United States Dollars (USD) unless otherwise indicated. By submitting payment information, you authorize The Editorial Academy to charge the applicable fees to your designated payment method.</p>
+      <p><strong>Elite Pass Subscriptions</strong> are billed annually and renew automatically unless cancelled at least 48 hours prior to renewal. You may manage or cancel at any time via Account settings.</p>
+      <p><strong>Refund Policy:</strong></p>
+      <ul>
+        <li>Individual curricula: Full refund available within 14 days of purchase, provided less than 20% of Content has been accessed;</li>
+        <li>Elite Pass: Refunds available within 7 days of initial purchase or renewal date;</li>
+        <li>Promotional or discounted purchases may be subject to separate terms disclosed at the time of sale.</li>
+      </ul>
+      <p>All applicable taxes are the sole responsibility of the user per the laws of their respective jurisdiction.</p>
+    </div>
+
+    <div class="section" id="ip">
+      <div class="sec-num">07</div>
+      <h2>Intellectual Property</h2>
+      <p>All Content, trademarks, logos, curricula, videos, written works, design elements, and software comprising the Platform are the exclusive intellectual property of The Editorial Academy, its Instructors, or their respective licensors.</p>
+      <p>Your enrollment does not transfer any intellectual property rights. You expressly agree not to:</p>
+      <ul>
+        <li>Copy, reproduce, distribute, or publicly display any Content without prior written authorization;</li>
+        <li>Create derivative works based on Platform Content;</li>
+        <li>Use any Content for commercial purposes or on behalf of a third party;</li>
+        <li>Remove, alter, or obscure any copyright, trademark, or proprietary rights notices;</li>
+        <li>Reverse engineer or decompile any software components of the Platform.</li>
+      </ul>
+      <p>Unauthorized use of Platform Content constitutes a material breach of these Terms and may result in civil or criminal liability under applicable intellectual property law.</p>
+    </div>
+
+    <div class="section" id="conduct">
+      <div class="sec-num">08</div>
+      <h2>User Conduct</h2>
+      <p>You agree to use the Platform solely for lawful, educational purposes consistent with these Terms and all applicable laws. You expressly agree not to:</p>
+      <ul>
+        <li>Engage in conduct that is disruptive, offensive, harassing, or harmful to other users or the Platform's integrity;</li>
+        <li>Submit false, misleading, or defamatory information in any form;</li>
+        <li>Upload or transmit malicious software or code designed to interfere with the Platform;</li>
+        <li>Attempt to gain unauthorized access to any part of the Platform or other users' accounts;</li>
+        <li>Engage in data mining, scraping, or automated data collection without express written consent;</li>
+        <li>Use the Platform to distribute unsolicited commercial communications or spam.</li>
+      </ul>
+      <div class="callout">
+        <p>The Editorial Academy upholds the highest standards of academic integrity. Evidence of <strong>plagiarism, content piracy, or academic dishonesty</strong> in assessments or certifications will result in immediate Account suspension and invalidation of all associated credentials.</p>
+      </div>
+    </div>
+
+    <div class="section" id="certificates">
+      <div class="sec-num">09</div>
+      <h2>Certifications &amp; Credentials</h2>
+      <p>Upon satisfying all requirements of a designated curriculum — including modules, assessments, and any practical components — you may receive a digital Certificate of Completion.</p>
+      <p>You acknowledge and agree that:</p>
+      <ul>
+        <li>Certificates are educational credentials and do not constitute professional licenses, regulatory qualifications, or guarantees of employment;</li>
+        <li>The Editorial Academy reserves the right to revoke any Certificate in the event of verified academic dishonesty, misrepresentation, or breach of these Terms;</li>
+        <li>Certificates remain the intellectual property of The Editorial Academy and are issued under a limited, non-exclusive license for the personal use of the recipient.</li>
+      </ul>
+    </div>
+
+    <div class="section" id="privacy">
+      <div class="sec-num">10</div>
+      <h2>Privacy &amp; Data</h2>
+      <p>The collection, use, and protection of your personal data are governed by The Editorial Academy's Privacy Policy, which is incorporated into these Terms by reference and forms an integral part thereof.</p>
+      <p>By using the Platform, you consent to the collection and processing of your data in accordance with the Privacy Policy. The Editorial Academy complies with applicable data protection legislation, including Indonesia's Personal Data Protection Law (UU PDP) No. 27 of 2022 and, where applicable, the EU's General Data Protection Regulation (GDPR).</p>
+    </div>
+
+    <div class="section" id="disclaimer">
+      <div class="sec-num">11</div>
+      <h2>Disclaimer of Warranties</h2>
+      <p>The Platform and all Content are provided on an "as is" and "as available" basis, without warranties of any kind, either express or implied. To the fullest extent permitted by applicable law, The Editorial Academy expressly disclaims all warranties, including:</p>
+      <ul>
+        <li>Implied warranties of merchantability, fitness for a particular purpose, and non-infringement;</li>
+        <li>Warranties that the Platform will be uninterrupted, error-free, or free of harmful components;</li>
+        <li>Warranties regarding the accuracy, completeness, or currency of any Content.</li>
+      </ul>
+    </div>
+
+    <div class="section" id="limitation">
+      <div class="sec-num">12</div>
+      <h2>Limitation of Liability</h2>
+      <p>To the maximum extent permitted by applicable law, The Editorial Academy, its directors, officers, employees, instructors, and affiliates shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of your use of, or inability to use, the Platform or its Content.</p>
+      <p>In no event shall The Editorial Academy's aggregate liability to you exceed the total amount paid by you in the twelve (12) months immediately preceding the event giving rise to such liability.</p>
+    </div>
+
+    <div class="section" id="termination">
+      <div class="sec-num">13</div>
+      <h2>Suspension &amp; Termination</h2>
+      <p>The Editorial Academy reserves the right to suspend or terminate your Account and access to the Platform at any time, with or without notice, for any conduct determined to be in violation of these Terms or otherwise harmful to the Platform or its users.</p>
+      <p>You may terminate your Account at any time by contacting our support team. Upon termination, Sections 7, 11, and 12 shall survive and continue to bind both parties.</p>
+    </div>
+
+    <div class="section" id="changes">
+      <div class="sec-num">14</div>
+      <h2>Changes to These Terms</h2>
+      <p>The Editorial Academy reserves the right to modify these Terms at any time. When material changes are made, notice will be provided by posting prominently on the Platform, emailing your registered address, or updating the "Last Updated" date at the top of this document.</p>
+      <p>Your continued use of the Platform following the effective date of any revised Terms constitutes your acceptance of those modifications. If you do not agree, you must cease using the Platform prior to the effective date of the changes.</p>
+    </div>
+
+    <div class="section" id="contact">
+      <div class="sec-num">15</div>
+      <h2>Contact &amp; Governing Law</h2>
+      <p>These Terms are governed by and construed in accordance with the laws of the Republic of Indonesia. Any dispute arising under these Terms shall be subject to the exclusive jurisdiction of the courts in Jakarta, Indonesia.</p>
+      <div class="contact-card">
+        <h3>The Editorial Academy — Legal &amp; Compliance</h3>
+        <div class="contact-row">
+          <dl class="contact-col">
+            <dt>Address</dt>
+            <dd>Jl. Sudirman No. 88, Jakarta Pusat<br>10220, Republic of Indonesia</dd>
+          </dl>
+          <dl class="contact-col">
+            <dt>Legal Inquiries</dt>
+            <dd><a href="mailto:legal@editorialacademy.com">legal@editorialacademy.com</a></dd>
+          </dl>
+          <dl class="contact-col">
+            <dt>General Support</dt>
+            <dd><a href="mailto:support@editorialacademy.com">support@editorialacademy.com</a></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-strip">
+      <div>
+        <strong>Still have questions?</strong>
+        <p>Our support team is available to help with any queries regarding these Terms.</p>
+      </div>
+      <a href="https://editorial-academy.vercel.app/HelpCenter.html">
+        Visit Help Center <span class="material-icons">arrow_forward</span>
+      </a>
+    </div>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="footer-logo">The Editorial Academy</span>
+        <p>The premier institution for professional growth and editorial mastery in the digital age.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Learning</h5>
+        <ul>
+          <li><a href="https://editorial-academy.vercel.app/curricula.html">Curricula</a></li>
+          <li><a href="https://editorial-academy.vercel.app/library.html">Library</a></li>
+          <li><a href="https://editorial-academy.vercel.app/instructors.html">Instructors</a></li>
+          <li><a href="https://editorial-academy.vercel.app/certifications.html">Certifications</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Institution</h5>
+        <ul>
+          <li><a href="https://editorial-academy.vercel.app/about.html">About Us</a></li>
+          <li><a href="https://editorial-academy.vercel.app/careers.html">Careers</a></li>
+          <li><a href="https://editorial-academy.vercel.app/press.html">Press</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <ul>
+          <li><a href="https://editorial-academy.vercel.app/HelpCenter.html">Help Center</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#" class="cur">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 The Editorial Academy. All rights reserved.</p>
+      <p>Governing Law: Republic of Indonesia</p>
+    </div>
+  </div>
+</footer>
+
+<script src="tos.js"></script>
+</body>
+</html>
