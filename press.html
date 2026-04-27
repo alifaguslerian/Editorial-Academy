@@ -82,136 +82,80 @@
             font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 0, "opsz" 24;
             vertical-align: middle;
         }
-        
-        body {
-            animation: pageFadeIn 0.4s ease forwards;
-        }
-        
-        @keyframes pageFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(8px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        /* ── Hero divider line animation ── */
-        
-        .line-grow {
-            width: 0;
-            animation: lineGrow 1s ease forwards 0.5s;
-        }
-        
-        @keyframes lineGrow {
-            to {
-                width: 100%;
-            }
-        }
-        /* ── Press article card hover ── */
-        
-        .press-card {
-            border-top: 1px solid #e4e2e4;
-            transition: background 0.2s ease;
-        }
-        
-        .press-card:hover {
-            background: #f6f3f5;
-        }
-        
-        .press-card .arrow-icon {
-            opacity: 0;
-            transform: translateX(-6px);
-            transition: opacity 0.2s, transform 0.2s;
-        }
-        
-        .press-card:hover .arrow-icon {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        /* ── Logo strip ── */
-        
-        .logo-strip {
-            display: flex;
+        body { animation: pageFadeIn 0.4s ease forwards; }
+        @keyframes pageFadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+        .line-grow { width:0; animation:lineGrow 1s ease forwards 0.5s; }
+        @keyframes lineGrow { to { width:100%; } }
+        .press-card { border-top:1px solid #e4e2e4; transition:background 0.2s ease; cursor:pointer; }
+        .press-card:hover { background:#f6f3f5; }
+        .press-card .arrow-icon { opacity:0; transform:translateX(-6px); transition:opacity 0.2s, transform 0.2s; }
+        .press-card:hover .arrow-icon { opacity:1; transform:translateX(0); }
+        .logo-item { font-family:'Manrope',sans-serif; font-weight:800; font-size:0.9rem; letter-spacing:0.15em; color:#c6c6cd; text-transform:uppercase; white-space:nowrap; transition:color 0.2s; }
+        .logo-item:hover { color:#545f73; }
+        .stat-number { font-family:'Manrope',sans-serif; font-weight:800; line-height:1; }
+        .featured-img { transition:transform 0.6s ease; }
+        .featured-wrap:hover .featured-img { transform:scale(1.02); }
+        .filter-pill { cursor:pointer; transition:background 0.15s, color 0.15s; }
+        .filter-pill.active { background:#000; color:#fff; }
+        .contact-card { border:1px solid #e4e2e4; transition:border-color 0.2s, box-shadow 0.2s; }
+        .contact-card:hover { border-color:#735c00; box-shadow:0 4px 24px rgba(115,92,0,0.08); }
+        .pull-quote { border-left:3px solid #735c00; }
+        .kit-btn { background:#131b2e; color:#fff; transition:background 0.2s, transform 0.15s; }
+        .kit-btn:hover { background:#1e2c47; transform:translateY(-1px); }
+        html { scroll-behavior:smooth; }
+
+        /* ── Modal ── */
+        #article-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
             align-items: center;
-            gap: 56px;
-            overflow: hidden;
+            justify-content: center;
+            padding: 2rem;
         }
-        
-        .logo-item {
-            font-family: 'Manrope', sans-serif;
-            font-weight: 800;
-            font-size: 0.9rem;
-            letter-spacing: 0.15em;
-            color: #c6c6cd;
-            text-transform: uppercase;
-            white-space: nowrap;
-            transition: color 0.2s;
+        #article-modal.open { display: flex; }
+        .modal-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(19,27,46,0.75);
+            backdrop-filter: blur(8px);
+            animation: fadeIn 0.25s ease;
         }
-        
-        .logo-item:hover {
-            color: #545f73;
+        .modal-box {
+            position: relative;
+            background: #fff;
+            width: 100%;
+            max-width: 980px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 4px;
+            box-shadow: 0 40px 120px rgba(0,0,0,0.35);
+            animation: slideUp 0.35s cubic-bezier(0.16,1,0.3,1);
+            margin: auto;
         }
-        /* ── Stat counter ── */
-        
-        .stat-number {
-            font-family: 'Manrope', sans-serif;
-            font-weight: 800;
-            line-height: 1;
-        }
-        /* ── Featured article ── */
-        
-        .featured-img {
-            transition: transform 0.6s ease;
-        }
-        
-        .featured-wrap:hover .featured-img {
-            transform: scale(1.02);
-        }
-        /* ── Filter pill ── */
-        
-        .filter-pill {
+        @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+        @keyframes slideUp { from{opacity:0;transform:translateY(40px) scale(0.97)} to{opacity:1;transform:translateY(0) scale(1)} }
+        .modal-box::-webkit-scrollbar { width:5px; }
+        .modal-box::-webkit-scrollbar-track { background:#f0edef; }
+        .modal-box::-webkit-scrollbar-thumb { background:#c6c6cd; border-radius:3px; }
+        .modal-img { width:100%; height:360px; object-fit:cover; }
+        .modal-body { padding: 3.5rem 4rem; }
+        .modal-close {
+            position: absolute; top: 1.25rem; right: 1.25rem;
+            width: 42px; height: 42px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
             cursor: pointer;
-            transition: background 0.15s, color 0.15s;
+            transition: background 0.15s, transform 0.15s;
+            z-index: 10;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.15);
         }
-        
-        .filter-pill.active {
-            background: #000;
-            color: #fff;
-        }
-        /* ── Contact card ── */
-        
-        .contact-card {
-            border: 1px solid #e4e2e4;
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-        
-        .contact-card:hover {
-            border-color: #735c00;
-            box-shadow: 0 4px 24px rgba(115, 92, 0, 0.08);
-        }
-        /* ── Blockquote accent ── */
-        
-        .pull-quote {
-            border-left: 3px solid #735c00;
-        }
-        /* ── Kit download button ── */
-        
-        .kit-btn {
-            background: #131b2e;
-            color: #fff;
-            transition: background 0.2s, transform 0.15s;
-        }
-        
-        .kit-btn:hover {
-            background: #1e2c47;
-            transform: translateY(-1px);
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
+        .modal-close:hover { background: #fff; transform: scale(1.1); }
+        .article-body p { margin-bottom: 1.2rem; color: #45464d; font-size: 1rem; line-height: 1.9; }
+        .article-body h4 { font-family:'Manrope',sans-serif; font-weight:700; font-size:1.2rem; color:#1b1b1d; margin: 2rem 0 0.6rem; }
+        .article-body blockquote { border-left:3px solid #e9c349; padding: 0.5rem 1.5rem; margin:2rem 0; font-style:italic; color:#545f73; font-size:1.05rem; line-height:1.7; }
     </style>
 </head>
 
@@ -238,21 +182,16 @@
 
     <main class="pt-32">
 
-        <!-- ══════════════════════════════
-         HERO
-    ══════════════════════════════ -->
+        <!-- HERO -->
         <section class="px-8 pb-16 max-w-[1400px] mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-end">
                 <div>
                     <span class="text-xs font-bold tracking-[0.2em] text-tertiary uppercase mb-5 block">Newsroom</span>
                     <h1 class="text-6xl md:text-8xl font-extrabold font-headline tracking-tighter text-black leading-none mb-8">Press<br/><span class="text-secondary font-light italic">Room</span></h1>
                     <div class="line-grow h-px bg-black mb-8"></div>
-                    <p class="text-lg text-secondary leading-relaxed font-light max-w-lg">
-                        Resources, announcements, and media assets for journalists, editors, and media professionals covering The Editorial Academy.
-                    </p>
+                    <p class="text-lg text-secondary leading-relaxed font-light max-w-lg">Resources, announcements, and media assets for journalists, editors, and media professionals covering The Editorial Academy.</p>
                 </div>
                 <div class="flex flex-col gap-6 pb-2">
-                    <!-- Press contact quick card -->
                     <div class="contact-card bg-white p-8 rounded-sm">
                         <div class="flex items-start justify-between mb-4">
                             <div>
@@ -263,76 +202,47 @@
                         </div>
                         <p class="text-secondary text-sm mb-5">For interview requests, fact-checking, and media assets — our communications team responds within one business day.</p>
                         <a href="mailto:press@editorialacademy.com" class="inline-flex items-center gap-2 text-sm font-bold text-black border-b border-black pb-0.5 hover:opacity-60 transition-opacity">
-              press@editorialacademy.com
-              <span class="material-symbols-outlined text-base">arrow_outward</span>
-            </a>
+                            press@editorialacademy.com
+                            <span class="material-symbols-outlined text-base">arrow_outward</span>
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ══════════════════════════════
-         STATS BAR
-    ══════════════════════════════ -->
+        <!-- STATS BAR -->
         <section class="bg-primary-container py-14 px-8 mb-20">
             <div class="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-white/10">
-                <div class="text-center px-6">
-                    <div class="stat-number text-5xl text-white mb-2">2019</div>
-                    <div class="text-on-primary-container text-xs tracking-widest uppercase">Founded</div>
-                </div>
-                <div class="text-center px-6">
-                    <div class="stat-number text-5xl text-[#e9c349] mb-2">12K+</div>
-                    <div class="text-on-primary-container text-xs tracking-widest uppercase">Practitioners</div>
-                </div>
-                <div class="text-center px-6">
-                    <div class="stat-number text-5xl text-white mb-2">40+</div>
-                    <div class="text-on-primary-container text-xs tracking-widest uppercase">Countries</div>
-                </div>
-                <div class="text-center px-6">
-                    <div class="stat-number text-5xl text-[#e9c349] mb-2">24</div>
-                    <div class="text-on-primary-container text-xs tracking-widest uppercase">Programs</div>
-                </div>
+                <div class="text-center px-6"><div class="stat-number text-5xl text-white mb-2">2019</div><div class="text-on-primary-container text-xs tracking-widest uppercase">Founded</div></div>
+                <div class="text-center px-6"><div class="stat-number text-5xl text-[#e9c349] mb-2">12K+</div><div class="text-on-primary-container text-xs tracking-widest uppercase">Practitioners</div></div>
+                <div class="text-center px-6"><div class="stat-number text-5xl text-white mb-2">40+</div><div class="text-on-primary-container text-xs tracking-widest uppercase">Countries</div></div>
+                <div class="text-center px-6"><div class="stat-number text-5xl text-[#e9c349] mb-2">24</div><div class="text-on-primary-container text-xs tracking-widest uppercase">Programs</div></div>
             </div>
         </section>
 
-        <!-- ══════════════════════════════
-         AS SEEN IN — LOGO STRIP
-    ══════════════════════════════ -->
+        <!-- LOGO STRIP -->
         <section class="px-8 mb-24 max-w-[1400px] mx-auto">
-            <div class="mb-8">
-                <span class="text-xs font-bold tracking-[0.2em] text-tertiary uppercase">As covered by</span>
-            </div>
-            <div class="logo-strip flex-wrap gap-y-6">
-                <span class="logo-item">The Guardian</span>
-                <span class="text-outline-variant">·</span>
-                <span class="logo-item">Wired</span>
-                <span class="text-outline-variant">·</span>
-                <span class="logo-item">Fast Company</span>
-                <span class="text-outline-variant">·</span>
-                <span class="logo-item">Monocle</span>
-                <span class="text-outline-variant">·</span>
-                <span class="logo-item">Eye Magazine</span>
-                <span class="text-outline-variant">·</span>
-                <span class="logo-item">Creative Review</span>
-                <span class="text-outline-variant">·</span>
-                <span class="logo-item">It's Nice That</span>
-                <span class="text-outline-variant">·</span>
+            <div class="mb-8"><span class="text-xs font-bold tracking-[0.2em] text-tertiary uppercase">As covered by</span></div>
+            <div class="flex flex-wrap items-center gap-x-14 gap-y-6">
+                <span class="logo-item">The Guardian</span><span class="text-outline-variant">·</span>
+                <span class="logo-item">Wired</span><span class="text-outline-variant">·</span>
+                <span class="logo-item">Fast Company</span><span class="text-outline-variant">·</span>
+                <span class="logo-item">Monocle</span><span class="text-outline-variant">·</span>
+                <span class="logo-item">Eye Magazine</span><span class="text-outline-variant">·</span>
+                <span class="logo-item">Creative Review</span><span class="text-outline-variant">·</span>
+                <span class="logo-item">It's Nice That</span><span class="text-outline-variant">·</span>
                 <span class="logo-item">Dezeen</span>
             </div>
             <div class="h-px bg-outline-variant/30 mt-10"></div>
         </section>
 
-        <!-- ══════════════════════════════
-         FEATURED ARTICLE
-    ══════════════════════════════ -->
+        <!-- FEATURED ARTICLE -->
         <section class="px-8 mb-24 max-w-[1400px] mx-auto">
             <div class="mb-10">
                 <span class="text-xs font-bold tracking-[0.2em] text-tertiary uppercase mb-4 block">Featured Coverage</span>
                 <h2 class="text-3xl font-extrabold font-headline tracking-tighter text-black">Latest in the press</h2>
             </div>
-
-            <!-- Featured large card -->
-            <a href="#" class="featured-wrap block group mb-8">
+            <div class="featured-wrap block group mb-8 cursor-pointer" onclick="openModal('guardian')">
                 <div class="grid grid-cols-1 lg:grid-cols-5 gap-0 border border-outline-variant/20 rounded-sm overflow-hidden">
                     <div class="lg:col-span-3 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=900&q=80" alt="Featured press coverage" class="featured-img w-full h-72 lg:h-full object-cover" />
@@ -347,9 +257,7 @@
                             <h3 class="font-headline font-extrabold text-2xl text-black leading-tight mb-4 group-hover:text-secondary transition-colors">
                                 "The Editorial Academy is redefining what it means to learn at the executive level of media."
                             </h3>
-                            <p class="text-secondary text-sm leading-relaxed">
-                                A long-form profile on how The Editorial Academy's rigorous curriculum model is attracting senior practitioners from the world's most prestigious media organisations — and why that matters for the future of editorial leadership.
-                            </p>
+                            <p class="text-secondary text-sm leading-relaxed">A long-form profile on how The Editorial Academy's rigorous curriculum model is attracting senior practitioners from the world's most prestigious media organisations.</p>
                         </div>
                         <div class="flex items-center gap-2 mt-8 text-sm font-bold text-black">
                             Read article
@@ -357,19 +265,16 @@
                         </div>
                     </div>
                 </div>
-            </a>
+            </div>
         </section>
 
-        <!-- ══════════════════════════════
-         PRESS ARTICLES — FILTERED LIST
-    ══════════════════════════════ -->
+        <!-- PRESS ARTICLES -->
         <section class="px-8 mb-24 max-w-[1400px] mx-auto">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
                 <div>
                     <span class="text-xs font-bold tracking-[0.2em] text-tertiary uppercase mb-4 block">All Coverage</span>
                     <h2 class="text-3xl font-extrabold font-headline tracking-tighter text-black">Press Archive</h2>
                 </div>
-                <!-- Filter pills -->
                 <div class="flex flex-wrap gap-2" id="filter-bar">
                     <button data-cat="all" class="filter-pill active px-4 py-1.5 text-xs font-bold tracking-widest uppercase rounded-full border border-black bg-black text-white">All</button>
                     <button data-cat="profile" class="filter-pill px-4 py-1.5 text-xs font-bold tracking-widest uppercase rounded-full border border-outline-variant text-secondary hover:border-black hover:text-black">Profile</button>
@@ -379,10 +284,8 @@
                 </div>
             </div>
 
-            <!-- Articles list -->
             <div id="articles-list">
-
-                <a href="#" data-cat="profile" class="press-card block px-6 py-6 rounded-sm cursor-pointer">
+                <div data-cat="profile" class="press-card px-6 py-6 rounded-sm" onclick="openModal('wired')">
                     <div class="flex items-start justify-between gap-6">
                         <div class="flex-1">
                             <div class="flex items-center gap-3 mb-2">
@@ -391,14 +294,14 @@
                                 <span class="text-xs text-secondary">February 2026</span>
                                 <span class="px-2 py-0.5 bg-surface-container text-secondary text-xs rounded-full font-medium">Profile</span>
                             </div>
-                            <h3 class="font-headline font-bold text-lg text-black mb-1 group-hover:text-secondary">The Academy Shaping Tomorrow's Editorial Leaders</h3>
+                            <h3 class="font-headline font-bold text-lg text-black mb-1">The Academy Shaping Tomorrow's Editorial Leaders</h3>
                             <p class="text-secondary text-sm">How a curated roster of 24 world-class instructors is changing the way senior media professionals think about education.</p>
                         </div>
                         <span class="material-symbols-outlined arrow-icon text-black shrink-0 mt-1">arrow_outward</span>
                     </div>
-                </a>
+                </div>
 
-                <a href="#" data-cat="announcement" class="press-card block px-6 py-6 rounded-sm cursor-pointer">
+                <div data-cat="announcement" class="press-card px-6 py-6 rounded-sm" onclick="openModal('fastcompany')">
                     <div class="flex items-start justify-between gap-6">
                         <div class="flex-1">
                             <div class="flex items-center gap-3 mb-2">
@@ -412,9 +315,9 @@
                         </div>
                         <span class="material-symbols-outlined arrow-icon text-black shrink-0 mt-1">arrow_outward</span>
                     </div>
-                </a>
+                </div>
 
-                <a href="#" data-cat="opinion" class="press-card block px-6 py-6 rounded-sm cursor-pointer">
+                <div data-cat="opinion" class="press-card px-6 py-6 rounded-sm" onclick="openModal('monocle')">
                     <div class="flex items-start justify-between gap-6">
                         <div class="flex-1">
                             <div class="flex items-center gap-3 mb-2">
@@ -428,9 +331,9 @@
                         </div>
                         <span class="material-symbols-outlined arrow-icon text-black shrink-0 mt-1">arrow_outward</span>
                     </div>
-                </a>
+                </div>
 
-                <a href="#" data-cat="award" class="press-card block px-6 py-6 rounded-sm cursor-pointer">
+                <div data-cat="award" class="press-card px-6 py-6 rounded-sm" onclick="openModal('creativereview')">
                     <div class="flex items-start justify-between gap-6">
                         <div class="flex-1">
                             <div class="flex items-center gap-3 mb-2">
@@ -444,9 +347,9 @@
                         </div>
                         <span class="material-symbols-outlined arrow-icon text-black shrink-0 mt-1">arrow_outward</span>
                     </div>
-                </a>
+                </div>
 
-                <a href="#" data-cat="profile" class="press-card block px-6 py-6 rounded-sm cursor-pointer">
+                <div data-cat="profile" class="press-card px-6 py-6 rounded-sm" onclick="openModal('eyemagazine')">
                     <div class="flex items-start justify-between gap-6">
                         <div class="flex-1">
                             <div class="flex items-center gap-3 mb-2">
@@ -460,9 +363,9 @@
                         </div>
                         <span class="material-symbols-outlined arrow-icon text-black shrink-0 mt-1">arrow_outward</span>
                     </div>
-                </a>
+                </div>
 
-                <a href="#" data-cat="announcement" class="press-card block px-6 py-6 rounded-sm cursor-pointer">
+                <div data-cat="announcement" class="press-card px-6 py-6 rounded-sm" onclick="openModal('itsnicethat')">
                     <div class="flex items-start justify-between gap-6">
                         <div class="flex-1">
                             <div class="flex items-center gap-3 mb-2">
@@ -476,9 +379,9 @@
                         </div>
                         <span class="material-symbols-outlined arrow-icon text-black shrink-0 mt-1">arrow_outward</span>
                     </div>
-                </a>
+                </div>
 
-                <a href="#" data-cat="opinion" class="press-card block px-6 py-6 rounded-sm cursor-pointer">
+                <div data-cat="opinion" class="press-card px-6 py-6 rounded-sm" onclick="openModal('dezeen')">
                     <div class="flex items-start justify-between gap-6">
                         <div class="flex-1">
                             <div class="flex items-center gap-3 mb-2">
@@ -492,30 +395,22 @@
                         </div>
                         <span class="material-symbols-outlined arrow-icon text-black shrink-0 mt-1">arrow_outward</span>
                     </div>
-                </a>
+                </div>
 
                 <div class="border-t border-outline-variant/20"></div>
             </div>
-
-            <!-- Empty state -->
             <p id="empty-state" class="hidden text-center text-secondary py-16 text-sm">No articles match this filter.</p>
         </section>
 
-        <!-- ══════════════════════════════
-         PULL QUOTE
-    ══════════════════════════════ -->
+        <!-- PULL QUOTE -->
         <section class="px-8 mb-24 max-w-[1400px] mx-auto">
             <div class="pull-quote pl-10 py-2 max-w-3xl">
-                <p class="text-3xl md:text-4xl font-headline font-extrabold text-black tracking-tight leading-tight mb-6">
-                    "The benchmark for serious editorial education at the executive level."
-                </p>
+                <p class="text-3xl md:text-4xl font-headline font-extrabold text-black tracking-tight leading-tight mb-6">"The benchmark for serious editorial education at the executive level."</p>
                 <div class="text-secondary text-sm font-semibold">— Creative Review, October 2025</div>
             </div>
         </section>
 
-        <!-- ══════════════════════════════
-         PRESS KIT + BRAND ASSETS
-    ══════════════════════════════ -->
+        <!-- PRESS KIT -->
         <section class="bg-surface-container-low px-8 py-24 mb-0">
             <div class="max-w-[1400px] mx-auto">
                 <div class="mb-14">
@@ -523,171 +418,299 @@
                     <h2 class="text-3xl font-extrabold font-headline tracking-tighter text-black">Press Kit & Brand Assets</h2>
                     <p class="mt-4 text-secondary font-light max-w-xl">Download official assets for editorial use. All materials are cleared for media publication with appropriate attribution.</p>
                 </div>
-
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
                     <div class="contact-card bg-white p-8 rounded-sm">
-                        <div class="w-12 h-12 bg-primary-container rounded-full flex items-center justify-center mb-6">
-                            <span class="material-symbols-outlined text-on-primary-container">download</span>
-                        </div>
+                        <div class="w-12 h-12 bg-primary-container rounded-full flex items-center justify-center mb-6"><span class="material-symbols-outlined text-on-primary-container">download</span></div>
                         <h3 class="font-headline font-bold text-lg text-black mb-3">Full Press Kit</h3>
                         <p class="text-secondary text-sm leading-relaxed mb-6">Institutional overview, key facts, founder biography, programme descriptions, and high-resolution imagery. ZIP archive, 48 MB.</p>
-                        <button class="kit-btn w-full py-3 text-sm font-bold rounded-sm flex items-center justify-center gap-2">
-              <span class="material-symbols-outlined text-base">download</span>
-              Download Press Kit
-            </button>
+                        <button class="kit-btn w-full py-3 text-sm font-bold rounded-sm flex items-center justify-center gap-2"><span class="material-symbols-outlined text-base">download</span>Download Press Kit</button>
                     </div>
-
                     <div class="contact-card bg-white p-8 rounded-sm">
-                        <div class="w-12 h-12 bg-primary-container rounded-full flex items-center justify-center mb-6">
-                            <span class="material-symbols-outlined text-on-primary-container">image</span>
-                        </div>
+                        <div class="w-12 h-12 bg-primary-container rounded-full flex items-center justify-center mb-6"><span class="material-symbols-outlined text-on-primary-container">image</span></div>
                         <h3 class="font-headline font-bold text-lg text-black mb-3">Logo & Brand Mark</h3>
                         <p class="text-secondary text-sm leading-relaxed mb-6">Official wordmark and brand mark in SVG, PNG, and EPS. Includes light, dark, and monochrome variants for all publication contexts.</p>
-                        <button class="kit-btn w-full py-3 text-sm font-bold rounded-sm flex items-center justify-center gap-2">
-              <span class="material-symbols-outlined text-base">download</span>
-              Download Logos
-            </button>
+                        <button class="kit-btn w-full py-3 text-sm font-bold rounded-sm flex items-center justify-center gap-2"><span class="material-symbols-outlined text-base">download</span>Download Logos</button>
                     </div>
-
                     <div class="contact-card bg-white p-8 rounded-sm">
-                        <div class="w-12 h-12 bg-primary-container rounded-full flex items-center justify-center mb-6">
-                            <span class="material-symbols-outlined text-on-primary-container">photo_library</span>
-                        </div>
+                        <div class="w-12 h-12 bg-primary-container rounded-full flex items-center justify-center mb-6"><span class="material-symbols-outlined text-on-primary-container">photo_library</span></div>
                         <h3 class="font-headline font-bold text-lg text-black mb-3">Photography</h3>
                         <p class="text-secondary text-sm leading-relaxed mb-6">Editorial-quality photography of instructors, platform interfaces, and institution environments. Cleared for print and digital publication.</p>
-                        <button class="kit-btn w-full py-3 text-sm font-bold rounded-sm flex items-center justify-center gap-2">
-              <span class="material-symbols-outlined text-base">download</span>
-              Download Photos
-            </button>
+                        <button class="kit-btn w-full py-3 text-sm font-bold rounded-sm flex items-center justify-center gap-2"><span class="material-symbols-outlined text-base">download</span>Download Photos</button>
                     </div>
-
                 </div>
             </div>
         </section>
 
-        <!-- ══════════════════════════════
-         CONTACT SECTION
-    ══════════════════════════════ -->
+        <!-- CONTACT -->
         <section class="bg-primary-container px-8 py-24">
             <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div>
                     <span class="text-tertiary-fixed text-xs font-bold tracking-widest uppercase mb-4 block">Get in Touch</span>
-                    <h2 class="text-4xl md:text-5xl font-extrabold font-headline tracking-tighter text-white leading-tight mb-6">
-                        Working on a story?<br/>We'd love to help.
-                    </h2>
-                    <p class="text-on-primary-container text-lg font-light leading-relaxed mb-8">
-                        Our communications team is available for interview requests, background briefings, fact-checking, and bespoke asset requests. We aim to respond within one business day.
-                    </p>
+                    <h2 class="text-4xl md:text-5xl font-extrabold font-headline tracking-tighter text-white leading-tight mb-6">Working on a story?<br/>We'd love to help.</h2>
+                    <p class="text-on-primary-container text-lg font-light leading-relaxed mb-8">Our communications team is available for interview requests, background briefings, fact-checking, and bespoke asset requests.</p>
                     <div class="space-y-4">
-                        <div class="flex items-center gap-3 text-on-primary-container">
-                            <span class="material-symbols-outlined text-tertiary-fixed">mail</span>
-                            <span class="text-sm">press@editorialacademy.com</span>
-                        </div>
-                        <div class="flex items-center gap-3 text-on-primary-container">
-                            <span class="material-symbols-outlined text-tertiary-fixed">phone</span>
-                            <span class="text-sm">+44 20 7946 0321</span>
-                        </div>
-                        <div class="flex items-center gap-3 text-on-primary-container">
-                            <span class="material-symbols-outlined text-tertiary-fixed">schedule</span>
-                            <span class="text-sm">Monday – Friday, 09:00 – 18:00 GMT</span>
-                        </div>
+                        <div class="flex items-center gap-3 text-on-primary-container"><span class="material-symbols-outlined text-tertiary-fixed">mail</span><span class="text-sm">press@editorialacademy.com</span></div>
+                        <div class="flex items-center gap-3 text-on-primary-container"><span class="material-symbols-outlined text-tertiary-fixed">phone</span><span class="text-sm">+44 20 7946 0321</span></div>
+                        <div class="flex items-center gap-3 text-on-primary-container"><span class="material-symbols-outlined text-tertiary-fixed">schedule</span><span class="text-sm">Monday – Friday, 09:00 – 18:00 GMT</span></div>
                     </div>
                 </div>
-
-                <!-- Contact form -->
                 <div class="bg-white/5 border border-white/10 rounded-sm p-10">
                     <h3 class="font-headline font-bold text-white text-xl mb-6">Send an enquiry</h3>
                     <div class="space-y-4">
                         <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label class="text-on-primary-container text-xs font-bold tracking-widest uppercase block mb-2">First Name</label>
-                                <input type="text" placeholder="Jane" class="w-full bg-white/10 border border-white/20 text-white placeholder-white/30 text-sm px-4 py-3 rounded-sm focus:outline-none focus:border-[#e9c349] transition-colors" />
-                            </div>
-                            <div>
-                                <label class="text-on-primary-container text-xs font-bold tracking-widest uppercase block mb-2">Last Name</label>
-                                <input type="text" placeholder="Smith" class="w-full bg-white/10 border border-white/20 text-white placeholder-white/30 text-sm px-4 py-3 rounded-sm focus:outline-none focus:border-[#e9c349] transition-colors" />
-                            </div>
+                            <div><label class="text-on-primary-container text-xs font-bold tracking-widest uppercase block mb-2">First Name</label><input type="text" placeholder="Jane" class="w-full bg-white/10 border border-white/20 text-white placeholder-white/30 text-sm px-4 py-3 rounded-sm focus:outline-none focus:border-[#e9c349] transition-colors" /></div>
+                            <div><label class="text-on-primary-container text-xs font-bold tracking-widest uppercase block mb-2">Last Name</label><input type="text" placeholder="Smith" class="w-full bg-white/10 border border-white/20 text-white placeholder-white/30 text-sm px-4 py-3 rounded-sm focus:outline-none focus:border-[#e9c349] transition-colors" /></div>
                         </div>
-                        <div>
-                            <label class="text-on-primary-container text-xs font-bold tracking-widest uppercase block mb-2">Publication</label>
-                            <input type="text" placeholder="e.g. The Guardian" class="w-full bg-white/10 border border-white/20 text-white placeholder-white/30 text-sm px-4 py-3 rounded-sm focus:outline-none focus:border-[#e9c349] transition-colors" />
-                        </div>
-                        <div>
-                            <label class="text-on-primary-container text-xs font-bold tracking-widest uppercase block mb-2">Email</label>
-                            <input type="email" placeholder="jane@publication.com" class="w-full bg-white/10 border border-white/20 text-white placeholder-white/30 text-sm px-4 py-3 rounded-sm focus:outline-none focus:border-[#e9c349] transition-colors" />
-                        </div>
-                        <div>
-                            <label class="text-on-primary-container text-xs font-bold tracking-widest uppercase block mb-2">Message</label>
-                            <textarea rows="4" placeholder="Describe your enquiry or story angle..." class="w-full bg-white/10 border border-white/20 text-white placeholder-white/30 text-sm px-4 py-3 rounded-sm focus:outline-none focus:border-[#e9c349] transition-colors resize-none"></textarea>
-                        </div>
-                        <button class="w-full py-4 bg-[#e9c349] text-black font-bold text-sm rounded-sm hover:bg-[#ffe088] transition-colors hover:scale-[0.99] transition-transform">
-              Send Enquiry
-            </button>
+                        <div><label class="text-on-primary-container text-xs font-bold tracking-widest uppercase block mb-2">Publication</label><input type="text" placeholder="e.g. The Guardian" class="w-full bg-white/10 border border-white/20 text-white placeholder-white/30 text-sm px-4 py-3 rounded-sm focus:outline-none focus:border-[#e9c349] transition-colors" /></div>
+                        <div><label class="text-on-primary-container text-xs font-bold tracking-widest uppercase block mb-2">Email</label><input type="email" placeholder="jane@publication.com" class="w-full bg-white/10 border border-white/20 text-white placeholder-white/30 text-sm px-4 py-3 rounded-sm focus:outline-none focus:border-[#e9c349] transition-colors" /></div>
+                        <div><label class="text-on-primary-container text-xs font-bold tracking-widest uppercase block mb-2">Message</label><textarea rows="4" placeholder="Describe your enquiry or story angle..." class="w-full bg-white/10 border border-white/20 text-white placeholder-white/30 text-sm px-4 py-3 rounded-sm focus:outline-none focus:border-[#e9c349] transition-colors resize-none"></textarea></div>
+                        <button class="w-full py-4 bg-[#e9c349] text-black font-bold text-sm rounded-sm hover:bg-[#ffe088] transition-colors">Send Enquiry</button>
                     </div>
                 </div>
             </div>
         </section>
-
     </main>
 
-    <!-- ── Footer ── -->
+    <!-- Footer -->
     <footer class="w-full border-t border-[#e4e2e4]/40 bg-[#fcf8fa]">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-12 px-12 py-20 max-w-7xl mx-auto">
             <div class="col-span-2 md:col-span-1 space-y-6">
                 <div class="text-lg font-bold text-black font-headline">The Editorial Academy</div>
                 <p class="text-sm text-[#545f73] leading-relaxed">Elevating the standards of digital education through meticulous curation and executive-level instruction.</p>
             </div>
-            <div class="space-y-4">
-                <h4 class="text-xs font-bold tracking-widest uppercase text-black">Company</h4>
-                <ul class="space-y-2">
-                    <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="index.html">About Us</a></li>
-                    <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="index.html">Careers</a></li>
-                    <li><a class="text-sm font-semibold text-black underline underline-offset-4 transition-all" href="press.html">Press</a></li>
-                </ul>
-            </div>
-            <div class="space-y-4">
-                <h4 class="text-xs font-bold tracking-widest uppercase text-black">Support</h4>
-                <ul class="space-y-2">
-                    <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="HelpCenter.html">Help Center</a></li>
-                    <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="#">Privacy Policy</a></li>
-                    <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="termofservice.html">Terms of Service</a></li>
-                </ul>
-            </div>
-            <div class="space-y-4">
-                <h4 class="text-xs font-bold tracking-widest uppercase text-black">Academics</h4>
-                <ul class="space-y-2">
-                    <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="curricula.html">Curricula</a></li>
-                    <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="library.html">Library</a></li>
-                    <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="instructors.html">Instructors</a></li>
-                    <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="certifications.html">Certifications</a></li>
-                </ul>
-            </div>
+            <div class="space-y-4"><h4 class="text-xs font-bold tracking-widest uppercase text-black">Company</h4><ul class="space-y-2"><li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="#">About Us</a></li><li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="#">Careers</a></li><li><a class="text-sm font-semibold text-black underline underline-offset-4 transition-all" href="#">Press</a></li></ul></div>
+            <div class="space-y-4"><h4 class="text-xs font-bold tracking-widest uppercase text-black">Support</h4><ul class="space-y-2"><li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="#">Help Center</a></li><li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="#">Privacy Policy</a></li><li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="#">Terms of Service</a></li></ul></div>
+            <div class="space-y-4"><h4 class="text-xs font-bold tracking-widest uppercase text-black">Academics</h4><ul class="space-y-2"><li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="#">Curricula</a></li><li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="#">Library</a></li><li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="#">Instructors</a></li><li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="#">Certifications</a></li></ul></div>
         </div>
-        <div class="px-12 py-8 max-w-7xl mx-auto border-t border-outline-variant/10 text-center">
-            <p class="text-xs text-[#545f73] tracking-wide">© 2026 The Editorial Academy. All rights reserved.</p>
-        </div>
+        <div class="px-12 py-8 max-w-7xl mx-auto border-t border-outline-variant/10 text-center"><p class="text-xs text-[#545f73] tracking-wide">© 2026 The Editorial Academy. All rights reserved.</p></div>
     </footer>
 
+    <!-- ══════════════════════════════
+         ARTICLE MODAL
+    ══════════════════════════════ -->
+    <div id="article-modal" role="dialog" aria-modal="true">
+        <div class="modal-backdrop" onclick="closeModal()"></div>
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal()" aria-label="Close">
+                <span class="material-symbols-outlined text-xl" style="font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24">close</span>
+            </button>
+            <img id="modal-img" class="modal-img" src="" alt="" />
+            <div class="modal-body">
+                <div class="flex items-center gap-3 mb-4">
+                    <span id="modal-publication" class="text-xs font-bold tracking-widest uppercase text-tertiary"></span>
+                    <span class="text-outline-variant">·</span>
+                    <span id="modal-date" class="text-xs text-secondary"></span>
+                    <span id="modal-badge" class="px-2 py-0.5 text-xs rounded-full font-medium"></span>
+                </div>
+                <h2 id="modal-title" class="font-headline font-extrabold text-2xl text-black leading-tight mb-6"></h2>
+                <div id="modal-content" class="article-body"></div>
+                <div class="mt-8 pt-6 border-t border-outline-variant/20 flex items-center justify-between">
+                    <p class="text-xs text-secondary">This article summary is provided for press reference purposes.</p>
+                    <button onclick="closeModal()" class="px-5 py-2 text-xs font-bold bg-primary text-white rounded-sm hover:opacity-80 transition-opacity">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // ── Article data ──
+        const articles = {
+            guardian: {
+                publication: 'The Guardian',
+                date: 'March 2026',
+                badge: 'Profile',
+                badgeClass: 'bg-surface-container text-secondary',
+                title: '"The Editorial Academy is redefining what it means to learn at the executive level of media."',
+                img: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=900&q=80',
+                content: `
+                    <p>When The Editorial Academy quietly opened its doors in 2019, its founders described it as a "quiet experiment" — an attempt to bring the rigour of a graduate seminar to the fractured, fast-moving world of digital media. Seven years on, with more than 12,000 practitioners across 40 countries having passed through its programmes, that experiment has become something closer to a movement.</p>
+                    <h4>A Different Kind of Media Education</h4>
+                    <p>Unlike the proliferation of online courses that have flooded the creative industries over the past decade, The Editorial Academy operates on a philosophy of deliberate scarcity. Its roster of 24 instructors — drawn from the upper echelons of legacy and digital publishing alike — teach in cohorts of no more than 20 students. Admission is competitive. The waiting list, for some programmes, stretches six months.</p>
+                    <blockquote>"We are not trying to reach everyone. We are trying to reach the people who will shape how everyone else publishes." — Founder, The Editorial Academy</blockquote>
+                    <h4>Who Is Attending?</h4>
+                    <p>The student body reads like a who's who of mid-to-senior editorial talent: managing editors from legacy mastheads, digital directors at major publishing groups, heads of content at technology companies rethinking their editorial strategies. The average student has 12 years of industry experience before enrolling.</p>
+                    <p>This is not a platform for those beginning their careers. It is, deliberately and unapologetically, for those who are already leading — and who have identified gaps in their own formation that conventional education could not fill.</p>
+                    <h4>The Curriculum Model</h4>
+                    <p>The Academy's programmes are organised around five tracks: Editorial Strategy, Typography & Visual Language, Digital Publishing Systems, AI & Editorial Judgement, and Leadership & Institutional Culture. Each track consists of five courses, taught over ten weeks, with a final project reviewed by a panel of industry practitioners.</p>
+                    <p>The newest track — AI & Editorial Judgement — has attracted the most attention. Launched in January 2026, it pairs technical fluency with the kind of editorial instinct that, the Academy's instructors argue, is precisely what generative tools cannot replicate.</p>
+                `
+            },
+            wired: {
+                publication: 'Wired',
+                date: 'February 2026',
+                badge: 'Profile',
+                badgeClass: 'bg-surface-container text-secondary',
+                title: 'The Academy Shaping Tomorrow\'s Editorial Leaders',
+                img: 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=900&q=80',
+                content: `
+                    <p>In an industry defined by disruption, The Editorial Academy has built its reputation on exactly the opposite: on patience, depth, and an almost contrarian insistence that great editorial leadership cannot be acquired in a weekend course or a YouTube tutorial.</p>
+                    <h4>24 Instructors. No Compromises.</h4>
+                    <p>The Academy's 24 instructors are its most discussed feature — and its most carefully guarded asset. Each is drawn from the working world of media, not academia. Each brings a portfolio of work that would be recognisable to any serious reader of the publications that shape cultural conversation.</p>
+                    <blockquote>"We chose people whose names mean something to the industry. Not because of prestige — but because of the specificity of what they know and how rigorously they know it." — Director of Programmes</blockquote>
+                    <h4>What Makes TEA Different</h4>
+                    <p>Several things distinguish The Editorial Academy from the broader landscape of creative education platforms. First, the intensity: courses are not designed to be completed in stolen moments. Students typically report spending 8–12 hours per week on readings, workshops, and projects.</p>
+                    <p>Second, the feedback model: every piece of student work receives written critique from the instructor, not automated assessment or peer review alone. In an era of scalable online learning, this is an expensive commitment — and, the Academy argues, an essential one.</p>
+                    <p>Third, the alumni network: graduates describe the connections formed during cohorts as among the most professionally valuable of their careers. In a sector built on relationships, this is no small thing.</p>
+                    <h4>Looking Ahead</h4>
+                    <p>With applications open for its 2026 cohorts and a new AI track now live, The Editorial Academy shows no sign of scaling in the conventional sense. Its founders speak about growth in terms of depth, not breadth — a philosophy that has, so far, served them exceptionally well.</p>
+                `
+            },
+            fastcompany: {
+                publication: 'Fast Company',
+                date: 'January 2026',
+                badge: 'Announcement',
+                badgeClass: 'bg-surface-container text-secondary',
+                title: 'The Editorial Academy Launches AI Editorial Leadership Track',
+                img: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=900&q=80',
+                content: `
+                    <p>The Editorial Academy today announced the launch of its fifth and most anticipated programme track: AI & Editorial Judgement — a five-course certification that represents the platform's most direct engagement yet with the transformation reshaping every corner of the media industry.</p>
+                    <h4>Why Now?</h4>
+                    <p>The timing is deliberate. As generative AI tools proliferate across newsrooms, content departments, and publishing operations worldwide, the Academy's founders identified a critical gap: while many organisations were investing in AI tools, very few were investing in the editorial judgement required to deploy those tools responsibly and effectively.</p>
+                    <blockquote>"The tools are not the hard part. The hard part is knowing when to use them, when to override them, and how to maintain editorial integrity in systems that were not designed with it in mind." — Programme Director, AI & Editorial Judgement</blockquote>
+                    <h4>What the Track Covers</h4>
+                    <p>The five-course track spans AI fluency for editorial leaders (including practical sessions with current tools), prompt design and editorial workflow integration, quality assessment frameworks for AI-assisted content, ethics and transparency standards, and — perhaps most distinctively — a seminar on maintaining institutional editorial voice in AI-augmented publishing environments.</p>
+                    <p>The track is designed explicitly for senior practitioners, not technologists. No coding knowledge is required. The emphasis throughout is on editorial judgement: the capacity to make principled decisions about what to publish, how, and why — capacities that, the Academy argues, become more rather than less valuable as automation increases.</p>
+                    <h4>Applications</h4>
+                    <p>Applications for the inaugural cohort of the AI & Editorial Judgement track are now open. The cohort is capped at 18 participants and is expected to be oversubscribed. The programme begins March 2026.</p>
+                `
+            },
+            monocle: {
+                publication: 'Monocle',
+                date: 'November 2025',
+                badge: 'Opinion',
+                badgeClass: 'bg-surface-container text-secondary',
+                title: 'Why Executive Editorial Education Has Never Mattered More',
+                img: 'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=900&q=80',
+                content: `
+                    <p>This piece was contributed by the founder of The Editorial Academy. The views expressed are their own.</p>
+                    <p>We are living through what I can only describe as a crisis of editorial leadership. It is not a crisis of talent — the media industry continues to produce remarkable journalists, editors, and creative directors. It is a crisis of formation: a failure to develop the specific capacities that senior editorial roles demand, at the pace that the industry is changing.</p>
+                    <h4>The Formation Gap</h4>
+                    <p>Most editors in senior roles today were trained on the job, in newsrooms and publishing houses that no longer exist in their original form, under mentors whose own formation predated the digital transformation of media. This is not a criticism. It is simply to observe that the conditions under which today's editorial leaders learned their craft have changed so dramatically that much of what they learned — not all of it, but much — requires active re-examination.</p>
+                    <blockquote>"The question is not whether senior practitioners need to continue learning. It is whether the institutions providing that learning are adequate to the moment."</blockquote>
+                    <h4>What Is Required</h4>
+                    <p>What the moment requires is not training courses, not webinars, not podcasts consumed at 1.5x speed during commutes. It requires the kind of sustained, demanding, structured engagement with difficult ideas that only a genuinely rigorous educational environment can provide.</p>
+                    <p>It requires instructors who are practitioners, not theorists. It requires feedback that is specific, expert, and honest. It requires a community of peers who are facing the same challenges at the same level of seniority — and who will hold each other to high standards of thinking and practice.</p>
+                    <h4>The Industry's Obligation</h4>
+                    <p>I believe strongly that the industry has an obligation to invest in this kind of formation — not as a perk or a retention tool, but as a fundamental commitment to the quality of the editorial leadership that shapes what millions of people read, watch, and believe. The Editorial Academy exists because we could not find this anywhere else. We built what we needed.</p>
+                `
+            },
+            creativereview: {
+                publication: 'Creative Review',
+                date: 'October 2025',
+                badge: 'Award',
+                badgeClass: 'bg-[#ffe088] text-[#574500] font-bold',
+                title: 'Best Online Platform — Creative Education Awards 2025',
+                img: 'https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=900&q=80',
+                content: `
+                    <p>The Editorial Academy has been named Best Online Platform at the Creative Education Awards 2025, marking the second consecutive year the institution has received this honour. The awards, now in their twelfth year, recognise excellence in creative education across categories spanning higher education, professional development, and independent platforms.</p>
+                    <h4>The Judges' Citation</h4>
+                    <blockquote>"The Editorial Academy continues to set the benchmark for serious editorial education at the executive level. In a landscape crowded with platforms offering breadth, TEA offers depth — and does so with a consistency and rigour that is genuinely rare. The quality of instruction, the design of the curriculum, and the ambition of the community it has built are all, in the judges' assessment, exceptional."</blockquote>
+                    <h4>Reaction</h4>
+                    <p>Speaking on behalf of the Academy, its Director of Programmes said: "Receiving this recognition for a second year is genuinely meaningful to us — not because we need external validation, but because Creative Review's readership represents exactly the practitioners we are trying to serve. To be seen and respected by them is everything."</p>
+                    <h4>About the Creative Education Awards</h4>
+                    <p>The Creative Education Awards are judged by a panel of senior practitioners, educators, and commissioners drawn from across the creative industries. Submissions are assessed against criteria including pedagogical rigour, instructor quality, student outcomes, and institutional culture. The Best Online Platform category received 47 submissions in 2025, the highest number in the award's history.</p>
+                    <p>The awards ceremony took place at the Barbican, London, on 14 October 2025.</p>
+                `
+            },
+            eyemagazine: {
+                publication: 'Eye Magazine',
+                date: 'September 2025',
+                badge: 'Profile',
+                badgeClass: 'bg-surface-container text-secondary',
+                title: 'Type, Image, Authority — Inside the TEA Typography Track',
+                img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80',
+                content: `
+                    <p>There are typography courses, and then there is what Dr. Elena Rossi teaches at The Editorial Academy. The distinction, once you have spent time with either, is not subtle.</p>
+                    <h4>Dr. Elena Rossi and the Typography Track</h4>
+                    <p>Dr. Rossi spent eleven years as type director at one of Europe's most respected magazine publishing groups before joining the Academy as lead instructor for Typography & Visual Language. Her credentials in the field are unimpeachable. But it is her pedagogical approach — demanding, precise, and organised around close analysis of published work rather than abstract principle — that has made the track the Academy's most discussed programme.</p>
+                    <blockquote>"I am not interested in teaching typography as a set of rules. I am interested in teaching it as a form of authority — the way that type choices communicate institutional position, editorial seriousness, and cultural alignment before a word is read." — Dr. Elena Rossi</blockquote>
+                    <h4>The Curriculum in Detail</h4>
+                    <p>The five-course track moves from historical foundations — an examination of the typographic choices that have defined the most influential publications of the past century — through practical skills in type selection, hierarchy, and spacing, to advanced sessions on type as editorial identity and, finally, to a seminar on type in digital environments, where the constraints and opportunities differ substantially from print.</p>
+                    <p>Students produce a substantial portfolio project across the ten weeks: a complete typographic redesign of an existing publication, with a written rationale that demonstrates both technical mastery and conceptual thinking.</p>
+                    <h4>Student Outcomes</h4>
+                    <p>Alumni of the Typography Track include art directors who have gone on to redesign national newspapers, creative directors at digital-first publications, and at least two who have launched independent type foundries. The track has, in a short time, established itself as a significant credential in a competitive field.</p>
+                `
+            },
+            itsnicethat: {
+                publication: "It's Nice That",
+                date: 'July 2025',
+                badge: 'Announcement',
+                badgeClass: 'bg-surface-container text-secondary',
+                title: 'The Editorial Academy Opens Applications for 2025 Elite Cohort',
+                img: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&q=80',
+                content: `
+                    <p>The Editorial Academy has opened applications for its 2025 Elite Cohort — its most selective and comprehensive programme offering, and the route to the full five-track certification that has become the platform's most prestigious qualification.</p>
+                    <h4>What Is the Elite Cohort?</h4>
+                    <p>The Elite Cohort is a structured pathway through all five of the Academy's programme tracks, completed over a period of eighteen months in a cohort of no more than twelve practitioners. It is, the Academy states plainly, not for everyone. Applicants are assessed on professional experience, a portfolio review, and a written statement of intent that is evaluated by a selection panel including at least two active instructors.</p>
+                    <blockquote>"We accept twelve people. Last year we had over 400 applications. We are looking for a very specific combination of experience, ambition, and intellectual seriousness." — Admissions Panel Statement</blockquote>
+                    <h4>What the Programme Includes</h4>
+                    <p>Elite Cohort participants complete all five tracks — Editorial Strategy, Typography & Visual Language, Digital Publishing Systems, AI & Editorial Judgement, and Leadership & Institutional Culture — with enhanced access to instructor feedback, a dedicated cohort seminar series, and an invitation to the annual Academy Symposium, a closed gathering of graduates and senior industry practitioners.</p>
+                    <p>On completion, participants receive the Academy's full certification, which has become a recognised mark of seriousness in several sectors of the media industry.</p>
+                    <h4>How to Apply</h4>
+                    <p>Applications for the 2025 Elite Cohort are open until 15 September 2025. The programme begins in October 2025. Full details, including the application form and assessment criteria, are available on the Academy's website.</p>
+                `
+            },
+            dezeen: {
+                publication: 'Dezeen',
+                date: 'May 2025',
+                badge: 'Opinion',
+                badgeClass: 'bg-surface-container text-secondary',
+                title: 'The Case for Slow, Deep Editorial Education in a Fast-Moving Industry',
+                img: 'https://images.unsplash.com/photo-1456324504439-367cee3b3c32?w=900&q=80',
+                content: `
+                    <p>The design and architecture world has always had a complicated relationship with speed. We celebrate the rapid iteration of digital fabrication while simultaneously fetishising the slow craft of the atelier. We admire the sprint of the hackathon and the patience of the restoration workshop. But when it comes to professional education, we have, as an industry, defaulted almost entirely to fast.</p>
+                    <h4>The Speed Problem</h4>
+                    <p>Online courses promise mastery in hours. Certification programmes are measured in weeks. The dominant metaphor of creative professional development has become the shortcut: the hack, the template, the prompt that does in seconds what used to take days. This is not without value. But it is not sufficient — and in the editorial world specifically, the costs of insufficient formation are becoming increasingly visible.</p>
+                    <blockquote>"Depth and speed are not, in themselves, in opposition. The problem is not that things move quickly. The problem is that we have stopped valuing the work that can only be done slowly."</blockquote>
+                    <h4>What Deep Education Looks Like</h4>
+                    <p>The Editorial Academy is one of the few platforms in the creative education space that has built its model around slowness as a deliberate feature. Its programmes take ten weeks — not three days. Its feedback is written, specific, and delayed — not automated and instant. Its community is small and selective — not open and infinite.</p>
+                    <p>This is not nostalgia. It is a reasoned argument, based on evidence about how expertise develops, that certain kinds of professional formation cannot be accelerated beyond a certain point without losing something essential.</p>
+                    <h4>Rigour and Relevance</h4>
+                    <p>The Academy's model also challenges a false dichotomy that has plagued creative education: the idea that rigorous and relevant are somehow in tension — that depth comes at the cost of currency, and that staying up-to-date requires sacrificing seriousness. Its instructors are working practitioners. Its curriculum is revised annually. It launched an AI track before most of its competitors had identified the need for one. Rigour and relevance, it turns out, are not mutually exclusive. They are, when done right, mutually reinforcing.</p>
+                `
+            }
+        };
+
+        function openModal(id) {
+            const article = articles[id];
+            if (!article) return;
+            document.getElementById('modal-img').src = article.img;
+            document.getElementById('modal-img').alt = article.title;
+            document.getElementById('modal-publication').textContent = article.publication;
+            document.getElementById('modal-date').textContent = article.date;
+            const badge = document.getElementById('modal-badge');
+            badge.textContent = article.badge;
+            badge.className = `px-2 py-0.5 text-xs rounded-full ${article.badgeClass}`;
+            document.getElementById('modal-title').textContent = article.title;
+            document.getElementById('modal-content').innerHTML = article.content;
+            const modal = document.getElementById('article-modal');
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('article-modal').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
         // ── Filter pills ──
         const pills = document.querySelectorAll('.filter-pill');
-        const articles = document.querySelectorAll('#articles-list a[data-cat]');
+        const articleCards = document.querySelectorAll('#articles-list [data-cat]');
         const emptyState = document.getElementById('empty-state');
 
         pills.forEach(pill => {
             pill.addEventListener('click', () => {
-                // Update active pill
                 pills.forEach(p => {
                     p.classList.remove('active', 'bg-black', 'text-white', 'border-black');
                     p.classList.add('border-outline-variant', 'text-secondary');
                 });
                 pill.classList.add('active', 'bg-black', 'text-white', 'border-black');
                 pill.classList.remove('border-outline-variant', 'text-secondary');
-
                 const cat = pill.dataset.cat;
                 let visible = 0;
-                articles.forEach(a => {
+                articleCards.forEach(a => {
                     const show = cat === 'all' || a.dataset.cat === cat;
                     a.style.display = show ? 'block' : 'none';
                     if (show) visible++;
@@ -696,8 +719,5 @@
             });
         });
     </script>
-
 </body>
-
-
 </html>
