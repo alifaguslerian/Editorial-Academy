@@ -2,210 +2,252 @@
 <html class="light" lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Library | The Editorial Academy</title>
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-  <script id="tailwind-config">
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          colors: {
-            secondary: "#545f73", "on-secondary-fixed": "#111c2d", "on-surface": "#1b1b1d",
-            "error-container": "#ffdad6", "outline-variant": "#c6c6cd", "on-primary-fixed-variant": "#3f465c",
-            "on-secondary": "#ffffff", "on-background": "#1b1b1d", "inverse-primary": "#bec6e0",
-            "surface-container-low": "#f6f3f5", "tertiary-container": "#cba72f", "on-error-container": "#93000a",
-            "primary-container": "#131b2e", "surface-container": "#f0edef", "on-primary-container": "#7c839b",
-            "tertiary-fixed-dim": "#e9c349", "on-secondary-fixed-variant": "#3c475a", "inverse-on-surface": "#f3f0f2",
-            "on-surface-variant": "#45464d", "surface-bright": "#fcf8fa", primary: "#000000", "on-primary": "#ffffff",
-            surface: "#fcf8fa", "tertiary-fixed": "#ffe088", "secondary-fixed-dim": "#bcc7de", background: "#fcf8fa",
-            "surface-container-highest": "#e4e2e4", "surface-container-high": "#eae7e9", "on-tertiary": "#ffffff",
-            "surface-dim": "#dcd9db", "secondary-fixed": "#d8e3fb", "inverse-surface": "#303032",
-            "surface-container-lowest": "#ffffff", error: "#ba1a1a", "on-error": "#ffffff",
-            "surface-variant": "#e4e2e4", "primary-fixed": "#dae2fd", "on-primary-fixed": "#131b2e",
-            "on-tertiary-fixed": "#241a00", "secondary-container": "#d5e0f8", tertiary: "#735c00",
-            "primary-fixed-dim": "#bec6e0", "on-secondary-container": "#586377", "surface-tint": "#565e74",
-            outline: "#76777d", "on-tertiary-fixed-variant": "#574500", "on-tertiary-container": "#4e3d00",
-          },
-          borderRadius: { DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem" },
-          fontFamily: { headline: ["Manrope"], body: ["Inter"], label: ["Inter"] },
-        },
-      },
-    };
-  </script>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Library | The Editorial Academy</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        secondary: "#545f73",
+                        "on-secondary-fixed": "#111c2d",
+                        "on-surface": "#1b1b1d",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c6c6cd",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#1b1b1d",
+                        "inverse-primary": "#bec6e0",
+                        "surface-container-low": "#f6f3f5",
+                        "tertiary-container": "#cba72f",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#131b2e",
+                        "surface-container": "#f0edef",
+                        "on-primary-container": "#7c839b",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "on-secondary-fixed-variant": "#3c475a",
+                        "inverse-on-surface": "#f3f0f2",
+                        "on-surface-variant": "#45464d",
+                        "surface-bright": "#fcf8fa",
+                        primary: "#000000",
+                        "on-primary": "#ffffff",
+                        surface: "#fcf8fa",
+                        "tertiary-fixed": "#ffe088",
+                        "secondary-fixed-dim": "#bcc7de",
+                        background: "#fcf8fa",
+                        "surface-container-highest": "#e4e2e4",
+                        "surface-container-high": "#eae7e9",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#dcd9db",
+                        "secondary-fixed": "#d8e3fb",
+                        "inverse-surface": "#303032",
+                        "surface-container-lowest": "#ffffff",
+                        error: "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e4e2e4",
+                        "primary-fixed": "#dae2fd",
+                        "on-primary-fixed": "#131b2e",
+                        "on-tertiary-fixed": "#241a00",
+                        "secondary-container": "#d5e0f8",
+                        tertiary: "#735c00",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-secondary-container": "#586377",
+                        "surface-tint": "#565e74",
+                        outline: "#76777d",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "on-tertiary-container": "#4e3d00",
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.125rem",
+                        lg: "0.25rem",
+                        xl: "0.5rem",
+                        full: "0.75rem"
+                    },
+                    fontFamily: {
+                        headline: ["Manrope"],
+                        body: ["Inter"],
+                        label: ["Inter"]
+                    },
+                },
+            },
+        };
+    </script>
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body class="bg-surface font-body text-on-surface antialiased">
 
-  <!-- ── Navbar ── -->
-  <nav class="fixed top-0 w-full z-50 bg-[#fcf8fa]/80 backdrop-blur-md shadow-sm">
-    <div class="flex justify-between items-center w-full px-8 py-4 max-w-[1920px] mx-auto">
-      <div class="flex items-center gap-12">
-        <a class="text-2xl font-black text-black tracking-tighter font-headline" href="index.html">The Editorial Academy</a>
-        <div class="hidden lg:flex items-center gap-8">
-          <a class="text-[#545f73] font-medium font-headline tracking-tight hover:text-black transition-colors duration-300" href="curricula.html">Curricula</a>
-          <a class="text-black font-bold border-b-2 border-black pb-1 font-headline tracking-tight" href="library.html">Library</a>
-          <a class="text-[#545f73] font-medium font-headline tracking-tight hover:text-black transition-colors duration-300" href="instructors.html">Instructors</a>
-          <a class="text-[#545f73] font-medium font-headline tracking-tight hover:text-black transition-colors duration-300" href="certifications.html">Certifications</a>
+    <!-- ── Navbar ── -->
+    <nav class="fixed top-0 w-full z-50 bg-[#fcf8fa]/80 backdrop-blur-md shadow-sm">
+        <div class="flex justify-between items-center w-full px-8 py-4 max-w-[1920px] mx-auto">
+            <div class="flex items-center gap-12">
+                <a class="text-2xl font-black text-black tracking-tighter font-headline" href="index.html">The Editorial Academy</a>
+                <div class="hidden lg:flex items-center gap-8">
+                    <a class="text-[#545f73] font-medium font-headline tracking-tight hover:text-black transition-colors duration-300" href="curricula.html">Curricula</a>
+                    <a class="text-black font-bold border-b-2 border-black pb-1 font-headline tracking-tight" href="library.html">Library</a>
+                    <a class="text-[#545f73] font-medium font-headline tracking-tight hover:text-black transition-colors duration-300" href="instructors.html">Instructors</a>
+                    <a class="text-[#545f73] font-medium font-headline tracking-tight hover:text-black transition-colors duration-300" href="certifications.html">Certifications</a>
+                </div>
+            </div>
+            <div class="flex items-center gap-6">
+                <div class="hidden md:flex items-center gap-4 text-on-surface-variant">
+                    <button class="p-2 hover:bg-surface-container rounded-full transition-colors"><span class="material-symbols-outlined">shopping_cart</span></button>
+                    <button class="p-2 hover:bg-surface-container rounded-full transition-colors"><span class="material-symbols-outlined">notifications</span></button>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="px-5 py-2 text-sm font-semibold text-black hover:opacity-70 transition-opacity">Sign In</button>
+                    <button class="px-5 py-2 text-sm font-bold bg-primary text-on-primary rounded-sm hover:scale-95 transition-transform duration-200">Join Elite</button>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="flex items-center gap-6">
-        <div class="hidden md:flex items-center gap-4 text-on-surface-variant">
-          <button class="p-2 hover:bg-surface-container rounded-full transition-colors"><span class="material-symbols-outlined">shopping_cart</span></button>
-          <button class="p-2 hover:bg-surface-container rounded-full transition-colors"><span class="material-symbols-outlined">notifications</span></button>
-        </div>
-        <div class="flex items-center gap-4">
-          <button class="px-5 py-2 text-sm font-semibold text-black hover:opacity-70 transition-opacity">Sign In</button>
-          <button class="px-5 py-2 text-sm font-bold bg-primary text-on-primary rounded-sm hover:scale-95 transition-transform duration-200">Join Elite</button>
-        </div>
-      </div>
-    </div>
-  </nav>
+    </nav>
 
-  <main class="pt-32 pb-20 px-8 max-w-[1920px] mx-auto">
+    <main class="pt-32 pb-20 px-8 max-w-[1920px] mx-auto">
 
-    <!-- ── Page Header ── -->
-    <header class="mb-16">
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
-        <div class="max-w-2xl">
-          <span class="text-xs font-bold tracking-[0.2em] text-tertiary uppercase mb-4 block">Curated Knowledge</span>
-          <h1 class="text-5xl md:text-7xl font-extrabold font-headline tracking-tighter text-black leading-tight">Library</h1>
-          <p class="mt-6 text-xl text-secondary leading-relaxed font-light">
-            A living archive of essential reading, research, and masterworks — curated by the finest editorial minds in the industry.
-          </p>
-        </div>
-        <div class="w-full md:w-96">
-          <div class="relative group">
-            <span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">search</span>
-            <input id="library-search" class="w-full pl-12 pr-4 py-4 bg-surface-container-low border-b border-outline-variant/40 focus:border-primary focus:ring-0 transition-all text-sm outline-none" placeholder="Search resources..." type="text" />
-          </div>
-        </div>
-      </div>
-    </header>
+        <!-- ── Page Header ── -->
+        <header class="mb-16">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+                <div class="max-w-2xl">
+                    <span class="text-xs font-bold tracking-[0.2em] text-tertiary uppercase mb-4 block">Curated Knowledge</span>
+                    <h1 class="text-5xl md:text-7xl font-extrabold font-headline tracking-tighter text-black leading-tight">Library</h1>
+                    <p class="mt-6 text-xl text-secondary leading-relaxed font-light">
+                        A living archive of essential reading, research, and masterworks — curated by the finest editorial minds in the industry.
+                    </p>
+                </div>
+                <div class="w-full md:w-96">
+                    <div class="relative group">
+                        <span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">search</span>
+                        <input id="library-search" class="w-full pl-12 pr-4 py-4 bg-surface-container-low border-b border-outline-variant/40 focus:border-primary focus:ring-0 transition-all text-sm outline-none" placeholder="Search resources..." type="text" />
+                    </div>
+                </div>
+            </div>
+        </header>
 
-    <!-- ── Featured Resource Hero ── -->
-    <section class="mb-24">
-      <div id="featured-resource" class="relative rounded-lg overflow-hidden bg-primary-container min-h-[380px] flex items-end cursor-pointer group"></div>
-    </section>
+        <!-- ── Featured Resource Hero ── -->
+        <section class="mb-24">
+            <div id="featured-resource" class="relative rounded-lg overflow-hidden bg-primary-container min-h-[380px] flex items-end cursor-pointer group"></div>
+        </section>
 
-    <!-- ── Resource Collection + Sidebar ── -->
-    <div class="flex flex-col lg:flex-row gap-16 mb-32">
+        <!-- ── Resource Collection + Sidebar ── -->
+        <div class="flex flex-col lg:flex-row gap-16 mb-32">
 
-      <aside class="w-full lg:w-64 flex-shrink-0 space-y-10">
-        <!-- Resource Type -->
-        <div>
-          <h3 class="text-sm font-bold tracking-widest uppercase mb-6 text-black">Resource Type</h3>
-          <div class="space-y-3" id="type-filters">
-            <label class="flex items-center gap-3 cursor-pointer group"><input class="w-4 h-4 border-outline-variant text-primary focus:ring-0 rounded-sm" type="checkbox" value="Article" /><span class="text-sm text-secondary group-hover:text-black transition-colors">Article</span></label>
-            <label class="flex items-center gap-3 cursor-pointer group"><input class="w-4 h-4 border-outline-variant text-primary focus:ring-0 rounded-sm" type="checkbox" value="E-Book" /><span class="text-sm text-secondary group-hover:text-black transition-colors">E-Book</span></label>
-            <label class="flex items-center gap-3 cursor-pointer group"><input class="w-4 h-4 border-outline-variant text-primary focus:ring-0 rounded-sm" type="checkbox" value="Research Paper" /><span class="text-sm text-secondary group-hover:text-black transition-colors">Research Paper</span></label>
-            <label class="flex items-center gap-3 cursor-pointer group"><input class="w-4 h-4 border-outline-variant text-primary focus:ring-0 rounded-sm" type="checkbox" value="PDF Guide" /><span class="text-sm text-secondary group-hover:text-black transition-colors">PDF Guide</span></label>
-            <label class="flex items-center gap-3 cursor-pointer group"><input class="w-4 h-4 border-outline-variant text-primary focus:ring-0 rounded-sm" type="checkbox" value="Reading List" /><span class="text-sm text-secondary group-hover:text-black transition-colors">Reading List</span></label>
-          </div>
-        </div>
-        <!-- Discipline -->
-        <div>
-          <h3 class="text-sm font-bold tracking-widest uppercase mb-6 text-black">Discipline</h3>
-          <div class="space-y-3" id="discipline-filters">
-            <label class="flex items-center gap-3 cursor-pointer group"><input class="w-4 h-4 border-outline-variant text-primary focus:ring-0 rounded-sm" type="checkbox" value="Visual Narrative" /><span class="text-sm text-secondary group-hover:text-black transition-colors">Visual Narrative</span></label>
-            <label class="flex items-center gap-3 cursor-pointer group"><input class="w-4 h-4 border-outline-variant text-primary focus:ring-0 rounded-sm" type="checkbox" value="Digital Strategy" /><span class="text-sm text-secondary group-hover:text-black transition-colors">Digital Strategy</span></label>
-            <label class="flex items-center gap-3 cursor-pointer group"><input class="w-4 h-4 border-outline-variant text-primary focus:ring-0 rounded-sm" type="checkbox" value="Editorial Design" /><span class="text-sm text-secondary group-hover:text-black transition-colors">Editorial Design</span></label>
-            <label class="flex items-center gap-3 cursor-pointer group"><input class="w-4 h-4 border-outline-variant text-primary focus:ring-0 rounded-sm" type="checkbox" value="Typography" /><span class="text-sm text-secondary group-hover:text-black transition-colors">Typography</span></label>
-            <label class="flex items-center gap-3 cursor-pointer group"><input class="w-4 h-4 border-outline-variant text-primary focus:ring-0 rounded-sm" type="checkbox" value="Artificial Intelligence" /><span class="text-sm text-secondary group-hover:text-black transition-colors">Artificial Intelligence</span></label>
-          </div>
-        </div>
-        <!-- Access -->
-        <div>
-          <h3 class="text-sm font-bold tracking-widest uppercase mb-6 text-black">Access</h3>
-          <div class="space-y-3">
-            <label class="flex items-center gap-3 cursor-pointer group"><input class="w-4 h-4 border-outline-variant text-primary focus:ring-0" name="access" type="radio" checked /><span class="text-sm text-black font-semibold">All Resources</span></label>
-            <label class="flex items-center gap-3 cursor-pointer group"><input class="w-4 h-4 border-outline-variant text-primary focus:ring-0" name="access" type="radio" /><span class="text-sm text-secondary group-hover:text-black">Free Only</span></label>
-            <label class="flex items-center gap-3 cursor-pointer group"><input class="w-4 h-4 border-outline-variant text-primary focus:ring-0" name="access" type="radio" /><span class="text-sm text-secondary group-hover:text-black">Elite Member</span></label>
-          </div>
-        </div>
-        <!-- Clear -->
-        <div class="pt-10 border-t border-outline-variant/20">
-          <button id="clear-library-filters" class="w-full py-4 text-xs font-bold tracking-widest uppercase bg-surface-container-low text-secondary hover:bg-primary hover:text-on-primary transition-all duration-300">Clear All Filters</button>
-        </div>
-      </aside>
+            <aside class="w-full lg:w-64 flex-shrink-0 space-y-10">
+                <!-- Resource Type -->
+                <div>
+                    <h3 class="text-sm font-bold tracking-widest uppercase mb-6 text-black">Resource Type</h3>
+                    <div class="space-y-3" id="type-filters">
+                        <label class="flex items-center gap-3 cursor-pointer group"><input class="w-4 h-4 border-outline-variant text-primary focus:ring-0 rounded-sm" type="checkbox" value="Article" /><span class="text-sm text-secondary group-hover:text-black transition-colors">Article</span></label>
+                        <label class="flex items-center gap-3 cursor-pointer group"><input class="w-4 h-4 border-outline-variant text-primary focus:ring-0 rounded-sm" type="checkbox" value="E-Book" /><span class="text-sm text-secondary group-hover:text-black transition-colors">E-Book</span></label>
+                        <label class="flex items-center gap-3 cursor-pointer group"><input class="w-4 h-4 border-outline-variant text-primary focus:ring-0 rounded-sm" type="checkbox" value="Research Paper" /><span class="text-sm text-secondary group-hover:text-black transition-colors">Research Paper</span></label>
+                        <label class="flex items-center gap-3 cursor-pointer group"><input class="w-4 h-4 border-outline-variant text-primary focus:ring-0 rounded-sm" type="checkbox" value="PDF Guide" /><span class="text-sm text-secondary group-hover:text-black transition-colors">PDF Guide</span></label>
+                        <label class="flex items-center gap-3 cursor-pointer group"><input class="w-4 h-4 border-outline-variant text-primary focus:ring-0 rounded-sm" type="checkbox" value="Reading List" /><span class="text-sm text-secondary group-hover:text-black transition-colors">Reading List</span></label>
+                    </div>
+                </div>
+                <!-- Discipline -->
+                <div>
+                    <h3 class="text-sm font-bold tracking-widest uppercase mb-6 text-black">Discipline</h3>
+                    <div class="space-y-3" id="discipline-filters">
+                        <label class="flex items-center gap-3 cursor-pointer group"><input class="w-4 h-4 border-outline-variant text-primary focus:ring-0 rounded-sm" type="checkbox" value="Visual Narrative" /><span class="text-sm text-secondary group-hover:text-black transition-colors">Visual Narrative</span></label>
+                        <label class="flex items-center gap-3 cursor-pointer group"><input class="w-4 h-4 border-outline-variant text-primary focus:ring-0 rounded-sm" type="checkbox" value="Digital Strategy" /><span class="text-sm text-secondary group-hover:text-black transition-colors">Digital Strategy</span></label>
+                        <label class="flex items-center gap-3 cursor-pointer group"><input class="w-4 h-4 border-outline-variant text-primary focus:ring-0 rounded-sm" type="checkbox" value="Editorial Design" /><span class="text-sm text-secondary group-hover:text-black transition-colors">Editorial Design</span></label>
+                        <label class="flex items-center gap-3 cursor-pointer group"><input class="w-4 h-4 border-outline-variant text-primary focus:ring-0 rounded-sm" type="checkbox" value="Typography" /><span class="text-sm text-secondary group-hover:text-black transition-colors">Typography</span></label>
+                        <label class="flex items-center gap-3 cursor-pointer group"><input class="w-4 h-4 border-outline-variant text-primary focus:ring-0 rounded-sm" type="checkbox" value="Artificial Intelligence" /><span class="text-sm text-secondary group-hover:text-black transition-colors">Artificial Intelligence</span></label>
+                    </div>
+                </div>
+                <!-- Access -->
+                <div>
+                    <h3 class="text-sm font-bold tracking-widest uppercase mb-6 text-black">Access</h3>
+                    <div class="space-y-3">
+                        <label class="flex items-center gap-3 cursor-pointer group"><input class="w-4 h-4 border-outline-variant text-primary focus:ring-0" name="access" type="radio" checked /><span class="text-sm text-black font-semibold">All Resources</span></label>
+                        <label class="flex items-center gap-3 cursor-pointer group"><input class="w-4 h-4 border-outline-variant text-primary focus:ring-0" name="access" type="radio" /><span class="text-sm text-secondary group-hover:text-black">Free Only</span></label>
+                        <label class="flex items-center gap-3 cursor-pointer group"><input class="w-4 h-4 border-outline-variant text-primary focus:ring-0" name="access" type="radio" /><span class="text-sm text-secondary group-hover:text-black">Elite Member</span></label>
+                    </div>
+                </div>
+                <!-- Clear -->
+                <div class="pt-10 border-t border-outline-variant/20">
+                    <button id="clear-library-filters" class="w-full py-4 text-xs font-bold tracking-widest uppercase bg-surface-container-low text-secondary hover:bg-primary hover:text-on-primary transition-all duration-300">Clear All Filters</button>
+                </div>
+            </aside>
 
-      <!-- Resource Grid -->
-      <div class="flex-grow">
-        <div class="flex items-center justify-between mb-8">
-          <p class="text-sm text-secondary"><span class="font-bold text-black" id="resource-count">23</span> Resources available</p>
-          <div class="flex items-center gap-2 text-sm">
-            <span class="text-secondary">Sort by:</span>
-            <select id="resource-sort" class="bg-transparent border-none focus:ring-0 font-bold text-black cursor-pointer py-0">
+            <!-- Resource Grid -->
+            <div class="flex-grow">
+                <div class="flex items-center justify-between mb-8">
+                    <p class="text-sm text-secondary"><span class="font-bold text-black" id="resource-count">23</span> Resources available</p>
+                    <div class="flex items-center gap-2 text-sm">
+                        <span class="text-secondary">Sort by:</span>
+                        <select id="resource-sort" class="bg-transparent border-none focus:ring-0 font-bold text-black cursor-pointer py-0">
               <option>Most Recent</option>
               <option>Most Popular</option>
               <option>A – Z</option>
             </select>
-          </div>
+                    </div>
+                </div>
+                <div id="resource-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"></div>
+                <div id="resource-pagination" class="mt-16 flex items-center justify-center gap-4"></div>
+            </div>
         </div>
-        <div id="resource-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"></div>
-        <div id="resource-pagination" class="mt-16 flex items-center justify-center gap-4"></div>
-      </div>
-    </div>
 
-    <!-- ── Instructor Masterworks ── -->
-    <section>
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-16">
-        <div>
-          <span class="text-xs font-bold tracking-[0.2em] text-tertiary uppercase mb-4 block">Portfolio</span>
-          <h2 class="text-4xl md:text-5xl font-extrabold font-headline tracking-tighter text-black">Instructor Masterworks</h2>
-          <p class="mt-4 text-lg text-secondary font-light max-w-xl">Selected works from the practitioners who teach here. Evidence of mastery before the classroom.</p>
+        <!-- ── Instructor Masterworks ── -->
+        <section>
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-16">
+                <div>
+                    <span class="text-xs font-bold tracking-[0.2em] text-tertiary uppercase mb-4 block">Portfolio</span>
+                    <h2 class="text-4xl md:text-5xl font-extrabold font-headline tracking-tighter text-black">Instructor Masterworks</h2>
+                    <p class="mt-4 text-lg text-secondary font-light max-w-xl">Selected works from the practitioners who teach here. Evidence of mastery before the classroom.</p>
+                </div>
+            </div>
+            <div id="masterworks-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-0 border border-outline-variant/20"></div>
+        </section>
+
+    </main>
+
+    <!-- ── Footer ── -->
+    <footer class="w-full border-t border-[#e4e2e4]/40 bg-[#fcf8fa] mt-32">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-12 px-12 py-20 max-w-7xl mx-auto">
+            <div class="col-span-2 md:col-span-1 space-y-6">
+                <div class="text-lg font-bold text-black font-headline">The Editorial Academy</div>
+                <p class="text-sm text-[#545f73] leading-relaxed">Elevating the standards of digital education through meticulous curation and executive-level instruction.</p>
+            </div>
+            <!-- ── Update ── -->
+            <div class="space-y-4">
+                <h4 class="text-xs font-bold tracking-widest uppercase text-black">Company</h4>
+                <ul class="space-y-2">
+                    <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="about.html">About Us</a></li>
+                    <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="careers.html">Careers</a></li>
+                    <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="press.html">Press</a></li>
+                </ul>
+            </div>
+            <!-- ── Update ── -->
+            <div class="space-y-4">
+                <h4 class="text-xs font-bold tracking-widest uppercase text-black">Support</h4>
+                <ul class="space-y-2">
+                    <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="HelpCenter.html">Help Center</a></li>
+                    <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="index.html">Privacy Policy</a></li>
+                    <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="termsofservice.html">Terms of Service</a></li>
+                </ul>
+            </div>
+            <!-- ── Update ── -->
+            <div class="space-y-4">
+                <h4 class="text-xs font-bold tracking-widest uppercase text-black">Academics</h4>
+                <ul class="space-y-2">
+                    <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="curricula.html">Curricula</a></li>
+                    <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="library.html">Library</a></li>
+                    <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="index.html">Certifications</a></li>
+                    <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="instructors.html">Instructors</a></li>
+                </ul>
+            </div>
         </div>
-      </div>
-      <div id="masterworks-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-0 border border-outline-variant/20"></div>
-    </section>
+        <div class="px-12 py-8 max-w-7xl mx-auto border-t border-outline-variant/10 text-center">
+            <p class="text-xs text-[#545f73] tracking-wide">© 2024 The Editorial Academy. All rights reserved.</p>
+        </div>
+    </footer>
 
-  </main>
-
-  <!-- ── Footer ── -->
-  <footer class="w-full border-t border-[#e4e2e4]/40 bg-[#fcf8fa] mt-32">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-12 px-12 py-20 max-w-7xl mx-auto">
-      <div class="col-span-2 md:col-span-1 space-y-6">
-        <div class="text-lg font-bold text-black font-headline">The Editorial Academy</div>
-        <p class="text-sm text-[#545f73] leading-relaxed">Elevating the standards of digital education through meticulous curation and executive-level instruction.</p>
-      </div>
-      <!-- ── Update ── -->
-      <div class="space-y-4">
-        <h4 class="text-xs font-bold tracking-widest uppercase text-black">Company</h4>
-        <ul class="space-y-2">
-          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="about.html">About Us</a></li>
-          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="careers.html">Careers</a></li>
-          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="press.html">Press</a></li>
-        </ul>
-      </div>
-      <!-- ── Update ── -->
-      <div class="space-y-4">
-        <h4 class="text-xs font-bold tracking-widest uppercase text-black">Support</h4>
-        <ul class="space-y-2">
-          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="HelpCenter.html">Help Center</a></li>
-          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="index.html">Privacy Policy</a></li>
-          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="index.html">Terms of Service</a></li>
-        </ul>
-      </div>
-      <!-- ── Update ── -->
-      <div class="space-y-4">
-        <h4 class="text-xs font-bold tracking-widest uppercase text-black">Academics</h4>
-        <ul class="space-y-2">
-          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="curricula.html">Curricula</a></li>
-          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="library.html">Library</a></li>
-          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="index.html">Certifications</a></li>
-          <li><a class="text-sm text-[#545f73] hover:text-black underline underline-offset-4 transition-all" href="instructors.html">Instructors</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="px-12 py-8 max-w-7xl mx-auto border-t border-outline-variant/10 text-center">
-      <p class="text-xs text-[#545f73] tracking-wide">© 2024 The Editorial Academy. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
